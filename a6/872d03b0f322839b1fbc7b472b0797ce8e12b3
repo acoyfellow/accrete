@@ -1,0 +1,57 @@
+.gitignore
+  s_7b04649645ea0c::t_08ef5fe595bc8b 1-5
+package-lock.json
+  s_7b04649645ea0c::t_ba728e725cdbf9 1-1974
+package.json
+  s_7b04649645ea0c::t_4c8dd357486128 1-27
+proof/gate.sh
+  s_7b04649645ea0c::t_24ac9ea6dee076 1-14
+proof/url
+  s_7b04649645ea0c::t_6eef69a58c82fa 1
+scripts/build-tools.mjs
+  s_7b04649645ea0c::t_14c65dd29043f5 1-18
+scripts/register-tools.mjs
+  s_7b04649645ea0c::t_8a2789a68f150d 1-14
+scripts/run-tasks.mjs
+  s_7b04649645ea0c::t_0bddb46522d3c7 1-55
+src/index.ts
+  s_7b04649645ea0c::t_ca1cf39714a609 1-65
+src/registry.ts
+  s_7b04649645ea0c::t_59c84f009c2444 1-63
+src/runner.ts
+  s_7b04649645ea0c::t_e587e5a7521e9c 1-44
+src/tools.ts
+  s_7b04649645ea0c::t_466cd4512280cc 1-55
+src/types.ts
+  s_7b04649645ea0c::t_1d5880e39aa41e 1-53
+src/workspace.ts
+  s_7b04649645ea0c::t_40acd7405d18f6 1-76
+tasks/tasks.json
+  s_7b04649645ea0c::t_b3a94756e8abf2 1-192
+tools/manifest.json
+  s_7b04649645ea0c::t_8a885e389ca925 1-4
+tools/marked/entry.js
+  s_7b04649645ea0c::t_49659b164f9232 1-7
+tools/yaml2json/entry.js
+  s_7b04649645ea0c::t_f6426180de140c 1-7
+tsconfig.json
+  s_7b04649645ea0c::t_5d623f0736aee2 1-13
+wrangler.jsonc
+  s_7b04649645ea0c::t_3202e0f405585d 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a6872d03b0f322839b1fbc7b472b0797ce8e12b3",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
