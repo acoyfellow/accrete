@@ -1,0 +1,27 @@
+{
+  "name": "accrete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check": "tsc -p .",
+    "tools": "node scripts/build-tools.mjs",
+    "deploy": "wrangler deploy",
+    "gate": "bash proof/gate.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "js-yaml": "^4.3.2",
+    "marked": "^14.1.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261026.1",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.149.0"
+  },
+  "type": "module",
+  "private": true
+}

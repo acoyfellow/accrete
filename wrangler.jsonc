@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "accrete",
+  "main": "src/index.ts",
+  "account_id": "bfcb6ac5b3ceaf42a09607f6f7925823",
+  "workers_dev": true,
+  "preview_urls": false,
+  "compatibility_date": "2026-09-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "worker_loaders": [{ "binding": "LOADER" }],
+  "r2_buckets": [{ "binding": "TOOLS", "bucket_name": "accrete-tools" }],
+  "durable_objects": {
+    "bindings": [
+      { "name": "WORKSPACE", "class_name": "Workspace" },
+      { "name": "REGISTRY", "class_name": "Registry" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Workspace", "Registry"] }]
+}

@@ -1,0 +1,192 @@
+[
+  {
+    "id": "edit-config",
+    "seed": {
+      "config.txt": "mode=dev\nport=8080\n"
+    },
+    "steps": [
+      {
+        "op": "edit",
+        "path": "config.txt",
+        "find": "mode=dev",
+        "replace": "mode=prod"
+      },
+      {
+        "op": "write",
+        "path": "notes.txt",
+        "content": "switched to prod\n"
+      },
+      {
+        "op": "read",
+        "path": "config.txt"
+      }
+    ],
+    "expect": {
+      "files": {
+        "config.txt": "mode=prod\nport=8080\n",
+        "notes.txt": "switched to prod\n"
+      }
+    }
+  },
+  {
+    "id": "render-readme",
+    "seed": {
+      "README.md": "# accrete\n\nTools *grow* in the registry.\n\n- one\n- two\n"
+    },
+    "steps": [
+      {
+        "op": "tool",
+        "name": "marked",
+        "args": [
+          "README.md",
+          "README.html"
+        ],
+        "inputs": [
+          "README.md"
+        ]
+      }
+    ],
+    "expect": {
+      "native": [
+        {
+          "tool": "marked",
+          "args": [
+            "README.md"
+          ],
+          "file": "README.html"
+        }
+      ]
+    }
+  },
+  {
+    "id": "yaml-to-json",
+    "seed": {
+      "app.yaml": "name: accrete\nreplicas: 3\nports:\n  - 80\n  - 443\n"
+    },
+    "steps": [
+      {
+        "op": "tool",
+        "name": "yaml2json",
+        "args": [
+          "app.yaml",
+          "app.json"
+        ],
+        "inputs": [
+          "app.yaml"
+        ]
+      }
+    ],
+    "expect": {
+      "native": [
+        {
+          "tool": "yaml2json",
+          "args": [
+            "app.yaml"
+          ],
+          "file": "app.json"
+        }
+      ]
+    }
+  },
+  {
+    "id": "write-edit-render",
+    "seed": {},
+    "steps": [
+      {
+        "op": "write",
+        "path": "post.md",
+        "content": "# Draft\n\nStatus: TODO\n"
+      },
+      {
+        "op": "edit",
+        "path": "post.md",
+        "find": "TODO",
+        "replace": "**done**"
+      },
+      {
+        "op": "tool",
+        "name": "marked",
+        "args": [
+          "post.md"
+        ],
+        "inputs": [
+          "post.md"
+        ],
+        "stdoutTo": "post.html"
+      }
+    ],
+    "expect": {
+      "files": {
+        "post.md": "# Draft\n\nStatus: **done**\n"
+      },
+      "native": [
+        {
+          "tool": "marked",
+          "args": [
+            "post.md"
+          ],
+          "file": "post.html"
+        }
+      ]
+    }
+  },
+  {
+    "id": "edit-yaml-then-both",
+    "seed": {
+      "site.yaml": "title: old\npages: 1\n",
+      "index.md": "Welcome to *the site*.\n"
+    },
+    "steps": [
+      {
+        "op": "edit",
+        "path": "site.yaml",
+        "find": "title: old",
+        "replace": "title: new"
+      },
+      {
+        "op": "tool",
+        "name": "yaml2json",
+        "args": [
+          "site.yaml",
+          "site.json"
+        ],
+        "inputs": [
+          "site.yaml"
+        ]
+      },
+      {
+        "op": "tool",
+        "name": "marked",
+        "args": [
+          "index.md",
+          "index.html"
+        ],
+        "inputs": [
+          "index.md"
+        ]
+      },
+      {
+        "op": "read",
+        "path": "site.json"
+      }
+    ],
+    "expect": {
+      "native": [
+        {
+          "tool": "yaml2json",
+          "args": [
+            "site.yaml"
+          ],
+          "file": "site.json"
+        },
+        {
+          "tool": "marked",
+          "args": [
+            "index.md"
+          ],
+          "file": "index.html"
+        }
+      ]
+    }
+  }
+]
