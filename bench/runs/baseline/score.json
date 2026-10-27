@@ -68,10 +68,6 @@
       "at": "2026-10-27T16:58:50.396Z"
     },
     {
-      "digest": "43c8df4987ab6b6f260142dee160b0758b6d0fba259a1734ace0910feb97fd55",
-      "at": "2026-10-27T17:03:24.016Z"
-    },
-    {
       "tool": "semver",
       "digest": "265b39f01f35469ee556ad8439ad0082241afcfcaa913f6900fe60c159cd2679",
       "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
@@ -158,6 +154,6 @@
       "mustache#0/cold: builder failed: npm install failed: npm error code ECONNRESET\nnpm error errno ECONNRESET\nnpm error network request to https://registry.npmjs.org/mustache failed, reason: Client network socket disconnected before secure TLS connection was established\nnpm error network This is a problem related to network connectivity.\nnpm error network In most cases you are behind a proxy or have bad network settin"
     ]
   },
-  "at": "2026-10-27T17:04:05.391Z",
-  "digest": "77acdea57f0e06dc02bb9fb9f25681744a9ccc2c38f74a6868a1cdb087f88ba3"
+  "at": "2026-10-27T17:22:20.598Z",
+  "digest": "5b1fb58d26038ce0c83e53a0b33ea2891c5cdbb00ac218c42b87b9fdea6bf4bb"
 }

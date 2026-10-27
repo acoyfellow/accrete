@@ -68,10 +68,6 @@
       "at": "2026-10-27T17:20:05.652Z"
     },
     {
-      "digest": "09434b3484b41b8b89768d6fb9b634f0a2764ff1b0fa837d3a668884064c9e05",
-      "at": "2026-10-27T17:20:18.760Z"
-    },
-    {
       "tool": "semver",
       "digest": "87f1781c07eb1dd2b4c40d286d7549aef931df4a12b3072d92bd4b1f8c9d5d82",
       "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
@@ -139,6 +135,6 @@
       "prettier#1/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121590666:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121590666:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121590666:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121590666:3:707\n    at process.processTicksAnd"
     ]
   },
-  "at": "2026-10-27T17:20:42.582Z",
-  "digest": "0ca4dc82983a24717e1fad8f0a73d88ea7c79331432d9c62852ff94b31135c01"
+  "at": "2026-10-27T17:22:20.824Z",
+  "digest": "14b9521dd70c86b626cc7999de79efac32c678783011d37f44ad249cd72afdd4"
 }

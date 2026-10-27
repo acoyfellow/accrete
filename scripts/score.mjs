@@ -8,7 +8,7 @@ const golden = readJson('bench/golden.json');
 
 const receipts = existsSync(dir)
   ? readdirSync(dir)
-      .filter((name) => name.endsWith('.json'))
+      .filter((name) => name.endsWith('.json') && name !== 'score.json')
       .map((name) => readJson(`${dir}/${name}`))
   : [];
 const bad = receipts.filter((receipt) => !verifySeal(receipt)).map((receipt) => receipt.tool);

@@ -4,7 +4,7 @@
       "label": "hc1",
       "change": "shim require fs, import.meta.url, callable-class Function",
       "gitSha": "b79e98d9d643893ad7612c09a7b6b35ba26d5d35",
-      "scoreDigest": "4c0ffd0b7257e52f09e44ddbb3a27fb39fb677eab6c1f4a2f41cd32bce3b179a",
+      "scoreDigest": "2a49bcf05527436336b0b6709d9ed2a6e28c412844582c6551a479b33f778455",
       "before": {
         "label": "baseline",
         "heldoutScore": 167.85714285714286,
@@ -24,7 +24,7 @@
       "label": "hc2",
       "change": "externalize constants and querystring builtins",
       "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "scoreDigest": "00949750ea223e22a3d8b8bd247bcdc2e0159506e71a3d8789f0c64d28e35f6c",
+      "scoreDigest": "641ca2f97e1edce0550519eaf41b0b421189a10ad55634458e978f0bf12ed8ca",
       "before": {
         "label": "hc1",
         "heldoutScore": 628.5714285714286,
@@ -44,7 +44,7 @@
       "label": "hc3b",
       "change": "replace globalThis.Function in fresh cli isolates",
       "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
-      "scoreDigest": "0ca4dc82983a24717e1fad8f0a73d88ea7c79331432d9c62852ff94b31135c01",
+      "scoreDigest": "3e8d584313e58f214589b2c4c255c4dff8b143970ee3e9c95d38c6d7db5ddf7a",
       "before": {
         "label": "hc2",
         "heldoutScore": 785.7142857142858,
@@ -66,7 +66,7 @@
       "label": "hc3",
       "change": "known Function bodies via define only",
       "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "scoreDigest": "7faf9aade63267eeb00278f08eb3970ecc94f7ef9b78b21519f33478a8acb236",
+      "scoreDigest": "205b4f7418415e4d5494a4228bb30e9938ef5eb060369a31fd588bd0f0f3759a",
       "before": {
         "label": "hc2",
         "heldoutScore": 785.7142857142858,

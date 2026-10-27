@@ -77,11 +77,11 @@
   "sources": [
     {
       "path": "bench/runs/baseline/score.json",
-      "sha256": "3dbe334a5bcee78bda05408571a968a8af363d9d8b3e3f89784319b93cd1b38c"
+      "sha256": "504ca1f7cc8aff6f995401e8d700acdccce7d614befaefc3d86c5e883b07e361"
     },
     {
       "path": "bench/runs/hc3b/score.json",
-      "sha256": "9b6f1481ea6fc47060dd2bceb03d576a656107eae7ca022a82440300b5493db6"
+      "sha256": "a7f54a3e2ab4234f712d32c9a046e8a1288877cfee43e478220b161c3580a985"
     },
     {
       "path": "receipts/falsify.json",
@@ -89,8 +89,8 @@
     },
     {
       "path": "bench/ledger.json",
-      "sha256": "8bcc6e1b9b375a21417542d62c61a879851d99ff7da2c70adfaf45192e1e176d"
+      "sha256": "cad602c067ce39dc8a5ffc735fa3f4dd3f1cd8ee8d50df3b2aa92b0cb39aeed3"
     }
   ],
-  "digest": "d9972c4538b6391d3a7928a3868f633f7f62d2e7e8b3a34fcfe8185a6997023c"
+  "digest": "caffe6fd9917fee078d190a89534f958fbb0b7de3d145beaaaa4b0dcc5dc8947"
 }
