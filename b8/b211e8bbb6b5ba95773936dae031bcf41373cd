@@ -1,0 +1,69 @@
+builder/Dockerfile
+  s_7b04649645ea0c::t_543e1d4c3a2200 1-6
+builder/server.mjs
+  s_7b04649645ea0c::t_44aaca2cbe867d 1-152
+package-lock.json
+  s_7b04649645ea0c::t_5026cd98c60090 12,18-19,21-23,27-56,641-834,1390-1413,1463-1466,1468-1496,1498-1506,1509-1512,1514-1519,1521-1528,1531-1534,1536-1540,1542-1546,1549-1552,1554,1556-1563,1566-1569,1571,1573-1577,1580-1583,1585-1596,1598-1605,1608-1611,1613-1617,1619-1623,1626-1629,1631-1634,1636,1639-1642,1644-1646,1649-1652,1654-1663,1666-1670,1672-1675,1677,1679,1682-1685,1687,1689-1692,1694-1697,1699,1702-1705,1707-1713,1716-1719,1721,1723-1727,1730-1733,1735-1740,1742,1745-1748,1750-1753,1755-1760,1763-1766,1832-2084,2100-2182,2205-2241,2252-2281,2312-2421,2436-2488,2552-2574,2588-2617,2626-2638,2640-2642,2646-2647,2650,2663-2698,2778-2790
+package.json
+  s_7b04649645ea0c::t_70d35a9be4517d 16,22-23,25-27
+proof/gate.sh
+  s_7b04649645ea0c::t_40d54bb15d870f 8-11
+recipes/json5.json
+  s_7b04649645ea0c::t_c0b68600ddd9b6 1-25
+recipes/marked.json
+  s_7b04649645ea0c::t_108a5f30d0a452 1-22
+recipes/src/tsc.entry.js
+  s_7b04649645ea0c::t_3ec54442d849bb 1-47,50-76
+recipes/yaml2json.json
+  s_7b04649645ea0c::t_40db948990c79a 1-21
+scripts/api.mjs
+  s_7b04649645ea0c::t_bce01b78dfcf5c 1-10
+scripts/container-seconds.mjs
+  s_7b04649645ea0c::t_ff5bf941c8942f 1-46
+scripts/gate.mjs
+  s_7b04649645ea0c::t_b944ae5a749feb 1,3-44,46-93
+scripts/make-recipes.mjs
+  s_7b04649645ea0c::t_d73a7b55dec5ac 1-51
+scripts/run-tasks.mjs
+  s_7b04649645ea0c::t_802dc81c65c3b4 2,18,25,30,46-49
+scripts/self-check.mjs
+  s_7b04649645ea0c::t_5d6ff057492e20 1-39
+scripts/try-builder.mjs
+  s_7b04649645ea0c::t_6934a3ab1b1c41 3-7,9-19
+src/builder.ts
+  s_7b04649645ea0c::t_919928d591044c 1-12
+src/index.ts
+  s_7b04649645ea0c::t_36cf41127e3d5a 1-2,6,16-17,51-68
+src/recipe.ts
+  s_7b04649645ea0c::t_6da3e964638bc5 1-60
+src/registry.ts
+  s_7b04649645ea0c::t_941ed08494ba5d 52-57
+src/runner.ts
+  s_7b04649645ea0c::t_e6a6b2e096600c 30
+src/tools.ts
+  s_7b04649645ea0c::t_37e828758bf97b 1,3,9-10,24-31,34-39,42-63,65-66,71-122,124-125
+src/types.ts
+  s_7b04649645ea0c::t_da83ae609a3c23 39,53
+src/workspace.ts
+  s_7b04649645ea0c::t_6c4a58cae7c4d0 69,72
+tasks/tasks.json
+  s_7b04649645ea0c::t_6512ddcaaf539a 56-57,87-88,130-131,183-184,191-192,196-225
+wrangler.jsonc
+  s_7b04649645ea0c::t_2e7f84c544b436 13-15,19-20,23-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b8b211e8bbb6b5ba95773936dae031bcf41373cd",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
