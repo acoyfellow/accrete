@@ -41,5 +41,26 @@
       "at": "2026-10-27T17:15:14.207Z"
     }
   ],
-  "rejected": []
+  "rejected": [
+    {
+      "label": "hc3",
+      "change": "known Function bodies via define only",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "scoreDigest": "7faf9aade63267eeb00278f08eb3970ecc94f7ef9b78b21519f33478a8acb236",
+      "before": {
+        "label": "hc2",
+        "heldoutScore": 785.7142857142858,
+        "heldoutCoverage": 0.7142857142857143,
+        "trainPassRate": 1
+      },
+      "after": {
+        "heldoutScore": 785.7142857142858,
+        "heldoutCoverage": 0.7142857142857143,
+        "trainPassRate": 1,
+        "repeatP50Ms": 77,
+        "repeatCsPerTask": 0
+      },
+      "at": "2026-10-27T17:19:14.447Z"
+    }
+  ]
 }

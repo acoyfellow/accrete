@@ -1,0 +1,89 @@
+{
+  "kind": "site-numbers",
+  "baseline": {
+    "coverage": "1/7",
+    "trainCoverage": "2/4",
+    "passRate": "25%",
+    "coldCs": "0.52s",
+    "repeatCs": "0.00s",
+    "repeatP50": "75 ms",
+    "score": "167.9",
+    "tools": [
+      "json5",
+      "semver",
+      "terser"
+    ]
+  },
+  "current": {
+    "coverage": "5/7",
+    "trainCoverage": "4/4",
+    "passRate": "71%",
+    "coldCs": "1.31s",
+    "repeatCs": "0.00s",
+    "repeatP50": "74 ms",
+    "score": "785.7",
+    "tools": [
+      "marked",
+      "js-yaml",
+      "json5",
+      "semver",
+      "terser",
+      "markdown-it",
+      "lessc",
+      "sql-formatter",
+      "mustache"
+    ]
+  },
+  "kept": [
+    {
+      "label": "hc1",
+      "change": "shim require fs, import.meta.url, callable-class Function",
+      "before": "167.9",
+      "after": "628.6"
+    },
+    {
+      "label": "hc2",
+      "change": "externalize constants and querystring builtins",
+      "before": "628.6",
+      "after": "785.7"
+    }
+  ],
+  "falsify": [
+    {
+      "name": "repeatUsesNoContainer",
+      "pass": true
+    },
+    {
+      "name": "tamperedBundleRefused",
+      "pass": true
+    },
+    {
+      "name": "networkToolFails",
+      "pass": true
+    },
+    {
+      "name": "badRecipeRejected",
+      "pass": true
+    }
+  ],
+  "repeatCsFalsify": "0.00s",
+  "sources": [
+    {
+      "path": "bench/runs/baseline/score.json",
+      "sha256": "3dbe334a5bcee78bda05408571a968a8af363d9d8b3e3f89784319b93cd1b38c"
+    },
+    {
+      "path": "bench/runs/hc2/score.json",
+      "sha256": "7a134b58e730165a94768161efe9ec0e39149fcd5d1bf74e2ad0753e86e5720c"
+    },
+    {
+      "path": "receipts/falsify.json",
+      "sha256": "f0cca3709766c238b4824ad210b649183498d58054a1a6b547b5512cfcab5c4e"
+    },
+    {
+      "path": "bench/ledger.json",
+      "sha256": "ebfe1cc8ac490388dc0f462dfc36f65ac1f1d135f5d753416405250016312cc9"
+    }
+  ],
+  "digest": "2f22f778b5602e7923e14173b68a0b7ae40fda7813191f2411ac45af7451eb0d"
+}

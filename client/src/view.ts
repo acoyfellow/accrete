@@ -1,5 +1,6 @@
 import type { Html, HtmlBuilder } from "foldkit/html";
 import { Message } from "./message";
+import numbers from "./numbers.json";
 import { Activity, type Call, Loaded, type Model, type Run, type Status, type Tool } from "./model";
 
 type H = HtmlBuilder<Message>;
@@ -7,6 +8,8 @@ type H = HtmlBuilder<Message>;
 const REPO = "https://github.com/acoyfellow/accrete";
 
 const vars = (h: H, values: Record<string, string>) => h.Style(values);
+
+const ms = (value: number): string => `${value}ms`;
 
 const tape = (h: H, text: string, extra: string): Html =>
   h.div([h.Class(`tape ${extra}`)], [h.span([], [text.repeat(4)])]);
@@ -17,30 +20,32 @@ const headlineLine = (h: H, text: string, kind: "strike" | "new", delay: string,
 const hero = (h: H): Html =>
   h.header([], [
     h.h1([], [
-      headlineLine(h, "CONTAINERS", "strike", "2.9s", "3.9s"),
-      headlineLine(h, "EVERY TIME", "strike", "3.05s", "4.1s"),
-      headlineLine(h, "ONCE.", "new", "4.5s", "0s"),
-      headlineLine(h, "THEN NEVER.", "new", "4.65s", "0s"),
+      headlineLine(h, "CONTAINERS", "strike", ms(2900), ms(3900)),
+      headlineLine(h, "EVERY TIME", "strike", ms(3050), ms(4100)),
+      headlineLine(h, "ONCE.", "new", ms(4500), ms(0)),
+      headlineLine(h, "THEN NEVER.", "new", ms(4650), ms(0)),
     ]),
     h.div([vars(h, { position: "relative" })], [
-      h.div([h.Class("card in"), vars(h, { "--d": "3.3s" })], []),
-      h.div([h.Class("sticker s1 in"), vars(h, { "--d": "4.9s" })], ["IT EATS SERVERS 🍬"]),
-      h.div([h.Class("sticker s2 in"), vars(h, { "--d": "5.1s" })], ["0.00 SECONDS LOL"]),
+      h.div([h.Class("card in"), vars(h, { "--d": ms(3300) })], []),
+      h.div([h.Class("sticker s1 in"), vars(h, { "--d": ms(4900) })], ["IT EATS SERVERS 🍬"]),
+      h.div([h.Class("sticker s2 in"), vars(h, { "--d": ms(5100) })], [`${numbers.current.repeatCs} LOL`]),
     ]),
   ]);
 
-const RECEIPT_RUNS: ReadonlyArray<{ readonly title: string; readonly body: string; readonly cs: string; readonly kind: "cost" | "zero" }> = [
-  { title: "json5 · FORGED", body: "built once in a container. 28 KB. matches the real one.", cs: "2.69s", kind: "cost" },
-  { title: "json5 · AGAIN", body: "from the registry. 3 ms. no container. lol.", cs: "0.00s", kind: "zero" },
-  { title: "tsc · FORGED", body: "7.2 MB. type-checks accrete's own source.", cs: "5.66s", kind: "cost" },
-  { title: "tsc · AGAIN", body: "105 ms. no errors. no container. ever.", cs: "0.00s", kind: "zero" },
+type ReceiptRun = { readonly title: string; readonly body: string; readonly cs: string; readonly kind: "cost" | "zero" };
+
+const RECEIPT_RUNS: ReadonlyArray<ReceiptRun> = [
+  { title: "BASELINE · COLD", body: `held-out ${numbers.baseline.coverage} tools built. score ${numbers.baseline.score}.`, cs: numbers.baseline.coldCs, kind: "cost" },
+  { title: "NOW · COLD", body: `held-out ${numbers.current.coverage} tools, train ${numbers.current.trainCoverage}. pass ${numbers.current.passRate}.`, cs: numbers.current.coldCs, kind: "cost" },
+  { title: "NOW · AGAIN", body: `from the registry. p50 ${numbers.current.repeatP50}. no container.`, cs: numbers.current.repeatCs, kind: "zero" },
+  { title: "FALSIFY · REPEAT", body: `${numbers.falsify.filter((test) => test.pass).length}/${numbers.falsify.length} falsification tests pass.`, cs: numbers.repeatCsFalsify, kind: "zero" },
 ];
 
 const xp = (h: H): Html =>
-  h.div([h.Class("xp in"), vars(h, { "--d": "5.3s" })], [
+  h.div([h.Class("xp in"), vars(h, { "--d": ms(5300) })], [
     h.b([h.Class("lv")], []),
     h.div([h.Class("track")], [h.i([], [])]),
-    h.span([h.Class("tag")], ["4 RUNS · 2 TOOLS · 0.00s ON REPEAT"]),
+    h.span([h.Class("tag")], [`${numbers.kept.length} KEPT · ${numbers.current.tools.length} TOOLS · ${numbers.current.repeatCs} ON REPEAT`]),
   ]);
 
 const receiptRuns = (h: H): Html =>
@@ -89,7 +94,7 @@ const demo = (h: H, model: Model, local: boolean): Html => {
   const busy = Activity.guards.Busy(model.activity);
   return h.section([h.Id("demo"), h.Class("demo")], [
     h.h2([], ["DO IT YOURSELF"]),
-    h.p([], ["Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: 0.00s. The tsc run checks accrete's own source."]),
+    h.p([], ["Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: no container. The tsc run checks accrete's own source."]),
     ...(local
       ? [
           button(h, "1 · RESET", Message.ClickedReset(), busy, ""),
@@ -128,7 +133,7 @@ const fire = (h: H): Html =>
   h.section([h.Class("fire")], [
     h.div([h.Class("bg")], []),
     h.h2([h.Class("reveal"), vars(h, { "--r": "-4deg" })], ["WE SET YOUR CONTAINER BILL ON FIRE 🔥"]),
-    h.div([h.Class("meter reveal")], ["CONTAINER-SECONDS, NEXT RUN", h.b([], [])]),
+    h.div([h.Class("meter reveal")], ["CONTAINER-SECONDS, NEXT RUN", h.b([vars(h, { "--cold": String(Math.round(parseFloat(numbers.current.coldCs) * 100)) })], [])]),
   ]);
 
 const receiptLink = (h: H, path: string): Html => h.a([h.Href(`${REPO}/blob/main/${path}`)], [path]);

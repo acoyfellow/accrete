@@ -125,7 +125,7 @@
   @keyframes popcycle { 0%, 19% { opacity: 0; transform: scale(.3) rotate(-12deg) } 21% { opacity: 1; transform: scale(1.1) rotate(-4deg) } 26% { opacity: 1; transform: scale(1) rotate(-4deg) } 29% { opacity: 0; transform: scale(1.5) rotate(-4deg); filter: blur(10px) } 30%, 57% { opacity: 0; transform: scale(.3) } 59% { opacity: 1; transform: scale(1.1) rotate(-4deg) } 64% { opacity: 1; transform: scale(1) rotate(-4deg) } 67%, 100% { opacity: 0; transform: scale(1.5) rotate(-4deg); filter: blur(10px) } }
   .reveal { opacity: 1; transform: rotate(var(--r, 0deg)); filter: none; transition: none; animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
   @keyframes reveal { from { opacity: 0; transform: translateY(50px) rotate(var(--r, 0deg)); filter: blur(10px); } to { opacity: 1; transform: rotate(var(--r, 0deg)); filter: none; } }
-  @property --cs { syntax: "<integer>"; inherits: false; initial-value: 566; }
+  @property --cs { syntax: "<integer>"; inherits: false; initial-value: 0; }
   .meter b { counter-reset: w calc(round(down, var(--cs) / 100)) f calc(mod(var(--cs), 100)); animation: countdown 5.4s cubic-bezier(.1,.8,.2,1) infinite; }
   .meter b::after { content: counter(w) "." counter(f, decimal-leading-zero); }
-  @keyframes countdown { 0% { --cs: 566 } 40%, 100% { --cs: 0 } }
+  @keyframes countdown { 0% { --cs: var(--cold, 0) } 40%, 100% { --cs: 0 } }

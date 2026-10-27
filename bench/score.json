@@ -1,102 +1,99 @@
 {
   "kind": "bench-score",
-  "label": "hc2",
+  "label": "hc3",
   "goldenHash": "811afa360e90e92ffe6d936fa6705e4bdfd18b164a694660c873ff5b1ada8dcb",
   "receipts": [
     {
       "tool": "js-yaml",
-      "digest": "9e2f8379c500e361abe4d375aa67742f70a86e355acb671d16661f968e461244",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "7db13a4a30da48c4108bd0e080d96a1c2bcbb68db1e3de34f968a74fd3635db9",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:13.623Z"
+      "at": "2026-10-27T17:15:57.073Z"
     },
     {
       "tool": "json5",
-      "digest": "dd306de5f7e5c9ca5b861ff380e7933e88568bee1424b7e35280029349fbf7a1",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "795b4fd24553cbdb293d0e275bdf79c201aebef3e75a9fbc44e13a2cfd80fb70",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:16.516Z"
+      "at": "2026-10-27T17:15:59.862Z"
     },
     {
       "tool": "lessc",
-      "digest": "30d143f399bf93fe58aa70ffffea43310d424e326c97b525903809c04948ca9b",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "edb40a2b472dafcb15e858d0a46cc01b3c486539f15333de02809d98f6cab09c",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:14:06.521Z"
+      "at": "2026-10-27T17:16:48.253Z"
     },
     {
       "tool": "markdown-it",
-      "digest": "3239c47c81416a47657fa5194a7a30acf14ff7d9cf6b323183748de4cddc9747",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "05a66844a55a720113033876c5c6dd67b038259db09494d45a1bd755336782e3",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:41.519Z"
+      "at": "2026-10-27T17:16:22.645Z"
     },
     {
       "tool": "marked",
-      "digest": "b65db3cfbfbe14a4098cc5143cd882b8c3706269d870c0f68526d7aef0539a92",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "b393da5a9710f698707504fb7e1dba2db768544934ff2d0e0dd8840cf2d22064",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:10.229Z"
+      "at": "2026-10-27T17:15:53.817Z"
     },
     {
       "tool": "mustache",
-      "digest": "556f7d3eb40efefc77b6da3b1347f01bb796150f31e243ffbfe03fd2c0aa84f2",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "291f08290cec1c7e3e88b9f9c1122aded2fca3e63241cf395751a8825b5d3283",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:14:13.974Z"
+      "at": "2026-10-27T17:16:55.679Z"
     },
     {
       "tool": "prettier",
-      "digest": "a90a83295dff1f3a5de60c7d571f2f377d4ded459c60872dd080e5f1b36efb83",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "334319b3c524ebca9acafc8533ab6f005d26586f7128e0cb298ef9add8c2e8e0",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:32.743Z"
+      "at": "2026-10-27T17:16:14.376Z"
     },
     {
       "tool": "sass",
-      "digest": "19914688d6beaca9f6f83baaa0458c849f88ab7fef1e7eda91f7cc6bf757f266",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "3148e6491e19736c9b77fa4ca65e344d82a0e2f6bce4911eb3f7c29697043d25",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:14:02.140Z"
-<<<<<<< Updated upstream
+      "at": "2026-10-27T17:16:43.879Z"
     },
     {
-      "digest": "ef3060335e758bb9f3f90c681819863c9bb31c50701874716d69b55c10022315",
-      "at": "2026-10-27T17:14:14.014Z"
-=======
->>>>>>> Stashed changes
+      "digest": "a2bf81ed00514d528e2d4597f690bc641f7e897e7515eafef8498be093e3c8e3",
+      "at": "2026-10-27T17:16:55.721Z"
     },
     {
       "tool": "semver",
-      "digest": "dda7e18acad9cc902fa9838b023bcbbcc51b275eefca8a185e95b6a49d81d79c",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "ec5c873f84c48b2d95dd7f8ca43eab0050f843165118a649b0f192900a5d1705",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:19.620Z"
+      "at": "2026-10-27T17:16:02.947Z"
     },
     {
       "tool": "sql-formatter",
-      "digest": "c740b3374997c70f4f65b9faa0527abfedf3710c1da8c619785c3e22ff5f8f83",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "0bc2c6713bab6aa74d94b0aafc41930613d00e88fe6c4b7c22bd1de50f382a55",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:14:11.202Z"
+      "at": "2026-10-27T17:16:52.739Z"
     },
     {
       "tool": "terser",
-      "digest": "337adf749bce7b98882c82dd165fb4e31f9184b5aa9e9c2d4357707b8be953e9",
-      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
-      "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
+      "digest": "544af6342c01f9f8c80063160e9bc4edf4deb71ad35d9c4491d818da27e2122e",
+      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
+      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
       "placement": "local",
-      "at": "2026-10-27T17:13:37.409Z"
+      "at": "2026-10-27T17:16:18.709Z"
     }
   ],
   "train": {
@@ -110,11 +107,11 @@
     "coverage": 1,
     "passRate": 1,
     "containerSecondsPerTask": {
-      "cold": 1.3850000000000002,
+      "cold": 1.3352499999999998,
       "repeat": 0
     },
     "repeatContainerCalls": 0,
-    "repeatP50Ms": 60,
+    "repeatP50Ms": 62,
     "failures": []
   },
   "heldout": {
@@ -129,27 +126,22 @@
     "coverage": 0.7142857142857143,
     "passRate": 0.7142857142857143,
     "containerSecondsPerTask": {
-      "cold": 1.3052142857142857,
+      "cold": 1.2641428571428572,
       "repeat": 0
     },
     "repeatContainerCalls": 0,
-    "repeatP50Ms": 74,
+    "repeatP50Ms": 77,
     "failures": [
-      "prettier#0/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121202709:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793121202709:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793121202709:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793121202709:3:705\n    at process.processTicksAnd",
-      "prettier#1/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121205913:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793121205913:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793121205913:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793121205913:3:705\n    at process.processTicksAnd",
-      "prettier#0/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121209136:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793121209136:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793121209136:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793121209136:3:705\n    at process.processTicksAnd",
-      "prettier#1/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121212726:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793121212726:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793121212726:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793121212726:3:705\n    at process.processTicksAnd",
-      "sass#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
-      "sass#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
-      "sass#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
-      "sass#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14"
+      "prettier#0/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121365899:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121365899:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121365899:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121365899:3:707\n    at process.processTicksAnd",
+      "prettier#1/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121368537:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121368537:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121368537:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121368537:3:707\n    at process.processTicksAnd",
+      "prettier#0/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121371379:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121371379:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121371379:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121371379:3:707\n    at process.processTicksAnd",
+      "prettier#1/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121374375:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121374375:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121374375:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121374375:3:707\n    at process.processTicksAnd",
+      "sass#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
+      "sass#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
+      "sass#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
+      "sass#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14"
     ]
   },
-<<<<<<< Updated upstream
-  "at": "2026-10-27T17:15:14.153Z",
-  "digest": "00949750ea223e22a3d8b8bd247bcdc2e0159506e71a3d8789f0c64d28e35f6c"
-=======
-  "at": "2026-10-27T17:14:14.014Z",
-  "digest": "ef3060335e758bb9f3f90c681819863c9bb31c50701874716d69b55c10022315"
->>>>>>> Stashed changes
+  "at": "2026-10-27T17:19:14.388Z",
+  "digest": "7faf9aade63267eeb00278f08eb3970ecc94f7ef9b78b21519f33478a8acb236"
 }
