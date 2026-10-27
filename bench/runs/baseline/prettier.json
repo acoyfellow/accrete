@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "prettier",
+  "set": "heldout",
+  "package": "prettier@3.3.3",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:58:12.304Z",
+  "cases": [
+    {
+      "id": "prettier#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2809,
+      "inputHash": "821f663b3fd7136be08ddf17f3e23aada0a958d530a970d5f2908ce3fb21b784",
+      "outputHash": null,
+      "expectedHash": "54346ad759e77edeac924a286e8691d66adb7a4a8a2a4b45d9f9ac906ed9a9e9",
+      "error": "builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l"
+    },
+    {
+      "id": "prettier#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2786,
+      "inputHash": "083aea76cb9938a1c9736eee23b70ed682028b0ac187a84ab5e550de6060186b",
+      "outputHash": null,
+      "expectedHash": "ee6a4178fa255e400690eddb30743d1347c26d518e769701070469e1b96975de",
+      "error": "builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l"
+    },
+    {
+      "id": "prettier#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2664,
+      "inputHash": "821f663b3fd7136be08ddf17f3e23aada0a958d530a970d5f2908ce3fb21b784",
+      "outputHash": null,
+      "expectedHash": "54346ad759e77edeac924a286e8691d66adb7a4a8a2a4b45d9f9ac906ed9a9e9",
+      "error": "builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l"
+    },
+    {
+      "id": "prettier#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2687,
+      "inputHash": "083aea76cb9938a1c9736eee23b70ed682028b0ac187a84ab5e550de6060186b",
+      "outputHash": null,
+      "expectedHash": "ee6a4178fa255e400690eddb30743d1347c26d518e769701070469e1b96975de",
+      "error": "builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l"
+    }
+  ],
+  "digest": "a3296c0fe51de0c9030b93f26e1a261187330e1f10f1738b080e15615cea0556"
+}

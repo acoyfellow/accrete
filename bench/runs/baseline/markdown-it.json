@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "markdown-it",
+  "set": "heldout",
+  "package": "markdown-it@14.1.0",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:58:31.110Z",
+  "cases": [
+    {
+      "id": "markdown-it#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3371,
+      "inputHash": "74b0908f5bcd660c30dc8e73c25acbb8bf842315029a79a2b0b64f2e8a88606a",
+      "outputHash": null,
+      "expectedHash": "72c863d2bf2f580de664a874eac1fd0fdd75ae7f36c6961b06a459909e399873",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at "
+    },
+    {
+      "id": "markdown-it#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3336,
+      "inputHash": "ce49bef51a6ce7657aa5b3e6b7af6f45f09420088fa5955a90667885916078cd",
+      "outputHash": null,
+      "expectedHash": "b9fe9a80606ed8a3b356cd5404070f72ebe610229b206392560f885140b72a07",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at "
+    },
+    {
+      "id": "markdown-it#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3580,
+      "inputHash": "74b0908f5bcd660c30dc8e73c25acbb8bf842315029a79a2b0b64f2e8a88606a",
+      "outputHash": null,
+      "expectedHash": "72c863d2bf2f580de664a874eac1fd0fdd75ae7f36c6961b06a459909e399873",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at "
+    },
+    {
+      "id": "markdown-it#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3422,
+      "inputHash": "ce49bef51a6ce7657aa5b3e6b7af6f45f09420088fa5955a90667885916078cd",
+      "outputHash": null,
+      "expectedHash": "b9fe9a80606ed8a3b356cd5404070f72ebe610229b206392560f885140b72a07",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at "
+    }
+  ],
+  "digest": "af5089ac100dfd015800793182d73107fa25a737fcbb28bb5e2f5763d4d4ebb7"
+}

@@ -11,7 +11,11 @@
     "lint": "biome lint",
     "gate": "bash proof/gate.sh",
     "gate:local": "ACCRETE_URL=http://localhost:8799 ACCRETE_TOKEN=local-dev bash proof/gate.sh",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "bench": "bash scripts/bench-all.sh",
+    "falsify": "node scripts/falsify.mjs",
+    "site:numbers": "node scripts/site-numbers.mjs",
+    "proof:honesty": "node scripts/honesty.mjs"
   },
   "license": "MIT",
   "dependencies": {

@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "marked",
+  "set": "train",
+  "package": "marked@14.1.4",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:57:43.021Z",
+  "cases": [
+    {
+      "id": "marked#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2752,
+      "inputHash": "dec3a13a6cae7fd4e4813b3b151393592d739ad7fea82e0818eafd11d7b07f7e",
+      "outputHash": null,
+      "expectedHash": "477d0597ca5a61772d290363c67a224fdae50175da06a4632b473e26fb00e993",
+      "error": "exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)"
+    },
+    {
+      "id": "marked#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2532,
+      "inputHash": "e8692614941db73664a342c224d9759417d554f33ae15a47557d065b9a90d0e0",
+      "outputHash": null,
+      "expectedHash": "e4dfa7b01e003ffea2400b3d7bf7a3dcff9389bd72ac5790a6fb7b1bd68fb372",
+      "error": "exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)"
+    },
+    {
+      "id": "marked#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3002,
+      "inputHash": "dec3a13a6cae7fd4e4813b3b151393592d739ad7fea82e0818eafd11d7b07f7e",
+      "outputHash": null,
+      "expectedHash": "477d0597ca5a61772d290363c67a224fdae50175da06a4632b473e26fb00e993",
+      "error": "exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)"
+    },
+    {
+      "id": "marked#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3921,
+      "inputHash": "e8692614941db73664a342c224d9759417d554f33ae15a47557d065b9a90d0e0",
+      "outputHash": null,
+      "expectedHash": "e4dfa7b01e003ffea2400b3d7bf7a3dcff9389bd72ac5790a6fb7b1bd68fb372",
+      "error": "exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)"
+    }
+  ],
+  "digest": "5c23a6f7bd89e3605f0385627fa27ecbb2e6bae2209e73b5f0816ccb5c2ecd62"
+}

@@ -1,0 +1,63 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "mustache",
+  "set": "heldout",
+  "package": "mustache@4.2.0",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "da89c59defd9b5abb82f06cdf536be88845e5be57a47dc2d16f02c6869ceaf05",
+  "placement": "local",
+  "at": "2026-10-27T17:03:23.948Z",
+  "cases": [
+    {
+      "id": "mustache#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 70926,
+      "inputHash": "5cc6660714a19074a1a0eb9e1f046a162c6b82c852bbbeeb5a57cf269bcab7d3",
+      "outputHash": null,
+      "expectedHash": "d0c792956ee4a40d866f5b28bee9adf50cf3530db42335e1ad65b2401db629b9",
+      "error": "builder failed: npm install failed: npm error code ECONNRESET\nnpm error errno ECONNRESET\nnpm error network request to https://registry.npmjs.org/mustache failed, reason: Client network socket disconnected before secure TLS connection was established\nnpm error network This is a problem related to network connectivity.\nnpm error network In most cases you are behind a proxy or have bad network settin"
+    },
+    {
+      "id": "mustache#1",
+      "pass": "cold",
+      "ok": true,
+      "placement": "container",
+      "toolHash": "24a409af429e39871df71cf27528faf4b2412348865beff73b9db810e1c7d15e",
+      "containerSeconds": 2.822,
+      "ms": 2964,
+      "inputHash": "77af2d665c565c1a4d1deec24f2b4db79bb50667bbb71d2cae2d75b4cd1d4c59",
+      "outputHash": "9ef4b6420cd4a6836a11537f52ac5c89a01982f128e68979a911dd2bbeef97d7",
+      "expectedHash": "9ef4b6420cd4a6836a11537f52ac5c89a01982f128e68979a911dd2bbeef97d7"
+    },
+    {
+      "id": "mustache#0",
+      "pass": "repeat",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "24a409af429e39871df71cf27528faf4b2412348865beff73b9db810e1c7d15e",
+      "containerSeconds": 0,
+      "ms": 68,
+      "inputHash": "5cc6660714a19074a1a0eb9e1f046a162c6b82c852bbbeeb5a57cf269bcab7d3",
+      "outputHash": "d0c792956ee4a40d866f5b28bee9adf50cf3530db42335e1ad65b2401db629b9",
+      "expectedHash": "d0c792956ee4a40d866f5b28bee9adf50cf3530db42335e1ad65b2401db629b9"
+    },
+    {
+      "id": "mustache#1",
+      "pass": "repeat",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "24a409af429e39871df71cf27528faf4b2412348865beff73b9db810e1c7d15e",
+      "containerSeconds": 0,
+      "ms": 70,
+      "inputHash": "77af2d665c565c1a4d1deec24f2b4db79bb50667bbb71d2cae2d75b4cd1d4c59",
+      "outputHash": "9ef4b6420cd4a6836a11537f52ac5c89a01982f128e68979a911dd2bbeef97d7",
+      "expectedHash": "9ef4b6420cd4a6836a11537f52ac5c89a01982f128e68979a911dd2bbeef97d7"
+    }
+  ],
+  "digest": "959fe1ff7b415db10f6c45c9493d7b80a201e4d5ac3b0d14cea83f945ac66d0e"
+}

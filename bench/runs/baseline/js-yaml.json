@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "js-yaml",
+  "set": "train",
+  "package": "js-yaml@4.1.0",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:57:54.891Z",
+  "cases": [
+    {
+      "id": "js-yaml#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2820,
+      "inputHash": "68eed9476bc3031ff605d18523e790c4890dbbd71bcf2230849dc6fdc2952ac6",
+      "outputHash": null,
+      "expectedHash": "925b20f8d938bf004b5ae788d28c4abc20c35363d0afef2e15709f30a6f92344",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at "
+    },
+    {
+      "id": "js-yaml#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2797,
+      "inputHash": "678e7cbab6df3f2186a502e55da9a8abea8b936ab83880d580aac1b8ce02fb00",
+      "outputHash": null,
+      "expectedHash": "d08e2475f8c1779f9f15ee7750ef97a568d6ce729442eb6f8bc5e6a5fed7da9e",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at "
+    },
+    {
+      "id": "js-yaml#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 2857,
+      "inputHash": "68eed9476bc3031ff605d18523e790c4890dbbd71bcf2230849dc6fdc2952ac6",
+      "outputHash": null,
+      "expectedHash": "925b20f8d938bf004b5ae788d28c4abc20c35363d0afef2e15709f30a6f92344",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at "
+    },
+    {
+      "id": "js-yaml#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3304,
+      "inputHash": "678e7cbab6df3f2186a502e55da9a8abea8b936ab83880d580aac1b8ce02fb00",
+      "outputHash": null,
+      "expectedHash": "d08e2475f8c1779f9f15ee7750ef97a568d6ce729442eb6f8bc5e6a5fed7da9e",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at "
+    }
+  ],
+  "digest": "1bcf16d83fe84ef078870bb732b29d4d96f8cf8f9d6cece2fd0cdde91cc670bc"
+}

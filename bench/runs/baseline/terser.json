@@ -1,0 +1,62 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "terser",
+  "set": "heldout",
+  "package": "terser@5.36.0",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:58:17.304Z",
+  "cases": [
+    {
+      "id": "terser#0",
+      "pass": "cold",
+      "ok": true,
+      "placement": "container",
+      "toolHash": "3859ba9fa69706e4a14dd872a265332a8a951bacf102b601fe2a6e31aaa5831b",
+      "containerSeconds": 4.508,
+      "ms": 4674,
+      "inputHash": "aa21fcc3d6c1a19b6e49c03f0649cff7bb340ca13145529cddfd4c3e40c40bda",
+      "outputHash": "dd31650cb5e7e266054850987db9e3dc582fe7c100ee8fb6386f494c570b8a2b",
+      "expectedHash": "dd31650cb5e7e266054850987db9e3dc582fe7c100ee8fb6386f494c570b8a2b"
+    },
+    {
+      "id": "terser#1",
+      "pass": "cold",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "3859ba9fa69706e4a14dd872a265332a8a951bacf102b601fe2a6e31aaa5831b",
+      "containerSeconds": 0,
+      "ms": 76,
+      "inputHash": "1aef04024f4db4178e6c12af8b9af4c798395a4a0142ab7a5eb0adcdcb518a91",
+      "outputHash": "c53495bcde81360f76d1f5234d58a55ea7d0f9e027d4529a3a8ecb9976fb43a8",
+      "expectedHash": "c53495bcde81360f76d1f5234d58a55ea7d0f9e027d4529a3a8ecb9976fb43a8"
+    },
+    {
+      "id": "terser#0",
+      "pass": "repeat",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "3859ba9fa69706e4a14dd872a265332a8a951bacf102b601fe2a6e31aaa5831b",
+      "containerSeconds": 0,
+      "ms": 82,
+      "inputHash": "aa21fcc3d6c1a19b6e49c03f0649cff7bb340ca13145529cddfd4c3e40c40bda",
+      "outputHash": "dd31650cb5e7e266054850987db9e3dc582fe7c100ee8fb6386f494c570b8a2b",
+      "expectedHash": "dd31650cb5e7e266054850987db9e3dc582fe7c100ee8fb6386f494c570b8a2b"
+    },
+    {
+      "id": "terser#1",
+      "pass": "repeat",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "3859ba9fa69706e4a14dd872a265332a8a951bacf102b601fe2a6e31aaa5831b",
+      "containerSeconds": 0,
+      "ms": 75,
+      "inputHash": "1aef04024f4db4178e6c12af8b9af4c798395a4a0142ab7a5eb0adcdcb518a91",
+      "outputHash": "c53495bcde81360f76d1f5234d58a55ea7d0f9e027d4529a3a8ecb9976fb43a8",
+      "expectedHash": "c53495bcde81360f76d1f5234d58a55ea7d0f9e027d4529a3a8ecb9976fb43a8"
+    }
+  ],
+  "digest": "3d41eb36e0b1d2e70dc9013390b80e73578c468f4ae1decea8bd952473187215"
+}

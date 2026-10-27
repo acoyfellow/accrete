@@ -1,0 +1,36 @@
+{
+  "kind": "falsify",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "4172a06f1112b2fb4428d473f6a52a2e72e594ed57652e4bf49aab1b473d5e4e",
+  "placement": "local",
+  "at": "2026-10-27T17:03:44.345Z",
+  "results": {
+    "repeatUsesNoContainer": {
+      "pass": true,
+      "cold": {
+        "placement": "container",
+        "containerSeconds": 3.194
+      },
+      "repeat": {
+        "placement": "built-tool",
+        "containerSeconds": 0,
+        "ms": 2
+      }
+    },
+    "tamperedBundleRefused": {
+      "pass": true,
+      "tamperedHash": "5b74d19628d680bedd4882906932df00feb609a7287a347067ed4dcaada72205",
+      "refusedWith": "bundle 5b74d19628d680bedd4882906932df00feb609a7287a347067ed4dcaada72205 does not match its hash"
+    },
+    "networkToolFails": {
+      "pass": true,
+      "stdout": "blocked Error"
+    },
+    "badRecipeRejected": {
+      "pass": true,
+      "status": 500,
+      "listed": false
+    }
+  },
+  "digest": "25f08ed6f08f6cdd240685b821d2c2bd1accfd0cb99650464372078573166673"
+}

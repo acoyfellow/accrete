@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "lessc",
+  "set": "heldout",
+  "package": "less@4.2.0",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:59:03.904Z",
+  "cases": [
+    {
+      "id": "lessc#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3131,
+      "inputHash": "bbfa82f0ea5195940ae038ff8c88f36c805577482f14e2e497f42cd25427dae3",
+      "outputHash": null,
+      "expectedHash": "2cd70229fe227fb29f6cb6724be2817cfecd12456d45887e4b314fdc3c6be8f2",
+      "error": "builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\""
+    },
+    {
+      "id": "lessc#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3061,
+      "inputHash": "5a54868d48f61a8239c6998e8ec2c7a9330d6ede9f2cc336fbd40ac700b4fa08",
+      "outputHash": null,
+      "expectedHash": "cb4a7881b8ad4b357254223b8e746475e9c304abc02d7f88dee3f329811755c4",
+      "error": "builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\""
+    },
+    {
+      "id": "lessc#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3786,
+      "inputHash": "bbfa82f0ea5195940ae038ff8c88f36c805577482f14e2e497f42cd25427dae3",
+      "outputHash": null,
+      "expectedHash": "2cd70229fe227fb29f6cb6724be2817cfecd12456d45887e4b314fdc3c6be8f2",
+      "error": "builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\""
+    },
+    {
+      "id": "lessc#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3434,
+      "inputHash": "5a54868d48f61a8239c6998e8ec2c7a9330d6ede9f2cc336fbd40ac700b4fa08",
+      "outputHash": null,
+      "expectedHash": "cb4a7881b8ad4b357254223b8e746475e9c304abc02d7f88dee3f329811755c4",
+      "error": "builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\""
+    }
+  ],
+  "digest": "dd287ccf6797da6f5962de538fe62106b220d045e8e7fe17c7932b7b82e2783f"
+}

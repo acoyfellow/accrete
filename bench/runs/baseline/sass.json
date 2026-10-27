@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "sass",
+  "set": "heldout",
+  "package": "sass@1.80.6",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:58:50.396Z",
+  "cases": [
+    {
+      "id": "sass#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 4780,
+      "inputHash": "05b32cf78d96e18e5eafe15349f0abfe1bdbf7ed3a9d5d9c2c1a5f2be9e5361a",
+      "outputHash": null,
+      "expectedHash": "7c6d3c4954aff6a6c194077c4f8ad9e0cdad7e747b06d3f88a88c05730492def",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14"
+    },
+    {
+      "id": "sass#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 4939,
+      "inputHash": "1567dd76bbcc70c49f62cc278ab05e65972478aaa92289a59ac255867396caf1",
+      "outputHash": null,
+      "expectedHash": "d8b943f04ca350593d77e18a67e2e11a2ade025b203a42ec05109524cf95505d",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14"
+    },
+    {
+      "id": "sass#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 4675,
+      "inputHash": "05b32cf78d96e18e5eafe15349f0abfe1bdbf7ed3a9d5d9c2c1a5f2be9e5361a",
+      "outputHash": null,
+      "expectedHash": "7c6d3c4954aff6a6c194077c4f8ad9e0cdad7e747b06d3f88a88c05730492def",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14"
+    },
+    {
+      "id": "sass#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 4780,
+      "inputHash": "1567dd76bbcc70c49f62cc278ab05e65972478aaa92289a59ac255867396caf1",
+      "outputHash": null,
+      "expectedHash": "d8b943f04ca350593d77e18a67e2e11a2ade025b203a42ec05109524cf95505d",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14"
+    }
+  ],
+  "digest": "3a4a7cf77a00c44ab57241f155f8e1e206479759f7e58710f729cba03952629f"
+}

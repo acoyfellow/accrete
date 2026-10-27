@@ -1,0 +1,62 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "json5",
+  "set": "train",
+  "package": "json5@2.2.3",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+  "placement": "local",
+  "at": "2026-10-27T16:57:57.925Z",
+  "cases": [
+    {
+      "id": "json5#0",
+      "pass": "cold",
+      "ok": true,
+      "placement": "container",
+      "toolHash": "3b22cbbf4111efd6adf88961340f9b960544df5c3da535478f5ec3c49f38f4ab",
+      "containerSeconds": 2.65,
+      "ms": 2768,
+      "inputHash": "5e5f86f4fc8da751c765929711f5b2d90794adb2cce536a07d88e553c99441df",
+      "outputHash": "e646c21804783cae1e174ff7aee614de7589efe1ca94eb0095fce2d59fe00f81",
+      "expectedHash": "e646c21804783cae1e174ff7aee614de7589efe1ca94eb0095fce2d59fe00f81"
+    },
+    {
+      "id": "json5#1",
+      "pass": "cold",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "3b22cbbf4111efd6adf88961340f9b960544df5c3da535478f5ec3c49f38f4ab",
+      "containerSeconds": 0,
+      "ms": 58,
+      "inputHash": "ee102dc5f77fab5c2aa6eb5c665f920bacd6a6f92423956f18ce7326a7406c6a",
+      "outputHash": "487f1181c7cc268bb12beed874f33735f6977010b8492422310d844eecba5288",
+      "expectedHash": "487f1181c7cc268bb12beed874f33735f6977010b8492422310d844eecba5288"
+    },
+    {
+      "id": "json5#0",
+      "pass": "repeat",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "3b22cbbf4111efd6adf88961340f9b960544df5c3da535478f5ec3c49f38f4ab",
+      "containerSeconds": 0,
+      "ms": 60,
+      "inputHash": "5e5f86f4fc8da751c765929711f5b2d90794adb2cce536a07d88e553c99441df",
+      "outputHash": "e646c21804783cae1e174ff7aee614de7589efe1ca94eb0095fce2d59fe00f81",
+      "expectedHash": "e646c21804783cae1e174ff7aee614de7589efe1ca94eb0095fce2d59fe00f81"
+    },
+    {
+      "id": "json5#1",
+      "pass": "repeat",
+      "ok": true,
+      "placement": "built-tool",
+      "toolHash": "3b22cbbf4111efd6adf88961340f9b960544df5c3da535478f5ec3c49f38f4ab",
+      "containerSeconds": 0,
+      "ms": 59,
+      "inputHash": "ee102dc5f77fab5c2aa6eb5c665f920bacd6a6f92423956f18ce7326a7406c6a",
+      "outputHash": "487f1181c7cc268bb12beed874f33735f6977010b8492422310d844eecba5288",
+      "expectedHash": "487f1181c7cc268bb12beed874f33735f6977010b8492422310d844eecba5288"
+    }
+  ],
+  "digest": "36565757acb8b2dacf12fa339d7a0c369c85c366567b11245d218d0d0ac0d956"
+}

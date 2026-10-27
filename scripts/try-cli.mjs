@@ -2,7 +2,7 @@ import { readFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
-import { bundleOptions, writeEntry } from '../builder/bundle.mjs';
+const { bundleOptions, writeEntry } = await import(process.env.BUNDLE ?? '../builder/bundle.mjs');
 
 const tools = JSON.parse(readFileSync('bench/tools.json', 'utf8'));
 const golden = JSON.parse(readFileSync('bench/golden.json', 'utf8'));

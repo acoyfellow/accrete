@@ -1,0 +1,66 @@
+{
+  "kind": "bench-tool",
+  "label": "baseline",
+  "tool": "sql-formatter",
+  "set": "heldout",
+  "package": "sql-formatter@15.4.5",
+  "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
+  "sourceHash": "a0ed0bd0467a6cdf127b1e48a158d1ed499d7c68f2980dab40d15246183bffff",
+  "placement": "local",
+  "at": "2026-10-27T17:02:09.786Z",
+  "cases": [
+    {
+      "id": "sql-formatter#0",
+      "pass": "cold",
+      "ok": false,
+      "placement": "isolate",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 3787,
+      "inputHash": "a19b59ac3cd702977bac26e65db3136438c18cdd5bb096aa5d726b50c81e02ad",
+      "outputHash": null,
+      "expectedHash": "e093ddf876fc2f4d2d4cfdfdb9c4525f9b0c0514a7da1638bd59259e1d742dc1",
+      "error": "exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:39:1401)\n    at new <anonymous> (tool.js:21:2412)\n    at new <anonymous> (tool.js:39:5014)\n    at new <anonymous> (tool.js:21:2412)\n    at add_argument (tool.js:39:10954)\n    at new <anonymous> (tool.js:39:17132)\n    at new <anonymous> (tool.js:21:2412)\n    "
+    },
+    {
+      "id": "sql-formatter#1",
+      "pass": "cold",
+      "ok": false,
+      "placement": "none",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 1962,
+      "inputHash": "0155f130c6f60cef2a64f461c5fabad5ad22167fe314d4fecd5f8c2878daa5f3",
+      "outputHash": null,
+      "expectedHash": "28250d85d6ff4e5279bd1443b789486393a94cc1127ba748e1dfbb2db3229efe",
+      "error": "Unexpected token 'Y', \"Your worke\"... is not valid JSON"
+    },
+    {
+      "id": "sql-formatter#0",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "none",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 90004,
+      "inputHash": "a19b59ac3cd702977bac26e65db3136438c18cdd5bb096aa5d726b50c81e02ad",
+      "outputHash": null,
+      "expectedHash": "e093ddf876fc2f4d2d4cfdfdb9c4525f9b0c0514a7da1638bd59259e1d742dc1",
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "sql-formatter#1",
+      "pass": "repeat",
+      "ok": false,
+      "placement": "none",
+      "toolHash": null,
+      "containerSeconds": 0,
+      "ms": 90002,
+      "inputHash": "0155f130c6f60cef2a64f461c5fabad5ad22167fe314d4fecd5f8c2878daa5f3",
+      "outputHash": null,
+      "expectedHash": "28250d85d6ff4e5279bd1443b789486393a94cc1127ba748e1dfbb2db3229efe",
+      "error": "The operation was aborted due to timeout"
+    }
+  ],
+  "digest": "0e4341445706fcb5241a0bb2c52b7ebd158275cbe117bcb8bd67655830b735f9"
+}
