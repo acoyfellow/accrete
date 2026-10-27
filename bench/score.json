@@ -1,99 +1,99 @@
 {
   "kind": "bench-score",
-  "label": "hc3",
+  "label": "hc3b",
   "goldenHash": "811afa360e90e92ffe6d936fa6705e4bdfd18b164a694660c873ff5b1ada8dcb",
   "receipts": [
     {
       "tool": "js-yaml",
-      "digest": "7db13a4a30da48c4108bd0e080d96a1c2bcbb68db1e3de34f968a74fd3635db9",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "9c9bf08ace127e8b05db31e045608e965b29b8d50d265fc7be4d9d870cf07b8f",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:15:57.073Z"
+      "at": "2026-10-27T17:19:27.764Z"
     },
     {
       "tool": "json5",
-      "digest": "795b4fd24553cbdb293d0e275bdf79c201aebef3e75a9fbc44e13a2cfd80fb70",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "680d33c9b642b12724e8894753a62fa48287da85b4416cd91b6735617e6a8c18",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:15:59.862Z"
+      "at": "2026-10-27T17:19:30.695Z"
     },
     {
       "tool": "lessc",
-      "digest": "edb40a2b472dafcb15e858d0a46cc01b3c486539f15333de02809d98f6cab09c",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "bad823fafbe1fb81aa02b3968192444abf20ee65135f5b7c4f1d563cf77f8be8",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:48.253Z"
+      "at": "2026-10-27T17:20:10.883Z"
     },
     {
       "tool": "markdown-it",
-      "digest": "05a66844a55a720113033876c5c6dd67b038259db09494d45a1bd755336782e3",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "d7e2a785f405f7e6425c15897b85df0719069f4774f58a0350688ee072422fd1",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:22.645Z"
+      "at": "2026-10-27T17:19:59.897Z"
     },
     {
       "tool": "marked",
-      "digest": "b393da5a9710f698707504fb7e1dba2db768544934ff2d0e0dd8840cf2d22064",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "a11b45c2ada4a92d95b364c787dcc56ddf2eda706ab655e2495ddb3c4907d615",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:15:53.817Z"
+      "at": "2026-10-27T17:19:24.258Z"
     },
     {
       "tool": "mustache",
-      "digest": "291f08290cec1c7e3e88b9f9c1122aded2fca3e63241cf395751a8825b5d3283",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "e9e535cdb6a6824aae00f716215f4ff8fbef7930182604b551fb98436945414d",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:55.679Z"
+      "at": "2026-10-27T17:20:18.718Z"
     },
     {
       "tool": "prettier",
-      "digest": "334319b3c524ebca9acafc8533ab6f005d26586f7128e0cb298ef9add8c2e8e0",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "8be7d4c6cb0a343c79939ae80fa2235e6422e677700af96f839b4443baf2ac2c",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:14.376Z"
+      "at": "2026-10-27T17:19:50.663Z"
     },
     {
       "tool": "sass",
-      "digest": "3148e6491e19736c9b77fa4ca65e344d82a0e2f6bce4911eb3f7c29697043d25",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "f77db0c2ca94bd7826648e2644a493aa4dff735c62e1e10544799388a01fc0a6",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:43.879Z"
+      "at": "2026-10-27T17:20:05.652Z"
     },
     {
-      "digest": "a2bf81ed00514d528e2d4597f690bc641f7e897e7515eafef8498be093e3c8e3",
-      "at": "2026-10-27T17:16:55.721Z"
+      "digest": "09434b3484b41b8b89768d6fb9b634f0a2764ff1b0fa837d3a668884064c9e05",
+      "at": "2026-10-27T17:20:18.760Z"
     },
     {
       "tool": "semver",
-      "digest": "ec5c873f84c48b2d95dd7f8ca43eab0050f843165118a649b0f192900a5d1705",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "87f1781c07eb1dd2b4c40d286d7549aef931df4a12b3072d92bd4b1f8c9d5d82",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:02.947Z"
+      "at": "2026-10-27T17:19:33.982Z"
     },
     {
       "tool": "sql-formatter",
-      "digest": "0bc2c6713bab6aa74d94b0aafc41930613d00e88fe6c4b7c22bd1de50f382a55",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "65373df0b17d9f04f09132807d7c70c0d4a51f6f463fe388b6a7314f59d1adf5",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:52.739Z"
+      "at": "2026-10-27T17:20:15.477Z"
     },
     {
       "tool": "terser",
-      "digest": "544af6342c01f9f8c80063160e9bc4edf4deb71ad35d9c4491d818da27e2122e",
-      "gitSha": "1effcd20bfcc2ffd847b7318409858911cec978b",
-      "sourceHash": "13fbd1354a815781b30c5cba767eb5137a1b7fbbd765c76cd5223158445d760f",
+      "digest": "b16dd06abee9cd41fdcccbfdf8d2b3d8364bb88ee526d2a8f26f50f86358c508",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "sourceHash": "029620a431580ec78d0394683ce3ede0d196e093bb11ce82e274dd63913ddeb0",
       "placement": "local",
-      "at": "2026-10-27T17:16:18.709Z"
+      "at": "2026-10-27T17:19:55.964Z"
     }
   ],
   "train": {
@@ -107,11 +107,11 @@
     "coverage": 1,
     "passRate": 1,
     "containerSecondsPerTask": {
-      "cold": 1.3352499999999998,
+      "cold": 1.398375,
       "repeat": 0
     },
     "repeatContainerCalls": 0,
-    "repeatP50Ms": 62,
+    "repeatP50Ms": 68,
     "failures": []
   },
   "heldout": {
@@ -119,29 +119,26 @@
     "covered": [
       "terser",
       "markdown-it",
+      "sass",
       "lessc",
       "sql-formatter",
       "mustache"
     ],
-    "coverage": 0.7142857142857143,
-    "passRate": 0.7142857142857143,
+    "coverage": 0.8571428571428571,
+    "passRate": 0.8571428571428571,
     "containerSecondsPerTask": {
-      "cold": 1.2641428571428572,
+      "cold": 1.7572857142857143,
       "repeat": 0
     },
     "repeatContainerCalls": 0,
-    "repeatP50Ms": 77,
+    "repeatP50Ms": 87,
     "failures": [
-      "prettier#0/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121365899:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121365899:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121365899:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121365899:3:707\n    at process.processTicksAnd",
-      "prettier#1/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121368537:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121368537:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121368537:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121368537:3:707\n    at process.processTicksAnd",
-      "prettier#0/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121371379:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121371379:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121371379:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121371379:3:707\n    at process.processTicksAnd",
-      "prettier#1/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121374375:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121374375:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121374375:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121374375:3:707\n    at process.processTicksAnd",
-      "sass#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
-      "sass#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
-      "sass#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
-      "sass#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Ge.e.<computed> [as $get$exceptionClass] (tool.js:2:9171)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14"
+      "prettier#0/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121577010:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121577010:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121577010:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121577010:3:707\n    at process.processTicksAnd",
+      "prettier#1/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121579821:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121579821:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121579821:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121579821:3:707\n    at process.processTicksAnd",
+      "prettier#0/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121587884:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121587884:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121587884:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121587884:3:707\n    at process.processTicksAnd",
+      "prettier#1/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793121590666:1:660)\n    at file:///build/2c785834372b8540/tool.js?t=1793121590666:2:11150\n    at file:///build/2c785834372b8540/tool.js?t=1793121590666:2:243\n    at file:///build/2c785834372b8540/tool.js?t=1793121590666:3:707\n    at process.processTicksAnd"
     ]
   },
-  "at": "2026-10-27T17:19:14.388Z",
-  "digest": "7faf9aade63267eeb00278f08eb3970ecc94f7ef9b78b21519f33478a8acb236"
+  "at": "2026-10-27T17:20:42.582Z",
+  "digest": "0ca4dc82983a24717e1fad8f0a73d88ea7c79331432d9c62852ff94b31135c01"
 }

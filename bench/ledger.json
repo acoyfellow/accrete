@@ -39,6 +39,26 @@
         "repeatCsPerTask": 0
       },
       "at": "2026-10-27T17:15:14.207Z"
+    },
+    {
+      "label": "hc3b",
+      "change": "replace globalThis.Function in fresh cli isolates",
+      "gitSha": "207fc6a78b0b15bf09b18b71b3e2d09a561cac1d",
+      "scoreDigest": "0ca4dc82983a24717e1fad8f0a73d88ea7c79331432d9c62852ff94b31135c01",
+      "before": {
+        "label": "hc2",
+        "heldoutScore": 785.7142857142858,
+        "heldoutCoverage": 0.7142857142857143,
+        "trainPassRate": 1
+      },
+      "after": {
+        "heldoutScore": 942.8571428571428,
+        "heldoutCoverage": 0.8571428571428571,
+        "trainPassRate": 1,
+        "repeatP50Ms": 87,
+        "repeatCsPerTask": 0
+      },
+      "at": "2026-10-27T17:20:42.634Z"
     }
   ],
   "rejected": [

@@ -15,13 +15,13 @@
     ]
   },
   "current": {
-    "coverage": "5/7",
+    "coverage": "6/7",
     "trainCoverage": "4/4",
-    "passRate": "71%",
-    "coldCs": "1.31s",
+    "passRate": "86%",
+    "coldCs": "1.76s",
     "repeatCs": "0.00s",
-    "repeatP50": "74 ms",
-    "score": "785.7",
+    "repeatP50": "87 ms",
+    "score": "942.9",
     "tools": [
       "marked",
       "js-yaml",
@@ -29,6 +29,7 @@
       "semver",
       "terser",
       "markdown-it",
+      "sass",
       "lessc",
       "sql-formatter",
       "mustache"
@@ -46,6 +47,12 @@
       "change": "externalize constants and querystring builtins",
       "before": "628.6",
       "after": "785.7"
+    },
+    {
+      "label": "hc3b",
+      "change": "replace globalThis.Function in fresh cli isolates",
+      "before": "785.7",
+      "after": "942.9"
     }
   ],
   "falsify": [
@@ -73,8 +80,8 @@
       "sha256": "3dbe334a5bcee78bda05408571a968a8af363d9d8b3e3f89784319b93cd1b38c"
     },
     {
-      "path": "bench/runs/hc2/score.json",
-      "sha256": "7a134b58e730165a94768161efe9ec0e39149fcd5d1bf74e2ad0753e86e5720c"
+      "path": "bench/runs/hc3b/score.json",
+      "sha256": "9b6f1481ea6fc47060dd2bceb03d576a656107eae7ca022a82440300b5493db6"
     },
     {
       "path": "receipts/falsify.json",
@@ -82,8 +89,8 @@
     },
     {
       "path": "bench/ledger.json",
-      "sha256": "ebfe1cc8ac490388dc0f462dfc36f65ac1f1d135f5d753416405250016312cc9"
+      "sha256": "8bcc6e1b9b375a21417542d62c61a879851d99ff7da2c70adfaf45192e1e176d"
     }
   ],
-  "digest": "2f22f778b5602e7923e14173b68a0b7ae40fda7813191f2411ac45af7451eb0d"
+  "digest": "d9972c4538b6391d3a7928a3868f633f7f62d2e7e8b3a34fcfe8185a6997023c"
 }
