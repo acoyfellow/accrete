@@ -1,0 +1,23 @@
+bench/ledger.json
+  s_7b04649645ea0c::t_db31d11f51a2a1 2-23
+bench/score.json
+  s_7b04649645ea0c::t_78f50b559de382 3,8-10,12,16-18,20,24-26,28,32-34,36,40-42,44,48-50,52,56-58,60,64-66,68,71-72,76-78,80,84-86,88,92-94,96,102-103,107-108,110,114-115,120-123,125-126,128,134-141,145,148-149
+builder/bundle.mjs
+  s_7b04649645ea0c::t_365efbc9c62c42 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
