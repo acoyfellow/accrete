@@ -66,10 +66,13 @@
       "sourceHash": "b6d9d474cd15be41bd406761bab9fa7fbf35186a3cbb407993ed51643fc80320",
       "placement": "local",
       "at": "2026-10-27T17:14:02.140Z"
+<<<<<<< Updated upstream
     },
     {
       "digest": "ef3060335e758bb9f3f90c681819863c9bb31c50701874716d69b55c10022315",
       "at": "2026-10-27T17:14:14.014Z"
+=======
+>>>>>>> Stashed changes
     },
     {
       "tool": "semver",
@@ -142,6 +145,11 @@
       "sass#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14"
     ]
   },
+<<<<<<< Updated upstream
   "at": "2026-10-27T17:15:14.153Z",
   "digest": "00949750ea223e22a3d8b8bd247bcdc2e0159506e71a3d8789f0c64d28e35f6c"
+=======
+  "at": "2026-10-27T17:14:14.014Z",
+  "digest": "ef3060335e758bb9f3f90c681819863c9bb31c50701874716d69b55c10022315"
+>>>>>>> Stashed changes
 }
