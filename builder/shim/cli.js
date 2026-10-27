@@ -70,6 +70,7 @@ export const runCli = async ({ args, files }, load, manifests) => {
   patch(console, 'info', line(state.out));
   patch(console, 'error', line(state.err));
   patch(console, 'warn', line(state.err));
+  patch(console.log, 'bind', () => line(state.out));
   const swallow = (error) => {
     if (error instanceof Exit || error?.exitCode !== undefined) return;
     state.err.push(String(error?.stack ?? error));

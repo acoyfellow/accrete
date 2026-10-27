@@ -10,6 +10,10 @@ const SHIMMED = { fs: 'fs.js', 'fs/promises': 'fs-promises.js' };
 
 export const BANNER = "import{createRequire as __accreteCreateRequire}from'node:module';const require=__accreteCreateRequire('/tool.js');const __filename='/tool.js';const __dirname='/';";
 
+const CLI_REQUIRE = "import{createRequire as __accreteCreateRequire}from'node:module';const __accreteRealRequire=__accreteCreateRequire('/tool.js');const require=(name)=>{const key=String(name).replace('node:','');if(key==='fs')return globalThis.__accreteFs;if(key==='fs/promises')return globalThis.__accreteFs.promises;return __accreteRealRequire(name)};require.resolve=(name)=>name;const __filename='/tool.js';const __dirname='/';";
+
+const CLI_BANNER = "const __accreteFunction=function(...code){const body=code.at(-1);if(body!==undefined&&!String(body).includes('arguments.callee'))throw new EvalError('accrete: code generation is disabled');const made=function(...args){return made.call.apply(made,args)};return Object.setPrototypeOf(made,new.target?new.target.prototype:globalThis.Function.prototype)};__accreteFunction.prototype=globalThis.Function.prototype;";
+
 const binPath = async (projectDir, cli) => {
   const manifest = JSON.parse(await readFile(join(projectDir, 'node_modules', cli.package, 'package.json'), 'utf8'));
   const bin = typeof manifest.bin === 'string' ? manifest.bin : manifest.bin?.[cli.bin];
@@ -19,9 +23,10 @@ const binPath = async (projectDir, cli) => {
 
 export const cliEntry = async (projectDir, cli) => {
   const bin = await binPath(projectDir, cli);
+  const tail = '';
   const manifest = await readFile(join(projectDir, 'node_modules', cli.package, 'package.json'), 'utf8');
   const manifests = JSON.stringify({ [cli.package]: manifest });
-  return `import { runCli } from ${JSON.stringify(join(SHIM, 'cli.js'))};\nexport const run = (input) => runCli(input, () => import(${JSON.stringify(bin)}), ${manifests});\n`;
+  return `import { runCli } from ${JSON.stringify(join(SHIM, 'cli.js'))};\nexport const run = (input) => runCli(input, () => import(${JSON.stringify(bin)})${tail}, ${manifests});\n`;
 };
 
 const shebangPlugin = {
@@ -44,7 +49,9 @@ export const bundleOptions = (projectDir, recipe, plugins) => {
     conditions: ['require', 'default'],
     external,
     alias: { ...shimmed, ...Object.fromEntries(Object.entries(recipe.alias ?? {}).map(([name, path]) => [name, join(projectDir, 'node_modules', path)])) },
-    banner: { js: BANNER },
+    banner: { js: recipe.cli === undefined ? BANNER : CLI_REQUIRE + CLI_BANNER },
+    inject: recipe.cli === undefined ? [] : [join(SHIM, 'require.js')],
+    define: recipe.cli === undefined ? {} : { Function: '__accreteFunction', 'import.meta.url': JSON.stringify('file:///tool.js') },
     plugins: [shebangPlugin, ...plugins],
     minify: true,
     outfile: join(projectDir, 'tool.js'),
