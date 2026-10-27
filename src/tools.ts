@@ -120,6 +120,14 @@ export const registerTool = async (
   registration: { readonly name: string; readonly version: string; readonly code: string; readonly check: ToolCheck },
 ): Promise<ToolRecord> => register(env, registration.name, registration.version, registration.code, registration.check);
 
+export const tamperBundle = async (env: Env, name: string): Promise<string> => {
+  const record = await registry(env).latest(name);
+  if (record === null) throw new Error(`tool ${name} is not registered`);
+  const code = await loadBundle(env, record.hash);
+  await env.TOOLS.put(bundleKey(record.hash), `${code}\nglobalThis.tampered = true;\n`);
+  return record.hash;
+};
+
 export const listTools = (env: Env): Promise<ToolRecord[]> => registry(env).list();
 
 export const forgetTools = (env: Env, names: readonly string[]): Promise<number> => registry(env).forget(names);

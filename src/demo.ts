@@ -4,7 +4,7 @@ import tscRecipe from '../recipes/tsc.json';
 import yamlRecipe from '../recipes/yaml2json.json';
 import status from '../status.json';
 import { isRecipe, type Recipe } from './recipe';
-import { forgetTools, listTools, putRecipe } from './tools';
+import { forgetTools, listTools, putRecipe, tamperBundle } from './tools';
 import type { Env, Step } from './types';
 import { selfSource } from './self-source';
 
@@ -47,6 +47,11 @@ export const routeDemo = async (request: Request, env: Env, local: boolean): Pro
   if (request.method === 'POST' && pathname === '/api/run/self') {
     await ensureRecipes(env);
     return Response.json(await workspace(env, `demo-self-${Date.now()}`).runTask(selfSource, SELF_STEPS));
+  }
+  if (request.method === 'POST' && pathname === '/api/test/tamper') {
+    const body: unknown = await request.json();
+    if (typeof body !== 'object' || body === null || !('name' in body) || typeof body.name !== 'string') return Response.json({ error: 'bad name' }, { status: 400 });
+    return Response.json({ hash: await tamperBundle(env, body.name) });
   }
   return Response.json({ error: 'not found' }, { status: 404 });
 };
