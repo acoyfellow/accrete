@@ -1,4 +1,25 @@
 {
-  "kept": [],
+  "kept": [
+    {
+      "label": "hc1",
+      "change": "shim require fs, import.meta.url, callable-class Function",
+      "gitSha": "b79e98d9d643893ad7612c09a7b6b35ba26d5d35",
+      "scoreDigest": "4c0ffd0b7257e52f09e44ddbb3a27fb39fb677eab6c1f4a2f41cd32bce3b179a",
+      "before": {
+        "label": "baseline",
+        "heldoutScore": 167.85714285714286,
+        "heldoutCoverage": 0.14285714285714285,
+        "trainPassRate": 0.5
+      },
+      "after": {
+        "heldoutScore": 628.5714285714286,
+        "heldoutCoverage": 0.5714285714285714,
+        "trainPassRate": 1,
+        "repeatP50Ms": 75,
+        "repeatCsPerTask": 0
+      },
+      "at": "2026-10-27T17:12:44.605Z"
+    }
+  ],
   "rejected": []
 }

@@ -1,163 +1,150 @@
 {
   "kind": "bench-score",
-  "label": "baseline",
+  "label": "hc1",
   "goldenHash": "811afa360e90e92ffe6d936fa6705e4bdfd18b164a694660c873ff5b1ada8dcb",
   "receipts": [
     {
       "tool": "js-yaml",
-      "digest": "1bcf16d83fe84ef078870bb732b29d4d96f8cf8f9d6cece2fd0cdde91cc670bc",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "7a8d446ab5b9c5e81a1ab8db97c8ca27b9b6f7ff388960a5027dae52933f18bd",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:57:54.891Z"
+      "at": "2026-10-27T17:04:41.774Z"
     },
     {
       "tool": "json5",
-      "digest": "36565757acb8b2dacf12fa339d7a0c369c85c366567b11245d218d0d0ac0d956",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "912faafa10272449784968c85bfef75501c4cf3cf737ee2f0090cdf77385a22a",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:57:57.925Z"
+      "at": "2026-10-27T17:04:44.585Z"
     },
     {
       "tool": "lessc",
-      "digest": "dd287ccf6797da6f5962de538fe62106b220d045e8e7fe17c7932b7b82e2783f",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "dfa836b54bf1d2480d30cce5ee8a496618d932f69de65c9fa90173b3f1d25dea",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:59:03.904Z"
+      "at": "2026-10-27T17:05:46.236Z"
     },
     {
       "tool": "markdown-it",
-      "digest": "af5089ac100dfd015800793182d73107fa25a737fcbb28bb5e2f5763d4d4ebb7",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "2ea16b3dba15f59b708477f2e4837bd593e276dd244e5695b4f028749e13fc65",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:58:31.110Z"
+      "at": "2026-10-27T17:05:09.022Z"
     },
     {
       "tool": "marked",
-      "digest": "5c23a6f7bd89e3605f0385627fa27ecbb2e6bae2209e73b5f0816ccb5c2ecd62",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "8f3ca44c7190c9fa9ee365a2b39f0c52c7967d6b98afff909eb2138cf6441dc1",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:57:43.021Z"
+      "at": "2026-10-27T17:04:38.383Z"
     },
     {
       "tool": "mustache",
-      "digest": "959fe1ff7b415db10f6c45c9493d7b80a201e4d5ac3b0d14cea83f945ac66d0e",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "da89c59defd9b5abb82f06cdf536be88845e5be57a47dc2d16f02c6869ceaf05",
+      "digest": "4b75dedf7904c1703be3f8fd7a308a89c579719d801ae0ef7a33f99ea3ad0b24",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T17:03:23.948Z"
+      "at": "2026-10-27T17:05:53.691Z"
     },
     {
       "tool": "prettier",
-      "digest": "a3296c0fe51de0c9030b93f26e1a261187330e1f10f1738b080e15615cea0556",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "f3f36a80c2fc3e2f9c56262ad5d91d4e7c533624b01e652a186b29bba7f23e84",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:58:12.304Z"
+      "at": "2026-10-27T17:05:00.535Z"
     },
     {
       "tool": "sass",
-      "digest": "3a4a7cf77a00c44ab57241f155f8e1e206479759f7e58710f729cba03952629f",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "4027cd0202cba98dbc4cd4186a53e9505f847db745f4273d3ed95dd194ee7645",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:58:50.396Z"
+      "at": "2026-10-27T17:05:32.528Z"
     },
     {
-      "digest": "43c8df4987ab6b6f260142dee160b0758b6d0fba259a1734ace0910feb97fd55",
-      "at": "2026-10-27T17:03:24.016Z"
+      "digest": "a23a266a602ac4006d98b6cbc8b24ca09661f6b28f9e73993d7bd74a30549bd0",
+      "at": "2026-10-27T17:05:53.734Z"
     },
     {
       "tool": "semver",
-      "digest": "265b39f01f35469ee556ad8439ad0082241afcfcaa913f6900fe60c159cd2679",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "635c3086baca89e6940b37667a8379f77da1cea1743c317a1fe10b68a1dfa55f",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:58:01.266Z"
+      "at": "2026-10-27T17:04:47.670Z"
     },
     {
       "tool": "sql-formatter",
-      "digest": "0e4341445706fcb5241a0bb2c52b7ebd158275cbe117bcb8bd67655830b735f9",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "a0ed0bd0467a6cdf127b1e48a158d1ed499d7c68f2980dab40d15246183bffff",
+      "digest": "d9f8fe90c1755a8a402ac63c8b1ecdb6f17be8c371dcf608a0d9ff25a60c2c37",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T17:02:09.786Z"
+      "at": "2026-10-27T17:05:50.672Z"
     },
     {
       "tool": "terser",
-      "digest": "3d41eb36e0b1d2e70dc9013390b80e73578c468f4ae1decea8bd952473187215",
-      "gitSha": "7659af50e44f78dd2052746ebeeb9542efecc67a",
-      "sourceHash": "d2d00611823cc079008b06dfba76a7b58bfec0eb6e28f9753ebfc8befe3eb074",
+      "digest": "66e76df03ce881e83116380ae462a5337ee9a0ca699f4888d5aa66788f39d65c",
+      "gitSha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+      "sourceHash": "2e300919cba5cc524e55cf28fcdd4974378c488dda473610b856af436a0cf4c7",
       "placement": "local",
-      "at": "2026-10-27T16:58:17.304Z"
+      "at": "2026-10-27T17:05:05.191Z"
     }
   ],
   "train": {
     "tools": 4,
     "covered": [
+      "marked",
+      "js-yaml",
       "json5",
       "semver"
     ],
-    "coverage": 0.5,
-    "passRate": 0.5,
+    "coverage": 1,
+    "passRate": 1,
     "containerSecondsPerTask": {
-      "cold": 0.6996249999999999,
+      "cold": 1.362125,
       "repeat": 0
     },
     "repeatContainerCalls": 0,
-    "repeatP50Ms": 60,
-    "failures": [
-      "marked#0/cold: exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)",
-      "marked#1/cold: exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)",
-      "marked#0/repeat: exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)",
-      "marked#1/repeat: exit 1: TypeError: The argument 'path' The argument must be a file URL object, a file URL string, or an absolute path string.. Received 'undefined'\n    at createRequire (node:module:34:15)\n    at tool.js:59:531\n    at tool.js:2:25\n    at tool.js:59:577\n    at tool.js:2:25\n    at tool.js:60:669\n    at async be (tool.js:60:319)\n    at async Object.fetch (host.js:6:22)",
-      "js-yaml#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at ",
-      "js-yaml#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at ",
-      "js-yaml#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at ",
-      "js-yaml#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1401)\n    at new <anonymous> (tool.js:3:2412)\n    at new <anonymous> (tool.js:21:5014)\n    at new <anonymous> (tool.js:3:2412)\n    at add_argument (tool.js:21:10953)\n    at new <anonymous> (tool.js:21:17131)\n    at new <anonymous> (tool.js:3:2412)\n    at "
-    ]
+    "repeatP50Ms": 61,
+    "failures": []
   },
   "heldout": {
     "tools": 7,
     "covered": [
-      "terser"
+      "terser",
+      "markdown-it",
+      "sql-formatter",
+      "mustache"
     ],
-    "coverage": 0.14285714285714285,
-    "passRate": 0.25,
+    "coverage": 0.5714285714285714,
+    "passRate": 0.5714285714285714,
     "containerSecondsPerTask": {
-      "cold": 0.5235714285714286,
+      "cold": 1.0082142857142855,
       "repeat": 0
     },
     "repeatContainerCalls": 0,
     "repeatP50Ms": 75,
     "failures": [
-      "prettier#0/cold: builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l",
-      "prettier#1/cold: builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l",
-      "prettier#0/repeat: builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l",
-      "prettier#1/repeat: builder failed: exit 1: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/build/internal/cli.mjs' imported from /build/2c785834372b8540/tool.js\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:989:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/l",
-      "markdown-it#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at ",
-      "markdown-it#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at ",
-      "markdown-it#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at ",
-      "markdown-it#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:21:1406)\n    at new <anonymous> (tool.js:3:2417)\n    at new <anonymous> (tool.js:21:5020)\n    at new <anonymous> (tool.js:3:2417)\n    at add_argument (tool.js:21:10967)\n    at new <anonymous> (tool.js:21:17148)\n    at new <anonymous> (tool.js:3:2417)\n    at ",
-      "sass#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14",
-      "sass#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14",
-      "sass#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14",
-      "sass#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at We.e.<computed> [as $get$exceptionClass] (tool.js:2:3663)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141659\n    at tool.js:365:141295\n    at tool.js:365:14",
+      "prettier#0/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793120690800:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793120690800:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793120690800:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793120690800:3:705\n    at process.processTicksAnd",
+      "prettier#1/cold: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793120694305:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793120694305:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793120694305:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793120694305:3:705\n    at process.processTicksAnd",
+      "prettier#0/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793120697208:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793120697208:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793120697208:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793120697208:3:705\n    at process.processTicksAnd",
+      "prettier#1/repeat: builder failed: exit 1: EvalError: accrete: code generation is disabled\n    at new __accreteFunction (file:///build/2c785834372b8540/tool.js?t=1793120700528:1:547)\n    at file:///build/2c785834372b8540/tool.js?t=1793120700528:2:10289\n    at file:///build/2c785834372b8540/tool.js?t=1793120700528:2:242\n    at file:///build/2c785834372b8540/tool.js?t=1793120700528:3:705\n    at process.processTicksAnd",
+      "sass#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
+      "sass#1/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
+      "sass#0/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
+      "sass#1/repeat: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at exceptionClass_closure.call$0 (tool.js:172:92142)\n    at tool.js:365:120586\n    at Qe.e.<computed> [as $get$exceptionClass] (tool.js:2:8303)\n    at Object.main (tool.js:52:3891)\n    at main2 (tool.js:55:27890)\n    at tool.js:365:141803\n    at tool.js:365:141439\n    at tool.js:365:14",
       "lessc#0/cold: builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\"",
       "lessc#1/cold: builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\"",
       "lessc#0/repeat: builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\"",
-      "lessc#1/repeat: builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\"",
-      "sql-formatter#0/cold: exit 1: EvalError: Code generation from strings disallowed for this context\n    at new Function (<anonymous>)\n    at new <anonymous> (tool.js:39:1401)\n    at new <anonymous> (tool.js:21:2412)\n    at new <anonymous> (tool.js:39:5014)\n    at new <anonymous> (tool.js:21:2412)\n    at add_argument (tool.js:39:10954)\n    at new <anonymous> (tool.js:39:17132)\n    at new <anonymous> (tool.js:21:2412)\n    ",
-      "sql-formatter#1/cold: Unexpected token 'Y', \"Your worke\"... is not valid JSON",
-      "sql-formatter#0/repeat: The operation was aborted due to timeout",
-      "sql-formatter#1/repeat: The operation was aborted due to timeout",
-      "mustache#0/cold: builder failed: npm install failed: npm error code ECONNRESET\nnpm error errno ECONNRESET\nnpm error network request to https://registry.npmjs.org/mustache failed, reason: Client network socket disconnected before secure TLS connection was established\nnpm error network This is a problem related to network connectivity.\nnpm error network In most cases you are behind a proxy or have bad network settin"
+      "lessc#1/repeat: builder failed: Build failed with 2 errors:\nnode_modules/graceful-fs/polyfills.js:1:24: ERROR: Could not resolve \"constants\"\nnode_modules/needle/lib/cookies.js:10:23: ERROR: Could not resolve \"querystring\""
     ]
   },
-  "at": "2026-10-27T17:04:05.391Z",
-  "digest": "77acdea57f0e06dc02bb9fb9f25681744a9ccc2c38f74a6868a1cdb087f88ba3"
+  "at": "2026-10-27T17:12:44.545Z",
+  "digest": "4c0ffd0b7257e52f09e44ddbb3a27fb39fb677eab6c1f4a2f41cd32bce3b179a"
 }

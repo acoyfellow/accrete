@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const SHIM = join(dirname(fileURLToPath(import.meta.url)), 'shim');
 
-export const NODE_BUILTINS = ['fs', 'path', 'os', 'inspector', 'perf_hooks', 'crypto', 'buffer', 'util', 'url', 'module', 'assert', 'events', 'stream', 'child_process', 'worker_threads', 'v8', 'tty', 'readline', 'process', 'string_decoder', 'zlib', 'http', 'https', 'net', 'vm'];
+export const NODE_BUILTINS = ['constants', 'querystring', 'fs', 'path', 'os', 'inspector', 'perf_hooks', 'crypto', 'buffer', 'util', 'url', 'module', 'assert', 'events', 'stream', 'child_process', 'worker_threads', 'v8', 'tty', 'readline', 'process', 'string_decoder', 'zlib', 'http', 'https', 'net', 'vm'];
 
 const SHIMMED = { fs: 'fs.js', 'fs/promises': 'fs-promises.js' };
 
