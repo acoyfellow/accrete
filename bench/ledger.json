@@ -19,6 +19,26 @@
         "repeatCsPerTask": 0
       },
       "at": "2026-10-27T17:12:44.605Z"
+    },
+    {
+      "label": "hc2",
+      "change": "externalize constants and querystring builtins",
+      "gitSha": "dbef39b3524ce46f7f9dfe7818337f39da804af1",
+      "scoreDigest": "00949750ea223e22a3d8b8bd247bcdc2e0159506e71a3d8789f0c64d28e35f6c",
+      "before": {
+        "label": "hc1",
+        "heldoutScore": 628.5714285714286,
+        "heldoutCoverage": 0.5714285714285714,
+        "trainPassRate": 1
+      },
+      "after": {
+        "heldoutScore": 785.7142857142858,
+        "heldoutCoverage": 0.7142857142857143,
+        "trainPassRate": 1,
+        "repeatP50Ms": 74,
+        "repeatCsPerTask": 0
+      },
+      "at": "2026-10-27T17:15:14.207Z"
     }
   ],
   "rejected": []
