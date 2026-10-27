@@ -1,0 +1,49 @@
+.gitignore
+  s_7b04649645ea0c::t_9d09f0216297c8 9-10
+bench/golden.json
+  s_7b04649645ea0c::t_bb529f19e0f322 1-156
+bench/tools.json
+  s_7b04649645ea0c::t_ccb34e0e141d5d 1-57
+builder/Dockerfile
+  s_7b04649645ea0c::t_8d33352d053e59 4-5
+builder/bundle.mjs
+  s_7b04649645ea0c::t_432a13d2253e4c 1-58
+builder/server.mjs
+  s_7b04649645ea0c::t_d4a7ede9c64d20 8,89-92,98-100
+builder/shim/cli.js
+  s_7b04649645ea0c::t_9e164c0acaf6dc 1-93
+builder/shim/fs.js
+  s_7b04649645ea0c::t_8ff528b3b3e747 1-264
+scripts/bench-all.sh
+  s_7b04649645ea0c::t_fe64d6e5a3ba1a 1-10
+scripts/bench-golden.mjs
+  s_7b04649645ea0c::t_b93bdb39e01e41 1-34
+scripts/try-cli.mjs
+  s_7b04649645ea0c::t_04148fd7bbcfbc 1-35
+src/recipe.ts
+  s_7b04649645ea0c::t_40fe6fce00a0d3 13,50-51
+src/registry.ts
+  s_7b04649645ea0c::t_a9073c60b455da 13
+src/runner.ts
+  s_7b04649645ea0c::t_36d45a98dcca2f 27-28
+src/tools.ts
+  s_7b04649645ea0c::t_40fcc261424430 3,59,61,66,85,103-104,110
+src/types.ts
+  s_7b04649645ea0c::t_44f7493f8ec13d 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "67bd4b93e6735687ea5996e1e27666f127635ebf",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
