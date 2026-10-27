@@ -1,0 +1,12 @@
+import { fileURLToPath } from "node:url";
+import { foldkit } from "@foldkit/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  root: fileURLToPath(new URL(".", import.meta.url)),
+  plugins: [foldkit(), tailwindcss()],
+  base: "/",
+  build: { outDir: "../public", emptyOutDir: true },
+  server: { port: 5281, strictPort: true, proxy: { "/api": "http://localhost:8799" } },
+});

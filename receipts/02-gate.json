@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-26T15:14:25.135Z",
+  "results": {
+    "1": {
+      "pass": true,
+      "builds": {
+        "tsc": {
+          "name": "tsc",
+          "hash": "16ae8453bc1285e5a3112820e26c24a122d706253ec3d012b64fa788b092496c",
+          "bytes": 7375920,
+          "nativeMatchesBuilt": true,
+          "isolateMatchesNative": true,
+          "buildSeconds": 6.706,
+          "containerSeconds": 18.579
+        }
+      },
+      "badRecipeRejected": true,
+      "badRecipeListed": false
+    },
+    "2": {
+      "pass": true,
+      "workerLoggedRun1Seconds": 5.073,
+      "run1Builds": [
+        {
+          "name": "json5",
+          "containerSeconds": 5.073
+        }
+      ]
+    },
+    "3": {
+      "pass": true,
+      "passed": [
+        "6/6",
+        "6/6",
+        "6/6"
+      ],
+      "coldToolsRun1": [
+        "json5"
+      ],
+      "run3WorkerContainerSeconds": 0,
+      "run3RegistryTools": [
+        "marked@marked@14.1.4#34b105a4a520",
+        "yaml2json@js-yaml@4.3.2#ff43a3ae54f5",
+        "json5@json5@2.2.3#5b74d19628d6"
+      ]
+    },
+    "4": {
+      "pass": true,
+      "files": 8,
+      "tscClean": true,
+      "placements": [
+        {
+          "tool": "tsc@typescript@5.9.3+@cloudflare/workers-types@5.20261026.1+@cloudflare/containers@0.3.7",
+          "placement": "built-tool",
+          "containerSeconds": 0,
+          "ms": 811
+        }
+      ],
+      "containerSeconds": 0
+    }
+  }
+}

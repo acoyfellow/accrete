@@ -1,0 +1,6 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "files": { "includes": ["src/**/*.ts", "client/src/**/*.ts", "!src/self-source.ts"] },
+  "formatter": { "enabled": false },
+  "linter": { "rules": { "preset": "recommended", "suspicious": { "noExplicitAny": "error" }, "style": { "noNonNullAssertion": "error" } } }
+}

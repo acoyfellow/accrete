@@ -3,3 +3,6 @@ dist
 .wrangler
 proof/receipts
 .secrets
+src/self-source.ts
+/public
+client/public/status.json

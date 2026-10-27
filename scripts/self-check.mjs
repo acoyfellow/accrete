@@ -1,11 +1,10 @@
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { selfSeed } from './self-source.mjs';
 
 const base = process.env.ACCRETE_URL;
 const token = process.env.ACCRETE_TOKEN;
 
-const sourceFiles = readdirSync('src').filter((name) => name.endsWith('.ts')).map((name) => join('src', name));
-const seed = Object.fromEntries([...sourceFiles, 'tsconfig.json'].map((path) => [path, readFileSync(path, 'utf8')]));
+const { seed, sources: sourceFiles } = selfSeed();
 
 const steps = [
   { op: 'tool', name: 'tsc', args: ['-p', 'tsconfig.json'], inputs: Object.keys(seed), stdoutTo: 'reports/tsc.txt' },

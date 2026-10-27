@@ -1,0 +1,174 @@
+{
+  "run": "gate-run-3",
+  "at": "2026-10-26T15:14:22.658Z",
+  "passed": 6,
+  "total": 6,
+  "placements": {
+    "isolate": 8,
+    "built-tool": 6,
+    "container": 0
+  },
+  "containerSeconds": 0,
+  "registryTools": [
+    "marked@marked@14.1.4#34b105a4a520",
+    "yaml2json@js-yaml@4.3.2#ff43a3ae54f5",
+    "json5@json5@2.2.3#5b74d19628d6"
+  ],
+  "builtThisRun": [],
+  "startedAt": "2026-10-26T15:14:19.670Z",
+  "finishedAt": "2026-10-26T15:14:22.658Z",
+  "tasks": [
+    {
+      "id": "edit-config",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "edit",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "write",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "read",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "render-readme",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "marked@marked@14.1.4",
+          "hash": "34b105a4a5201582456367d285222b31e6d94d5dcbda7d9f163138c966de22f8",
+          "containerSeconds": 0,
+          "ms": 471,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "yaml-to-json",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "yaml2json@js-yaml@4.3.2",
+          "hash": "ff43a3ae54f5eb70aedef4e220e6629577fde9244091032416b75ff0c4d73083",
+          "containerSeconds": 0,
+          "ms": 84,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "write-edit-render",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "write",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "edit",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "marked@marked@14.1.4",
+          "hash": "34b105a4a5201582456367d285222b31e6d94d5dcbda7d9f163138c966de22f8",
+          "containerSeconds": 0,
+          "ms": 151,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "edit-yaml-then-both",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "edit",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "yaml2json@js-yaml@4.3.2",
+          "hash": "ff43a3ae54f5eb70aedef4e220e6629577fde9244091032416b75ff0c4d73083",
+          "containerSeconds": 0,
+          "ms": 136,
+          "ok": true
+        },
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "marked@marked@14.1.4",
+          "hash": "34b105a4a5201582456367d285222b31e6d94d5dcbda7d9f163138c966de22f8",
+          "containerSeconds": 0,
+          "ms": 99,
+          "ok": true
+        },
+        {
+          "op": "read",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "json5-config",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "json5@json5@2.2.3",
+          "hash": "5b74d19628d680bedd4882906932df00feb609a7287a347067ed4dcaada72205",
+          "containerSeconds": 0,
+          "ms": 161,
+          "ok": true
+        },
+        {
+          "op": "read",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        }
+      ]
+    }
+  ]
+}

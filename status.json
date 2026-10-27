@@ -1,0 +1,65 @@
+{
+  "name": "accrete",
+  "state": "notebook",
+  "iteration": 2,
+  "northStar": "Agents on Durable Objects build the tools they need once, so container-seconds per task fall toward zero as the registry grows.",
+  "constraint": "A built tool must run in a Worker isolate with no network and no secrets, and must match the native tool's output before it is registered.",
+  "falsifiable": "After a tool is in the registry, a repeat of the same task uses 0 container-seconds. Disproved if any repeat run uses the container.",
+  "proven": [
+    {
+      "claim": "A repeat run with the same tools uses 0 container-seconds.",
+      "experiment": "02-builder-cold-tool",
+      "receipt": "receipts/02-run-3.json",
+      "observed": "Run 3: 6/6 tasks, 0 container calls, 0 container-seconds, 3 tools from the registry."
+    },
+    {
+      "claim": "A missing npm tool is built once in a container, checked against native output, then reused.",
+      "experiment": "02-builder-cold-tool",
+      "receipt": "receipts/02-run-1.json",
+      "observed": "Run 1 built json5 cold in the container. Runs 2 and 3 used the registry copy."
+    },
+    {
+      "claim": "A built tool whose output differs from the native tool is rejected.",
+      "experiment": "02-builder-cold-tool",
+      "receipt": "receipts/02-gate.json",
+      "observed": "Recipe json5-bad got HTTP 500 and was not listed."
+    },
+    {
+      "claim": "tsc from the registry type-checks accrete's own src/ in an isolate.",
+      "experiment": "02-builder-cold-tool",
+      "receipt": "receipts/02-self-check.json",
+      "observed": "8 files, clean, placement built-tool, 0 container-seconds, 811 ms."
+    }
+  ],
+  "unproven": [
+    {
+      "claim": "Total container cost over many tasks falls toward zero.",
+      "why": "Only 6 tasks and 4 tools have been measured."
+    },
+    {
+      "claim": "The Worker log measures builder cost correctly.",
+      "why": "GraphQL billed about 62 s of uptime where the Worker logged 6.4 s. Cold start is the likely cause, not confirmed."
+    },
+    {
+      "claim": "A linter runs from the registry on accrete's own src/.",
+      "why": "eslint builds and passes, but the slice 2 gate no longer checks it."
+    }
+  ],
+  "disproven": [
+    {
+      "claim": "GraphQL containerUptime or allocatedCpu measures each build.",
+      "receipt": "experiments/02-builder-cold-tool/README.md",
+      "observed": "A json5 build with 7.3 s in the Worker log showed 0 uptime and 0 allocated vCPU in GraphQL for that minute."
+    },
+    {
+      "claim": "Any npm tool can be bundled for an isolate.",
+      "receipt": "experiments/02-builder-cold-tool/README.md",
+      "observed": "TypeScript 7 ships a native binary. The tsc tool uses TypeScript 5.9.3."
+    }
+  ],
+  "openQuestions": [
+    "What is the real cost of one cold build, including container start and stop?",
+    "Which tool kinds other than esm (wasi, container-only) are worth the next experiment?",
+    "Does the registry need a time limit or a size limit?"
+  ]
+}

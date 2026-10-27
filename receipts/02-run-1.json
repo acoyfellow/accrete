@@ -1,0 +1,192 @@
+{
+  "run": "gate-run-1",
+  "at": "2026-10-26T15:14:16.912Z",
+  "passed": 6,
+  "total": 6,
+  "placements": {
+    "isolate": 8,
+    "built-tool": 5,
+    "container": 1
+  },
+  "containerSeconds": 5.073,
+  "registryTools": [
+    "marked@marked@14.1.4#34b105a4a520",
+    "yaml2json@js-yaml@4.3.2#ff43a3ae54f5"
+  ],
+  "builtThisRun": [
+    {
+      "name": "json5",
+      "hash": "5b74d19628d680bedd4882906932df00feb609a7287a347067ed4dcaada72205",
+      "bytes": 28170,
+      "nativeMatchesBuilt": true,
+      "isolateMatchesNative": true,
+      "buildSeconds": 1.469,
+      "containerSeconds": 5.073
+    }
+  ],
+  "startedAt": "2026-10-26T15:14:08.152Z",
+  "finishedAt": "2026-10-26T15:14:16.912Z",
+  "tasks": [
+    {
+      "id": "edit-config",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "edit",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "write",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "read",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "render-readme",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "marked@marked@14.1.4",
+          "hash": "34b105a4a5201582456367d285222b31e6d94d5dcbda7d9f163138c966de22f8",
+          "containerSeconds": 0,
+          "ms": 167,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "yaml-to-json",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "yaml2json@js-yaml@4.3.2",
+          "hash": "ff43a3ae54f5eb70aedef4e220e6629577fde9244091032416b75ff0c4d73083",
+          "containerSeconds": 0,
+          "ms": 140,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "write-edit-render",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "write",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "edit",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "marked@marked@14.1.4",
+          "hash": "34b105a4a5201582456367d285222b31e6d94d5dcbda7d9f163138c966de22f8",
+          "containerSeconds": 0,
+          "ms": 127,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "edit-yaml-then-both",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "edit",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        },
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "yaml2json@js-yaml@4.3.2",
+          "hash": "ff43a3ae54f5eb70aedef4e220e6629577fde9244091032416b75ff0c4d73083",
+          "containerSeconds": 0,
+          "ms": 184,
+          "ok": true
+        },
+        {
+          "op": "tool",
+          "placement": "built-tool",
+          "tool": "marked@marked@14.1.4",
+          "hash": "34b105a4a5201582456367d285222b31e6d94d5dcbda7d9f163138c966de22f8",
+          "containerSeconds": 0,
+          "ms": 392,
+          "ok": true
+        },
+        {
+          "op": "read",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "json5-config",
+      "pass": true,
+      "problems": [],
+      "logs": [
+        {
+          "op": "tool",
+          "placement": "container",
+          "tool": "json5@json5@2.2.3",
+          "hash": "5b74d19628d680bedd4882906932df00feb609a7287a347067ed4dcaada72205",
+          "containerSeconds": 5.073,
+          "build": {
+            "name": "json5",
+            "hash": "5b74d19628d680bedd4882906932df00feb609a7287a347067ed4dcaada72205",
+            "bytes": 28170,
+            "nativeMatchesBuilt": true,
+            "isolateMatchesNative": true,
+            "buildSeconds": 1.469,
+            "containerSeconds": 5.073
+          },
+          "ms": 5702,
+          "ok": true
+        },
+        {
+          "op": "read",
+          "placement": "isolate",
+          "containerSeconds": 0,
+          "ms": 0,
+          "ok": true
+        }
+      ]
+    }
+  ]
+}

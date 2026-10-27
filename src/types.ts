@@ -52,4 +52,5 @@ export type Env = {
   readonly REGISTRY: DurableObjectNamespace<import('./registry').Registry>;
   readonly BUILDER: DurableObjectNamespace<import('./builder').Builder>;
   readonly ACCRETE_TOKEN: string;
+  readonly ASSETS: Fetcher;
 };

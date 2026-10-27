@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-26T15:14:25.131Z",
+  "files": 8,
+  "ok": true,
+  "tscClean": true,
+  "tscReport": "",
+  "placements": [
+    {
+      "tool": "tsc@typescript@5.9.3+@cloudflare/workers-types@5.20261026.1+@cloudflare/containers@0.3.7",
+      "placement": "built-tool",
+      "containerSeconds": 0,
+      "ms": 811
+    }
+  ],
+  "containerSeconds": 0,
+  "allBuiltTool": true
+}

@@ -1,0 +1,23 @@
+# accrete
+
+> Agents on Cloudflare Durable Objects build the tools they need once, in a short-lived container, then run them in Worker isolates. A repeat run uses 0 container-seconds.
+
+## Claim
+After a tool is in the registry, a repeat of the same task uses 0 container-seconds. Disproved if any repeat run uses the container.
+
+## How it works
+1. A task runs in a workspace Durable Object. File steps run in an isolate.
+2. A tool step looks up the tool in the registry (Durable Object + R2). A hit runs the stored bundle in a Worker Loader isolate with no network and no bindings.
+3. A miss starts the builder container. It installs the npm package, bundles it with esbuild, and stops.
+4. The bundle must print the same output as the native tool on a check case before it is stored by content hash.
+
+Tool contract: run({ args, files }) -> { stdout, files }
+
+## Evidence
+- /status.json: proven, unproven and disproven claims with receipts
+- receipts/02-*.json: slice 2 gate receipts
+
+## Limits
+- npm tools that esbuild can bundle to plain JavaScript only
+- no network, no secrets in built tools
+- write API needs a bearer token; demo actions run only on localhost

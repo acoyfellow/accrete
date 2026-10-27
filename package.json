@@ -1,21 +1,30 @@
 {
   "name": "accrete",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Agents on Durable Objects build the tools they need once, then run them with no container.",
   "scripts": {
-    "check": "tsc -p .",
-    "tools": "node scripts/build-tools.mjs",
-    "deploy": "wrangler deploy",
-    "gate": "bash proof/gate.sh"
+    "dev": "bash scripts/dev.sh",
+    "dev:worker": "node scripts/self-source.mjs && wrangler dev --port 8799 --var ACCRETE_TOKEN:local-dev",
+    "dev:site": "vite --config client/vite.config.ts",
+    "build": "cp status.json client/public/status.json && vite build --config client/vite.config.ts",
+    "check": "node scripts/self-source.mjs && tsc -p . && tsc -p client",
+    "lint": "biome lint",
+    "gate": "bash proof/gate.sh",
+    "gate:local": "ACCRETE_URL=http://localhost:8799 ACCRETE_TOKEN=local-dev bash proof/gate.sh",
+    "deploy": "npm run build && wrangler deploy"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "@biomejs/biome": "^2.5.15",
     "@cloudflare/containers": "^0.3.7",
+    "@foldkit/vite-plugin": "^0.26.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "effect": "^4.0.0",
+    "foldkit": "^0.168.0",
     "js-yaml": "^4.3.2",
-    "marked": "^14.1.4"
+    "marked": "^14.1.4",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261026.1",

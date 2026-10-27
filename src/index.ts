@@ -1,5 +1,6 @@
 import { isRecipe } from './recipe';
 import { buildTool, forgetTools, listTools, putRecipe, registerTool } from './tools';
+import { routeDemo } from './demo';
 import type { Env, Step } from './types';
 export { Workspace } from './workspace';
 export { Registry } from './registry';
@@ -75,8 +76,21 @@ const route = async (request: Request, env: Env): Promise<Response> => {
   return Response.json({ error: 'not found' }, { status: 404 });
 };
 
+const isLocal = (request: Request): boolean => {
+  const { hostname } = new URL(request.url);
+  return hostname === 'localhost' || hostname === '127.0.0.1';
+};
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    const { pathname } = new URL(request.url);
+    if (pathname.startsWith('/api/')) {
+      try {
+        return await routeDemo(request, env, isLocal(request));
+      } catch (cause) {
+        return Response.json({ error: failure(cause) }, { status: 500 });
+      }
+    }
     if (!authorized(request, env)) return Response.json({ error: 'unauthorized' }, { status: 401 });
     try {
       return await route(request, env);
