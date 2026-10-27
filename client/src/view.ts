@@ -151,13 +151,13 @@ const ledger = (h: H, status: Status): Html =>
 
 const RANSOM: ReadonlyArray<readonly [string, string, string, string, string]> = [
   ["your", "#fff", "#000", "-6deg", "Georgia"],
-  ["tools", "#000", "#39ff14", "4deg", "Impact"],
-  ["should", "#ff2fd6", "#fff", "-2deg", "Courier"],
-  ["LEVEL", "#fff200", "#000", "7deg", "Arial Black"],
-  ["up", "#00d4ff", "#000", "-5deg", "Georgia"],
-  ["not", "#fff", "#ff2fd6", "3deg", "Impact"],
+  ["tools", "#000", "#f38020", "4deg", "Impact"],
+  ["should", "#0051c3", "#fff", "-2deg", "Courier"],
+  ["LEVEL", "#faae40", "#000", "7deg", "Arial Black"],
+  ["up", "#404041", "#fff", "-5deg", "Georgia"],
+  ["not", "#fff", "#0051c3", "3deg", "Impact"],
   ["boot", "#000", "#fff", "-8deg", "Courier"],
-  ["UP", "#39ff14", "#000", "5deg", "Arial Black"],
+  ["UP", "#f38020", "#000", "5deg", "Arial Black"],
 ];
 
 const zine = (h: H): Html =>
