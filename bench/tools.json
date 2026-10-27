@@ -1,0 +1,57 @@
+[
+  { "tool": "marked", "set": "train", "package": "marked", "version": "14.1.4", "bin": "marked",
+    "cases": [
+      { "args": ["-i", "a.md"], "files": { "a.md": "# Hi\n\nSome *em* and **strong**.\n\n- a\n- b\n" } },
+      { "args": ["-i", "b.md"], "files": { "b.md": "```js\nconst x = 1;\n```\n\n> quote\n\n[link](https://x.dev)\n" } }
+    ] },
+  { "tool": "js-yaml", "set": "train", "package": "js-yaml", "version": "4.1.0", "bin": "js-yaml",
+    "cases": [
+      { "args": ["a.yaml"], "files": { "a.yaml": "name: accrete\nlist: [1, 2]\nnested:\n  ok: true\n" } },
+      { "args": ["b.yaml"], "files": { "b.yaml": "- a\n- b: 2\n  c: [x, y]\n" } }
+    ] },
+  { "tool": "json5", "set": "train", "package": "json5", "version": "2.2.3", "bin": "json5",
+    "cases": [
+      { "args": ["-s", "2", "a.json5"], "files": { "a.json5": "{a: 1, b: [1,2,], // c\n c: 'x'}\n" } },
+      { "args": ["b.json5"], "files": { "b.json5": "[0x10, +1, .5, 'q']\n" } }
+    ] },
+  { "tool": "semver", "set": "train", "package": "semver", "version": "7.6.3", "bin": "semver",
+    "cases": [
+      { "args": ["-r", "^1.2.0", "1.2.3", "1.9.0", "2.0.0", "0.9.0"], "files": {} },
+      { "args": ["-i", "minor", "1.4.7"], "files": {} }
+    ] },
+  { "tool": "prettier", "set": "heldout", "package": "prettier", "version": "3.3.3", "bin": "prettier",
+    "cases": [
+      { "args": ["a.js"], "files": { "a.js": "const   x = {a:1,b:[1,2,3]};function f( y ){return y*2}\n" } },
+      { "args": ["b.css"], "files": { "b.css": "a{color:red;margin:0 auto}\n.b  .c{display:flex}\n" } }
+    ] },
+  { "tool": "terser", "set": "heldout", "package": "terser", "version": "5.36.0", "bin": "terser",
+    "cases": [
+      { "args": ["a.js", "-c", "-m"], "files": { "a.js": "function add(first, second) { const total = first + second; return total; }\nconsole.log(add(1, 2));\n" } },
+      { "args": ["b.js", "-b"], "files": { "b.js": "if(a){b()}else{c()}\n" } }
+    ] },
+  { "tool": "markdown-it", "set": "heldout", "package": "markdown-it", "version": "14.1.0", "bin": "markdown-it",
+    "cases": [
+      { "args": ["a.md"], "files": { "a.md": "# Title\n\n1. one\n2. two\n\n`code`\n" } },
+      { "args": ["b.md"], "files": { "b.md": "| a | b |\n|---|---|\n| 1 | 2 |\n" } }
+    ] },
+  { "tool": "sass", "set": "heldout", "package": "sass", "version": "1.80.6", "bin": "sass",
+    "cases": [
+      { "args": ["--no-source-map", "a.scss"], "files": { "a.scss": "$c: red;\n.a { .b { color: $c; } }\n" } },
+      { "args": ["--no-source-map", "--style=compressed", "b.scss"], "files": { "b.scss": "@mixin m($x) { width: $x; }\n.k { @include m(10px); }\n" } }
+    ] },
+  { "tool": "lessc", "set": "heldout", "package": "less", "version": "4.2.0", "bin": "lessc",
+    "cases": [
+      { "args": ["a.less"], "files": { "a.less": "@c: blue;\n.a { .b { color: @c; } }\n" } },
+      { "args": ["b.less"], "files": { "b.less": ".m(@x) { width: @x; }\n.k { .m(5px); }\n" } }
+    ] },
+  { "tool": "sql-formatter", "set": "heldout", "package": "sql-formatter", "version": "15.4.5", "bin": "sql-formatter",
+    "cases": [
+      { "args": ["a.sql"], "files": { "a.sql": "select a,b from t where x=1 and y in (1,2) order by a\n" } },
+      { "args": ["-l", "postgresql", "b.sql"], "files": { "b.sql": "insert into t(a) values (1) returning id\n" } }
+    ] },
+  { "tool": "mustache", "set": "heldout", "package": "mustache", "version": "4.2.0", "bin": "mustache",
+    "cases": [
+      { "args": ["view.json", "t.mustache"], "files": { "view.json": "{\"name\":\"accrete\",\"items\":[\"a\",\"b\"]}", "t.mustache": "Hi {{name}}!\n{{#items}}- {{.}}\n{{/items}}" } },
+      { "args": ["v.json", "u.mustache"], "files": { "v.json": "{\"x\":\"<b>\"}", "u.mustache": "{{x}} {{{x}}}\n" } }
+    ] }
+]

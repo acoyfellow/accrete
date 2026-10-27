@@ -6,3 +6,5 @@ proof/receipts
 src/self-source.ts
 /public
 client/public/status.json
+bench/runs/*/
+!bench/runs/baseline/

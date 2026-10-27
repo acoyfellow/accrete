@@ -1,0 +1,156 @@
+[
+  {
+    "id": "marked#0",
+    "tool": "marked",
+    "set": "train",
+    "stdout": "<h1>Hi</h1>\n<p>Some <em>em</em> and <strong>strong</strong>.</p>\n<ul>\n<li>a</li>\n<li>b</li>\n</ul>\n\n",
+    "stdoutHash": "477d0597ca5a61772d290363c67a224fdae50175da06a4632b473e26fb00e993"
+  },
+  {
+    "id": "marked#1",
+    "tool": "marked",
+    "set": "train",
+    "stdout": "<pre><code class=\"language-js\">const x = 1;\n</code></pre>\n<blockquote>\n<p>quote</p>\n</blockquote>\n<p><a href=\"https://x.dev\">link</a></p>\n\n",
+    "stdoutHash": "e4dfa7b01e003ffea2400b3d7bf7a3dcff9389bd72ac5790a6fb7b1bd68fb372"
+  },
+  {
+    "id": "js-yaml#0",
+    "tool": "js-yaml",
+    "set": "train",
+    "stdout": "{\n  \"name\": \"accrete\",\n  \"list\": [\n    1,\n    2\n  ],\n  \"nested\": {\n    \"ok\": true\n  }\n}\n",
+    "stdoutHash": "925b20f8d938bf004b5ae788d28c4abc20c35363d0afef2e15709f30a6f92344"
+  },
+  {
+    "id": "js-yaml#1",
+    "tool": "js-yaml",
+    "set": "train",
+    "stdout": "[\n  \"a\",\n  {\n    \"b\": 2,\n    \"c\": [\n      \"x\",\n      \"y\"\n    ]\n  }\n]\n",
+    "stdoutHash": "d08e2475f8c1779f9f15ee7750ef97a568d6ce729442eb6f8bc5e6a5fed7da9e"
+  },
+  {
+    "id": "json5#0",
+    "tool": "json5",
+    "set": "train",
+    "stdout": "{\n  \"a\": 1,\n  \"b\": [\n    1,\n    2\n  ],\n  \"c\": \"x\"\n}",
+    "stdoutHash": "e646c21804783cae1e174ff7aee614de7589efe1ca94eb0095fce2d59fe00f81"
+  },
+  {
+    "id": "json5#1",
+    "tool": "json5",
+    "set": "train",
+    "stdout": "[16,1,0.5,\"q\"]",
+    "stdoutHash": "487f1181c7cc268bb12beed874f33735f6977010b8492422310d844eecba5288"
+  },
+  {
+    "id": "semver#0",
+    "tool": "semver",
+    "set": "train",
+    "stdout": "1.2.3\n1.9.0\n",
+    "stdoutHash": "9247e734bfb89c20e46009957277b17773d18e4218fa5bdc52847ae4c63f3aa3"
+  },
+  {
+    "id": "semver#1",
+    "tool": "semver",
+    "set": "train",
+    "stdout": "1.5.0\n",
+    "stdoutHash": "acb57a7135b2d7d6e665f67f056e21353023b93835f54def1ae523bf76f1bfb3"
+  },
+  {
+    "id": "prettier#0",
+    "tool": "prettier",
+    "set": "heldout",
+    "stdout": "const x = { a: 1, b: [1, 2, 3] };\nfunction f(y) {\n  return y * 2;\n}\n",
+    "stdoutHash": "54346ad759e77edeac924a286e8691d66adb7a4a8a2a4b45d9f9ac906ed9a9e9"
+  },
+  {
+    "id": "prettier#1",
+    "tool": "prettier",
+    "set": "heldout",
+    "stdout": "a {\n  color: red;\n  margin: 0 auto;\n}\n.b .c {\n  display: flex;\n}\n",
+    "stdoutHash": "ee6a4178fa255e400690eddb30743d1347c26d518e769701070469e1b96975de"
+  },
+  {
+    "id": "terser#0",
+    "tool": "terser",
+    "set": "heldout",
+    "stdout": "function add(d,n){return d+n}console.log(add(1,2));\n",
+    "stdoutHash": "dd31650cb5e7e266054850987db9e3dc582fe7c100ee8fb6386f494c570b8a2b"
+  },
+  {
+    "id": "terser#1",
+    "tool": "terser",
+    "set": "heldout",
+    "stdout": "if(a){b()}else{c()}\n",
+    "stdoutHash": "c53495bcde81360f76d1f5234d58a55ea7d0f9e027d4529a3a8ecb9976fb43a8"
+  },
+  {
+    "id": "markdown-it#0",
+    "tool": "markdown-it",
+    "set": "heldout",
+    "stdout": "<h1>Title</h1>\n<ol>\n<li>one</li>\n<li>two</li>\n</ol>\n<p><code>code</code></p>\n",
+    "stdoutHash": "72c863d2bf2f580de664a874eac1fd0fdd75ae7f36c6961b06a459909e399873"
+  },
+  {
+    "id": "markdown-it#1",
+    "tool": "markdown-it",
+    "set": "heldout",
+    "stdout": "<table>\n<thead>\n<tr>\n<th>a</th>\n<th>b</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>2</td>\n</tr>\n</tbody>\n</table>\n",
+    "stdoutHash": "b9fe9a80606ed8a3b356cd5404070f72ebe610229b206392560f885140b72a07"
+  },
+  {
+    "id": "sass#0",
+    "tool": "sass",
+    "set": "heldout",
+    "stdout": ".a .b {\n  color: red;\n}\n",
+    "stdoutHash": "7c6d3c4954aff6a6c194077c4f8ad9e0cdad7e747b06d3f88a88c05730492def"
+  },
+  {
+    "id": "sass#1",
+    "tool": "sass",
+    "set": "heldout",
+    "stdout": ".k{width:10px}\n",
+    "stdoutHash": "d8b943f04ca350593d77e18a67e2e11a2ade025b203a42ec05109524cf95505d"
+  },
+  {
+    "id": "lessc#0",
+    "tool": "lessc",
+    "set": "heldout",
+    "stdout": ".a .b {\n  color: blue;\n}\n",
+    "stdoutHash": "2cd70229fe227fb29f6cb6724be2817cfecd12456d45887e4b314fdc3c6be8f2"
+  },
+  {
+    "id": "lessc#1",
+    "tool": "lessc",
+    "set": "heldout",
+    "stdout": ".k {\n  width: 5px;\n}\n",
+    "stdoutHash": "cb4a7881b8ad4b357254223b8e746475e9c304abc02d7f88dee3f329811755c4"
+  },
+  {
+    "id": "sql-formatter#0",
+    "tool": "sql-formatter",
+    "set": "heldout",
+    "stdout": "select\n  a,\n  b\nfrom\n  t\nwhere\n  x = 1\n  and y in (1, 2)\norder by\n  a\n",
+    "stdoutHash": "e093ddf876fc2f4d2d4cfdfdb9c4525f9b0c0514a7da1638bd59259e1d742dc1"
+  },
+  {
+    "id": "sql-formatter#1",
+    "tool": "sql-formatter",
+    "set": "heldout",
+    "stdout": "insert into\n  t (a)\nvalues\n  (1)\nreturning\n  id\n",
+    "stdoutHash": "28250d85d6ff4e5279bd1443b789486393a94cc1127ba748e1dfbb2db3229efe"
+  },
+  {
+    "id": "mustache#0",
+    "tool": "mustache",
+    "set": "heldout",
+    "stdout": "Hi accrete!\n- a\n- b\n",
+    "stdoutHash": "d0c792956ee4a40d866f5b28bee9adf50cf3530db42335e1ad65b2401db629b9"
+  },
+  {
+    "id": "mustache#1",
+    "tool": "mustache",
+    "set": "heldout",
+    "stdout": "&lt;b&gt; <b>\n",
+    "stdoutHash": "9ef4b6420cd4a6836a11537f52ac5c89a01982f128e68979a911dd2bbeef97d7"
+  }
+]

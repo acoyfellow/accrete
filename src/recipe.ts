@@ -10,6 +10,7 @@ export type Recipe = {
   readonly embed?: Readonly<Record<string, string | readonly string[]>>;
   readonly nativeFiles?: Readonly<Record<string, string>>;
   readonly nativeFilter?: 'raw' | 'eslint-json';
+  readonly cli?: { readonly package: string; readonly bin: string };
 };
 
 export type BuildResult = {
@@ -46,7 +47,8 @@ export const isRecipe = (value: unknown): value is Recipe =>
   isStringRecord(value.check.files) &&
   (value.alias === undefined || isStringRecord(value.alias)) &&
   (value.embed === undefined || isEmbedMap(value.embed)) &&
-  (value.nativeFiles === undefined || isStringRecord(value.nativeFiles));
+  (value.nativeFiles === undefined || isStringRecord(value.nativeFiles)) &&
+  (value.cli === undefined || (isObject(value.cli) && typeof value.cli.package === 'string' && typeof value.cli.bin === 'string'));
 
 export const isBuildResult = (value: unknown): value is BuildResult =>
   isObject(value) &&

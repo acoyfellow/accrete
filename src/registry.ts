@@ -10,7 +10,7 @@ type ToolRow = {
   registered_at: string;
 };
 
-const isToolKind = (value: string): value is ToolKind => value === 'esm' || value === 'wasi' || value === 'container-only';
+const isToolKind = (value: string): value is ToolKind => value === 'esm' || value === 'cli' || value === 'wasi' || value === 'container-only';
 
 const isToolCheck = (value: unknown): value is ToolCheck =>
   typeof value === 'object' &&

@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from '/app/node_modules/esbuild/lib/main.js';
+import { bundleOptions, writeEntry } from './bundle.mjs';
 
 const WORK = '/work';
 
@@ -63,8 +64,6 @@ const embedPlugin = (projectDir, embed) => ({
   },
 });
 
-const NODE_BUILTINS = ['fs', 'path', 'os', 'inspector', 'perf_hooks', 'crypto', 'buffer', 'util', 'url', 'module', 'assert', 'events', 'stream', 'child_process', 'worker_threads', 'v8', 'tty', 'readline', 'process'];
-
 const FILTERS = {
   raw: (stdout) => stdout,
   'eslint-json': (stdout) =>
@@ -72,8 +71,6 @@ const FILTERS = {
       .flatMap((file) => file.messages.map((message) => `${file.filePath.slice(WORK.length + 1)}:${message.line}:${message.column} ${message.ruleId} ${message.message}`))
       .join('\n') + '\n',
 };
-
-const BANNER = "import{createRequire as __accreteCreateRequire}from'node:module';const require=__accreteCreateRequire('/tool.js');const __filename='/tool.js';const __dirname='/';";
 
 const runBuild = async (recipe) => {
   const started = Date.now();
@@ -89,30 +86,18 @@ const runBuild = async (recipe) => {
   for (const name of Object.keys(recipe.packages)) {
     versions[name] = JSON.parse(await readFile(join(projectDir, 'node_modules', name, 'package.json'), 'utf8')).version;
   }
-  await writeFile(join(projectDir, 'entry.js'), recipe.entry);
-  const outfile = join(projectDir, 'tool.js');
-  await build({
-    entryPoints: [join(projectDir, 'entry.js')],
-    absWorkingDir: projectDir,
-    bundle: true,
-    format: 'esm',
-    platform: 'neutral',
-    mainFields: ['main', 'module'],
-    conditions: ['require', 'default'],
-    external: NODE_BUILTINS.flatMap((name) => [name, `node:${name}`]),
-    alias: Object.fromEntries(Object.entries(recipe.alias ?? {}).map(([name, path]) => [name, join(projectDir, 'node_modules', path)])),
-    banner: { js: BANNER },
-    plugins: [embedPlugin(projectDir, recipe.embed ?? {})],
-    minify: true,
-    outfile,
-    logLevel: 'error',
-  });
+  await writeEntry(projectDir, recipe);
+  const options = bundleOptions(projectDir, recipe, [embedPlugin(projectDir, recipe.embed ?? {})]);
+  const outfile = options.outfile;
+  await build(options);
   const bundle = await readFile(outfile, 'utf8');
   await rm(WORK, { recursive: true, force: true });
   await mkdir(WORK, { recursive: true });
   await writeTree(WORK, { ...recipe.check.files, ...(recipe.nativeFiles ?? {}) });
   await symlink(join(projectDir, 'node_modules'), join(WORK, 'node_modules'));
-  const native = await exec(join(projectDir, 'node_modules', '.bin', recipe.native.bin), recipe.native.args, { cwd: WORK });
+  const nativeBin = recipe.cli === undefined ? recipe.native.bin : recipe.cli.bin;
+  const nativeArgs = recipe.cli === undefined ? recipe.native.args : recipe.check.args;
+  const native = await exec(join(projectDir, 'node_modules', '.bin', nativeBin), nativeArgs, { cwd: WORK });
   const built = await import(pathToFileURL(outfile).href + `?t=${Date.now()}`);
   const builtOutput = await built.run({ args: recipe.check.args, files: recipe.check.files });
   return {

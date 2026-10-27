@@ -1,6 +1,6 @@
 export type Placement = 'isolate' | 'built-tool' | 'container';
 
-export type ToolKind = 'esm' | 'wasi' | 'container-only';
+export type ToolKind = 'esm' | 'cli' | 'wasi' | 'container-only';
 
 export type ToolRecord = {
   readonly name: string;

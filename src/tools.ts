@@ -1,6 +1,6 @@
 import { isBuildResult, isRecipe, type BuildResult, type Recipe } from './recipe';
 import { runInIsolate } from './runner';
-import type { Env, Placement, ToolCheck, ToolInput, ToolOutput, ToolRecord } from './types';
+import type { Env, Placement, ToolCheck, ToolInput, ToolKind, ToolOutput, ToolRecord } from './types';
 
 const registry = (env: Env) => env.REGISTRY.get(env.REGISTRY.idFromName('global'));
 
@@ -56,14 +56,14 @@ const buildInContainer = async (env: Env, recipe: Recipe): Promise<{ result: Bui
   return { result, containerSeconds };
 };
 
-const register = async (env: Env, name: string, version: string, code: string, check: ToolCheck): Promise<ToolRecord> => {
+const register = async (env: Env, name: string, version: string, code: string, check: ToolCheck, kind: ToolKind = 'esm'): Promise<ToolRecord> => {
   const hash = await sha256(code);
-  const output = await runInIsolate(env, hash, code, { args: check.args, files: check.files });
+  const output = await runInIsolate(env, hash, code, { args: check.args, files: check.files }, kind === 'cli');
   if (output.stdout !== check.stdout) {
     throw new Error(`check failed for ${name}: isolate output does not match native output`);
   }
   await env.TOOLS.put(bundleKey(hash), code);
-  const record: ToolRecord = { name, version, hash, kind: 'esm', check, registeredAt: new Date().toISOString() };
+  const record: ToolRecord = { name, version, hash, kind, check, registeredAt: new Date().toISOString() };
   await registry(env).add(record);
   return record;
 };
@@ -82,7 +82,7 @@ export const buildTool = async (env: Env, recipe: Recipe): Promise<{ record: Too
     throw new Error(`built ${recipe.name} does not match native output: native=${JSON.stringify(result.nativeStdout.slice(0, 300))} built=${JSON.stringify(result.builtStdout.slice(0, 300))}`);
   }
   const version = Object.entries(result.versions).map(([name, value]) => `${name}@${value}`).join('+');
-  const record = await register(env, recipe.name, version, result.code, { args: recipe.check.args, files: recipe.check.files, stdout: result.nativeStdout });
+  const record = await register(env, recipe.name, version, result.code, { args: recipe.check.args, files: recipe.check.files, stdout: result.nativeStdout }, recipe.cli === undefined ? 'esm' : 'cli');
   return {
     record,
     build: {
@@ -100,14 +100,14 @@ export const buildTool = async (env: Env, recipe: Recipe): Promise<{ record: Too
 export const runTool = async (env: Env, name: string, input: ToolInput): Promise<ToolRun> => {
   const existing = await registry(env).latest(name);
   if (existing !== null) {
-    if (existing.kind !== 'esm') throw new Error(`tool ${name} is ${existing.kind}; this slice runs esm only`);
-    const output = await runInIsolate(env, existing.hash, await loadBundle(env, existing.hash), input);
+    if (existing.kind !== 'esm' && existing.kind !== 'cli') throw new Error(`tool ${name} is ${existing.kind}; only esm and cli tools run in isolates`);
+    const output = await runInIsolate(env, existing.hash, await loadBundle(env, existing.hash), input, existing.kind === 'cli');
     return { output, record: existing, placement: 'built-tool', containerSeconds: 0 };
   }
   const recipe = await loadRecipe(env, name);
   if (recipe === null) throw new Error(`tool ${name} is not in the registry and has no recipe`);
   const { record, build } = await buildTool(env, recipe);
-  const output = await runInIsolate(env, record.hash, await loadBundle(env, record.hash), input);
+  const output = await runInIsolate(env, record.hash, await loadBundle(env, record.hash), input, record.kind === 'cli');
   return { output, record, placement: 'container', containerSeconds: build.containerSeconds, build };
 };
 
