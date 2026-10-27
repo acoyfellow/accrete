@@ -1,0 +1,23 @@
+builder/bundle.mjs
+  s_7b04649645ea0c::t_dbf07baa3523f8 13-16,26,29,52-54
+builder/shim/cli.js
+  s_7b04649645ea0c::t_618e0d2af26689 73
+builder/shim/require.js
+  s_7b04649645ea0c::t_bff5d220d9f5b9 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e0cd6e71cb4140fdab27cee4cead6ce3cc9244e8",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
