@@ -1,0 +1,27 @@
+bench/ledger.json
+  s_7b04649645ea0c::t_037ceabf75b267 7,27,47,69
+bench/runs/baseline/score.json
+  s_7b04649645ea0c::t_04f6c75651a1fc 157-158
+bench/score.json
+  s_7b04649645ea0c::t_89502d58c5c254 138-139
+client/src/numbers.json
+  s_7b04649645ea0c::t_f72db9e0eeb599 80,84,92,95
+scripts/score.mjs
+  s_7b04649645ea0c::t_c6fac62f0af03e 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b04ebdd71a27771ae9473b70277641d7f2a22145",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
