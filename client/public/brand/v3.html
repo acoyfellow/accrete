@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CONTAINERS ARE A SCAM · accrete</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #39ff14; color: #000; font-family: "Arial Black", Impact, Haettenschweiler, sans-serif; overflow-x: hidden; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ctext y='32' font-size='32'%3E%F0%9F%92%8E%3C/text%3E%3C/svg%3E") 8 8, auto; }
+  .tape { background: #000; color: #39ff14; white-space: nowrap; overflow: hidden; font-size: 22px; padding: 10px 0; transform: rotate(-2deg); margin: 18px -20px; border-block: 4px solid #ff2fd6; }
+  .tape span { display: inline-block; animation: scroll 14s linear infinite; }
+  .tape.rev { transform: rotate(1.5deg); background: #ff2fd6; color: #000; border-color: #000; }
+  .tape.rev span { animation-direction: reverse; animation-duration: 10s; }
+  @keyframes scroll { to { transform: translateX(-50%) } }
+  header { position: relative; padding: 40px 4vw 0; min-height: 92vh; }
+  h1 { font-size: clamp(64px, 15vw, 230px); line-height: .82; margin: 0; letter-spacing: -.06em; text-transform: uppercase; position: relative; z-index: 2; }
+  h1 .strike { position: relative; display: inline-block; }
+  h1 .strike::after { content: ""; position: absolute; left: -2%; right: -2%; top: 46%; height: .16em; background: #ff2fd6; transform: rotate(-4deg) scaleX(0); transform-origin: left; animation: slash .5s 1.1s cubic-bezier(.7,0,.2,1.4) forwards; }
+  @keyframes slash { to { transform: rotate(-4deg) scaleX(1) } }
+  h1 .new { display: block; color: #ff2fd6; -webkit-text-stroke: 4px #000; transform: rotate(-3deg); animation: wobble 2.4s ease-in-out infinite; }
+  @keyframes wobble { 50% { transform: rotate(2deg) scale(1.03) } }
+  .monster { position: absolute; right: -2vw; top: 6vh; width: min(52vw, 720px); aspect-ratio: 1; background: url(v3c.jpg) center / cover; border: 8px solid #000; box-shadow: 22px 22px 0 #000; transform: rotate(7deg); animation: chomp .9s steps(2) infinite; z-index: 1; }
+  @keyframes chomp { 50% { transform: rotate(5deg) translate(-6px, 4px) } }
+  .sticker { position: absolute; z-index: 3; background: #fff200; border: 5px solid #000; padding: 14px 18px; font-size: 22px; transform: rotate(-12deg); box-shadow: 8px 8px 0 #000; }
+  .s1 { left: 6vw; bottom: 8vh; animation: bob 1.6s ease-in-out infinite; }
+  .s2 { right: 8vw; bottom: 4vh; background: #ff2fd6; color: #fff; transform: rotate(9deg); font-size: 34px; border-radius: 50%; width: 190px; height: 190px; display: grid; place-items: center; text-align: center; line-height: .95; animation: spin 9s linear infinite; }
+  @keyframes bob { 50% { transform: rotate(-8deg) translateY(-10px) } }
+  @keyframes spin { to { transform: rotate(369deg) } }
+  .fire { position: relative; height: 80vh; background: url(v3b.jpg) center / cover; border-block: 10px solid #000; display: grid; place-items: center; overflow: hidden; }
+  .fire h2 { font-size: clamp(48px, 9vw, 150px); color: #fff; -webkit-text-stroke: 3px #000; text-shadow: 10px 10px 0 #000; margin: 0; text-align: center; line-height: .85; transform: rotate(-4deg); }
+  .fire .meter { position: absolute; left: 4vw; bottom: 5vh; background: #000; color: #39ff14; font: 700 18px ui-monospace, Menlo, monospace; padding: 14px 18px; border: 4px solid #39ff14; }
+  .fire .meter b { font-size: 46px; display: block; }
+  .ledger { background: #000; color: #fff; padding: 9vh 4vw; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3vw; }
+  .ledger div { border: 6px solid; padding: 26px; transform: rotate(var(--r)); }
+  .ledger div:nth-child(1) { border-color: #39ff14; --r: -2deg } .ledger div:nth-child(2) { border-color: #fff200; --r: 1.5deg } .ledger div:nth-child(3) { border-color: #ff2fd6; --r: -1deg }
+  .ledger h3 { font-size: 46px; margin: 0 0 12px; line-height: .9; }
+  .ledger p { font: 700 16px/1.4 ui-monospace, Menlo, monospace; margin: 0; color: #ddd; }
+  .zine { background: url(v3a.jpg) center / cover; min-height: 90vh; position: relative; border-top: 10px solid #000; }
+  .zine .ransom { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-3deg); display: flex; flex-wrap: wrap; gap: 6px; max-width: 900px; justify-content: center; }
+  .zine .ransom span { background: var(--b); color: var(--c); font-size: clamp(30px, 5vw, 70px); padding: 4px 12px; border: 4px solid #000; transform: rotate(var(--r)); font-family: var(--f); box-shadow: 6px 6px 0 #000; }
+  .zine .ransom span:hover { transform: scale(1.3) rotate(0); z-index: 3; }
+  footer { background: #ff2fd6; padding: 30px 4vw; font-size: 18px; display: flex; justify-content: space-between; border-top: 10px solid #000; }
+  @media (max-width: 860px) { .ledger { grid-template-columns: 1fr } .monster { position: relative; width: 90vw; right: auto; top: auto; margin: 20px auto } }
+</style>
+</head>
+<body>
+<div class="tape"><span>⚠ YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 ⚠ YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 ⚠ YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 ⚠ YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 ⚠ </span></div>
+<header>
+  <h1><span class="strike">CONTAINERS</span><br /><span class="strike">EVERY TIME</span><span class="new">ONCE. THEN NEVER.</span></h1>
+  <div class="monster"></div>
+  <div class="sticker s1">IT EATS SERVERS 🍬</div>
+  <div class="sticker s2">0.00<br />SECONDS<br />LOL</div>
+</header>
+<div class="tape rev"><span>BUILD IT ONCE ★ CHECK IT AGAINST THE REAL ONE ★ HASH IT ★ NEVER BOOT A CONTAINER FOR IT AGAIN ★ BUILD IT ONCE ★ CHECK IT AGAINST THE REAL ONE ★ HASH IT ★ NEVER BOOT A CONTAINER FOR IT AGAIN ★ </span></div>
+<section class="fire">
+  <h2>WE SET YOUR<br />CONTAINER BILL<br />ON FIRE 🔥</h2>
+  <div class="meter">CONTAINER-SECONDS, RUN 3<b id="cs">5.66</b></div>
+</section>
+<section class="ledger">
+  <div><h3>PROVEN ✓</h3><p>Repeat run: 6/6 tasks, 0 container calls. tsc type-checked its own source in 105 ms. Receipts or it didn't happen.</p></div>
+  <div><h3>NOT YET ?</h3><p>The cost falling to zero for everyone, forever. We measured 6 tasks. We are not lying to you about this.</p></div>
+  <div><h3>WRONG ✗</h3><p>GraphQL as a meter: it missed a whole build. TypeScript 7: native binary, can't move. We kept the L's on the page.</p></div>
+</section>
+<section class="zine">
+  <div class="ransom">
+    <span style="--b:#fff;--c:#000;--r:-6deg;--f:Georgia">your</span>
+    <span style="--b:#000;--c:#39ff14;--r:4deg;--f:Impact">tools</span>
+    <span style="--b:#ff2fd6;--c:#fff;--r:-2deg;--f:Courier">should</span>
+    <span style="--b:#fff200;--c:#000;--r:7deg;--f:'Arial Black'">LEVEL</span>
+    <span style="--b:#00d4ff;--c:#000;--r:-5deg;--f:Georgia">up</span>
+    <span style="--b:#fff;--c:#ff2fd6;--r:3deg;--f:Impact">not</span>
+    <span style="--b:#000;--c:#fff;--r:-8deg;--f:Courier">boot</span>
+    <span style="--b:#39ff14;--c:#000;--r:5deg;--f:'Arial Black'">UP</span>
+  </div>
+</section>
+<footer><span>accrete ™ (not a real trademark)</span><span>no containers were harmed. ok one was.</span></footer>
+<script>
+const cs = document.getElementById("cs");
+let v = 5.66;
+const tick = () => { v = Math.max(0, v - 0.07 - Math.random() * 0.05); cs.textContent = v.toFixed(2); if (v > 0) requestAnimationFrame(tick); else { cs.textContent = "0.00 💀"; setTimeout(() => { v = 5.66; tick(); }, 2600); } };
+new IntersectionObserver(([e]) => { if (e.isIntersecting && v === 5.66) tick(); }).observe(cs);
+</script>
+</body>
+</html>
