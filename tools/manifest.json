@@ -1,4 +1,0 @@
-[
-  { "name": "marked", "package": "marked", "check": { "args": ["doc.md"], "files": { "doc.md": "# Title\n\nSome *text* and a [link](https://example.com).\n\n| a | b |\n|---|---|\n| 1 | 2 |\n" } } },
-  { "name": "yaml2json", "package": "js-yaml", "check": { "args": ["c.yaml"], "files": { "c.yaml": "name: accrete\nlist:\n  - 1\n  - two\nnested:\n  ok: true\n" } } }
-]

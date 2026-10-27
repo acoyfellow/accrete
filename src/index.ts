@@ -1,7 +1,9 @@
-import { listTools, registerTool, type Registration } from './tools';
+import { isRecipe } from './recipe';
+import { buildTool, forgetTools, listTools, putRecipe, registerTool } from './tools';
 import type { Env, Step } from './types';
 export { Workspace } from './workspace';
 export { Registry } from './registry';
+export { Builder } from './builder';
 
 type TaskRequest = {
   readonly workspace: string;
@@ -10,6 +12,8 @@ type TaskRequest = {
 };
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+
+type Registration = Parameters<typeof registerTool>[1];
 
 const isRegistration = (value: unknown): value is Registration =>
   isObject(value) &&
@@ -43,6 +47,24 @@ const route = async (request: Request, env: Env): Promise<Response> => {
     const body: unknown = await request.json();
     if (!isRegistration(body)) return Response.json({ error: 'bad registration' }, { status: 400 });
     return Response.json(await registerTool(env, body));
+  }
+  if (request.method === 'PUT' && pathname === '/recipes') {
+    const body: unknown = await request.json();
+    if (!isRecipe(body)) return Response.json({ error: 'bad recipe' }, { status: 400 });
+    await putRecipe(env, body);
+    return Response.json({ ok: true, name: body.name });
+  }
+  if (request.method === 'POST' && pathname === '/build') {
+    const body: unknown = await request.json();
+    if (!isRecipe(body)) return Response.json({ error: 'bad recipe' }, { status: 400 });
+    return Response.json(await buildTool(env, body));
+  }
+  if (request.method === 'POST' && pathname === '/forget') {
+    const body: unknown = await request.json();
+    if (!isObject(body) || !Array.isArray(body.names) || !body.names.every((name: unknown) => typeof name === 'string')) {
+      return Response.json({ error: 'bad names' }, { status: 400 });
+    }
+    return Response.json({ removed: await forgetTools(env, body.names) });
   }
   if (request.method === 'POST' && pathname === '/task') {
     const body: unknown = await request.json();

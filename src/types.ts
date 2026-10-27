@@ -36,6 +36,7 @@ export type CallLog = {
   readonly containerSeconds: number;
   readonly ok: boolean;
   readonly error?: string;
+  readonly build?: import('./tools').BuildReceipt;
 };
 
 export type Step =
@@ -49,5 +50,6 @@ export type Env = {
   readonly TOOLS: R2Bucket;
   readonly WORKSPACE: DurableObjectNamespace<import('./workspace').Workspace>;
   readonly REGISTRY: DurableObjectNamespace<import('./registry').Registry>;
+  readonly BUILDER: DurableObjectNamespace<import('./builder').Builder>;
   readonly ACCRETE_TOKEN: string;
 };

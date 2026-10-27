@@ -5,10 +5,7 @@ cd "$(dirname "$0")/.."
 if [ -z "${ACCRETE_URL:-}" ] && [ -f proof/url ]; then ACCRETE_URL=$(cat proof/url); fi
 if [ -z "${ACCRETE_TOKEN:-}" ] && [ -f .secrets/token ]; then ACCRETE_TOKEN=$(cat .secrets/token); fi
 export ACCRETE_URL ACCRETE_TOKEN
-npx tsc -p .
-node scripts/build-tools.mjs
-node scripts/register-tools.mjs
-for run in 1 2 3; do
-  node scripts/run-tasks.mjs "gate-run-$run"
-done
-echo "GATE ITEM 1 PASS: 5/5 tasks on run 1, 2, 3"
+bounded() { perl -e 'alarm shift; exec @ARGV or die' "$@"; }
+bounded 30 npx tsc -p .
+bounded 10 node scripts/make-recipes.mjs
+bounded 100 node scripts/gate.mjs

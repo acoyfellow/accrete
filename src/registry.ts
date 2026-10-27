@@ -49,6 +49,12 @@ export class Registry extends DurableObject<Env> {
     return this.ctx.storage.sql.exec<ToolRow>('SELECT * FROM tools ORDER BY name, registered_at').toArray().map(recordOf);
   }
 
+  forget(names: readonly string[]): number {
+    let removed = 0;
+    for (const name of names) removed += this.ctx.storage.sql.exec('DELETE FROM tools WHERE name = ?', name).rowsWritten;
+    return removed;
+  }
+
   add(record: ToolRecord): void {
     this.ctx.storage.sql.exec(
       'INSERT OR IGNORE INTO tools (name, version, hash, kind, check_json, registered_at) VALUES (?, ?, ?, ?, ?, ?)',

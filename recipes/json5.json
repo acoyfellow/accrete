@@ -1,0 +1,25 @@
+{
+  "name": "json5",
+  "packages": {
+    "json5": "2.2.3"
+  },
+  "entry": "import JSON5 from 'json5';\nexport const run = async ({ args, files }) => {\n  const spaceIndex = args.indexOf('-s');\n  const space = spaceIndex === -1 ? undefined : Number(args[spaceIndex + 1]);\n  const rest = args.filter((_, index) => spaceIndex === -1 || (index !== spaceIndex && index !== spaceIndex + 1));\n  const [source, target] = rest;\n  const json = JSON.stringify(JSON5.parse(files[source] ?? ''), null, space);\n  return target === undefined ? { stdout: json, files: {} } : { stdout: '', files: { [target]: json } };\n};\n",
+  "native": {
+    "bin": "json5",
+    "args": [
+      "-s",
+      "2",
+      "c.json5"
+    ]
+  },
+  "check": {
+    "args": [
+      "-s",
+      "2",
+      "c.json5"
+    ],
+    "files": {
+      "c.json5": "{\n  // settings\n  name: 'accrete',\n  sizes: [1, 2, 3,],\n  nested: { ok: true, hex: 0x10 },\n}\n"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "yaml2json",
+  "packages": {
+    "js-yaml": "4.3.2"
+  },
+  "entry": "import { loadAll } from 'js-yaml';\nexport const run = async ({ args, files }) => {\n  const [source, target] = args;\n  const documents = [];\n  loadAll(files[source] ?? '', (document) => documents.push(document));\n  const value = documents.length === 0 ? null : documents.length === 1 ? documents[0] : documents;\n  const json = JSON.stringify(value, null, '  ') + '\\n';\n  return target === undefined ? { stdout: json, files: {} } : { stdout: '', files: { [target]: json } };\n};\n",
+  "native": {
+    "bin": "js-yaml",
+    "args": [
+      "c.yaml"
+    ]
+  },
+  "check": {
+    "args": [
+      "c.yaml"
+    ],
+    "files": {
+      "c.yaml": "name: accrete\nlist:\n  - 1\n  - two\nnested:\n  ok: true\n  when: 2026-10-26\n"
+    }
+  }
+}

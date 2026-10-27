@@ -1,0 +1,22 @@
+{
+  "name": "marked",
+  "packages": {
+    "marked": "14.1.4"
+  },
+  "entry": "import { marked } from 'marked';\nexport const run = async ({ args, files }) => {\n  const [source, target] = args;\n  const html = (await marked.parse(files[source] ?? '', { async: true })) + '\\n';\n  return target === undefined ? { stdout: html, files: {} } : { stdout: '', files: { [target]: html } };\n};\n",
+  "native": {
+    "bin": "marked",
+    "args": [
+      "-i",
+      "doc.md"
+    ]
+  },
+  "check": {
+    "args": [
+      "doc.md"
+    ],
+    "files": {
+      "doc.md": "# Title\n\nSome *text* and a [link](https://example.com).\n\n| a | b |\n|---|---|\n| 1 | 2 |\n\n```js\nconst x = 1;\n```\n"
+    }
+  }
+}

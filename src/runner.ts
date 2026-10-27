@@ -27,6 +27,7 @@ export default {
 export const runInIsolate = async (env: Env, hash: string, code: string, input: ToolInput): Promise<ToolOutput> => {
   const worker = env.LOADER.get(hash, () => ({
     compatibilityDate: '2026-09-30',
+    compatibilityFlags: ['nodejs_compat'],
     mainModule: 'host.js',
     modules: { 'host.js': hostModule, 'tool.js': code },
     globalOutbound: null,

@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { pathToFileURL } from 'node:url';
+import { nativeStdout } from './native.mjs';
 
 const base = process.env.ACCRETE_URL;
 const token = process.env.ACCRETE_TOKEN;
@@ -7,10 +7,6 @@ const runLabel = process.argv[2] ?? 'run';
 if (!base || !token) throw new Error('set ACCRETE_URL and ACCRETE_TOKEN');
 
 const tasks = JSON.parse(readFileSync('tasks/tasks.json', 'utf8'));
-const native = async (tool, args, files) => {
-  const module = await import(pathToFileURL(`${process.cwd()}/tools/${tool}/entry.js`).href);
-  return (await module.run({ args, files })).stdout;
-};
 
 const problemsFor = async (task, result) => {
   const problems = [];
@@ -19,17 +15,19 @@ const problemsFor = async (task, result) => {
     if (result.files?.[path] !== content) problems.push(`${path} differs`);
   }
   for (const check of task.expect.native ?? []) {
-    const expected = await native(check.tool, check.args, result.files ?? {});
+    const expected = nativeStdout(check.tool, check.args[0], result.files ?? {});
     if (result.files?.[check.file] !== expected) problems.push(`${check.file} differs from native ${check.tool}`);
   }
   return problems;
 };
 
 const report = [];
+const startedAt = new Date().toISOString();
 for (const task of tasks) {
   const response = await fetch(`${base}/task`, {
     method: 'POST',
     headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+    signal: AbortSignal.timeout(25_000),
     body: JSON.stringify({ workspace: `${runLabel}-${task.id}`, seed: task.seed, steps: task.steps }),
   });
   const result = await response.json();
@@ -45,7 +43,10 @@ const summary = {
   total: report.length,
   placements: Object.fromEntries(['isolate', 'built-tool', 'container'].map((p) => [p, calls.filter((c) => c.placement === p).length])),
   containerSeconds: calls.reduce((sum, c) => sum + c.containerSeconds, 0),
-  registryTools: [...new Set(calls.filter((c) => c.tool).map((c) => `${c.tool}#${c.hash.slice(0, 12)}`))],
+  registryTools: [...new Set(calls.filter((c) => c.placement === 'built-tool').map((c) => `${c.tool}#${c.hash.slice(0, 12)}`))],
+  builtThisRun: calls.filter((c) => c.build).map((c) => c.build),
+  startedAt,
+  finishedAt: new Date().toISOString(),
   tasks: report,
 };
 mkdirSync('proof/receipts', { recursive: true });

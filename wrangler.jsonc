@@ -10,11 +10,18 @@
   "observability": { "enabled": true },
   "worker_loaders": [{ "binding": "LOADER" }],
   "r2_buckets": [{ "binding": "TOOLS", "bucket_name": "accrete-tools" }],
+  "containers": [
+    { "class_name": "Builder", "image": "./builder/Dockerfile", "max_instances": 1, "instance_type": "standard-1" }
+  ],
   "durable_objects": {
     "bindings": [
       { "name": "WORKSPACE", "class_name": "Workspace" },
-      { "name": "REGISTRY", "class_name": "Registry" }
+      { "name": "REGISTRY", "class_name": "Registry" },
+      { "name": "BUILDER", "class_name": "Builder" }
     ]
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Workspace", "Registry"] }]
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Workspace", "Registry"] },
+    { "tag": "v2", "new_sqlite_classes": ["Builder"] }
+  ]
 }

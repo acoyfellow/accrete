@@ -1,0 +1,35 @@
+{
+  "name": "eslint",
+  "packages": {
+    "eslint": "10.13.0",
+    "@eslint/js": "10.0.1",
+    "@typescript-eslint/parser": "8.72.0"
+  },
+  "alias": {
+    "accrete-eslint-rules": "eslint/lib/rules/index.js"
+  },
+  "entry": "import { Linter } from 'eslint/universal';\nimport rules from 'accrete-eslint-rules';\nimport js from '@eslint/js';\nimport * as tsParser from '@typescript-eslint/parser';\n\nconst RULES = { ...js.configs.recommended.rules, 'no-undef': 'off', 'no-unused-vars': 'off' };\n\nfor (const id of Object.keys(RULES)) {\n  const rule = rules.get(id);\n  if (rule !== undefined) rule.meta = { ...rule.meta, schema: false };\n}\n\nconst CONFIG = [{ files: ['**/*.ts', '**/*.js', '**/*.mjs'], languageOptions: { parser: tsParser, sourceType: 'module', ecmaVersion: 'latest' }, rules: RULES }];\n\nexport const run = async ({ args, files }) => {\n  const linter = new Linter();\n  const lines = [];\n  for (const path of args.filter((arg) => !arg.startsWith('-'))) {\n    for (const message of linter.verify(files[path] ?? '', CONFIG, path)) {\n      lines.push(`${path}:${message.line}:${message.column} ${message.ruleId} ${message.message}`);\n    }\n  }\n  return { stdout: lines.join('\\n') + '\\n', files: {} };\n};\n",
+  "native": {
+    "bin": "eslint",
+    "args": [
+      "-f",
+      "json",
+      "src/a.ts",
+      "src/b.js"
+    ]
+  },
+  "nativeFilter": "eslint-json",
+  "nativeFiles": {
+    "eslint.config.mjs": "import js from '@eslint/js';\nimport * as tsParser from '@typescript-eslint/parser';\n\nexport default [\n  {\n    files: ['**/*.ts', '**/*.js', '**/*.mjs'],\n    languageOptions: { parser: tsParser, sourceType: 'module', ecmaVersion: 'latest' },\n    rules: { ...js.configs.recommended.rules, 'no-undef': 'off', 'no-unused-vars': 'off' },\n  },\n];\n"
+  },
+  "check": {
+    "args": [
+      "src/a.ts",
+      "src/b.js"
+    ],
+    "files": {
+      "src/a.ts": "export const f = (x: number): number => {\n  if (x == x) debugger;\n  return x;\n};\n",
+      "src/b.js": "const o = { a: 1, a: 2 };\nexport default o;\n"
+    }
+  }
+}

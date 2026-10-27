@@ -66,10 +66,10 @@ export class Workspace extends DurableObject<Env> {
       }
       case 'tool': {
         const files = Object.fromEntries(step.inputs.map((path) => [path, this.readFile(path)]));
-        const { output, record } = await runTool(this.env, step.name, { args: step.args, files });
+        const { output, record, placement, containerSeconds, build } = await runTool(this.env, step.name, { args: step.args, files });
         for (const [path, content] of Object.entries(output.files)) this.writeFile(path, content);
         if (step.stdoutTo !== undefined) this.writeFile(step.stdoutTo, output.stdout);
-        return { op: 'tool', placement: 'built-tool', tool: `${record.name}@${record.version}`, hash: record.hash, containerSeconds: 0 };
+        return { op: 'tool', placement, tool: `${record.name}@${record.version}`, hash: record.hash, containerSeconds, ...(build === undefined ? {} : { build }) };
       }
     }
   }

@@ -53,7 +53,8 @@
           "args": [
             "README.md"
           ],
-          "file": "README.html"
+          "file": "README.html",
+          "recipe": "marked"
         }
       ]
     }
@@ -83,7 +84,8 @@
           "args": [
             "app.yaml"
           ],
-          "file": "app.json"
+          "file": "app.json",
+          "recipe": "yaml2json"
         }
       ]
     }
@@ -125,7 +127,8 @@
           "args": [
             "post.md"
           ],
-          "file": "post.html"
+          "file": "post.html",
+          "recipe": "marked"
         }
       ]
     }
@@ -177,16 +180,48 @@
           "args": [
             "site.yaml"
           ],
-          "file": "site.json"
+          "file": "site.json",
+          "recipe": "yaml2json"
         },
         {
           "tool": "marked",
           "args": [
             "index.md"
           ],
-          "file": "index.html"
+          "file": "index.html",
+          "recipe": "marked"
         }
       ]
+    }
+  },
+  {
+    "id": "json5-config",
+    "seed": {
+      "settings.json5": "{\n  // accrete settings\n  name: 'accrete',\n  tiers: ['ram', 'sqlite', 'r2',],\n  limits: { cpuMs: 50, hex: 0xff },\n}\n"
+    },
+    "steps": [
+      {
+        "op": "tool",
+        "name": "json5",
+        "args": [
+          "-s",
+          "2",
+          "settings.json5",
+          "settings.json"
+        ],
+        "inputs": [
+          "settings.json5"
+        ]
+      },
+      {
+        "op": "read",
+        "path": "settings.json"
+      }
+    ],
+    "expect": {
+      "files": {
+        "settings.json": "{\n  \"name\": \"accrete\",\n  \"tiers\": [\n    \"ram\",\n    \"sqlite\",\n    \"r2\"\n  ],\n  \"limits\": {\n    \"cpuMs\": 50,\n    \"hex\": 255\n  }\n}"
+      }
     }
   }
 ]
