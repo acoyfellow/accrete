@@ -1,0 +1,51 @@
+bench/frozen.json
+  s_7b04649645ea0c::t_7bf550a34c7244 1-4
+bench/ledger.json
+  s_7b04649645ea0c::t_b3c3780e561383 1-4
+bench/runs/baseline/score.json
+  s_7b04649645ea0c::t_681503a273ec28 1-163
+bench/score.json
+  s_7b04649645ea0c::t_38e606996f2661 1-163
+package.json
+  s_7b04649645ea0c::t_427b438ac793bd 14-18
+receipts/falsify.json
+  s_7b04649645ea0c::t_260dd3bdee6c5d 1-36
+scripts/falsify.mjs
+  s_4f65335ba8955f::t_19c0e6cdc5d994 1-83
+scripts/honesty.mjs
+  s_7b04649645ea0c::t_304aad812688d9 1-68
+scripts/keep.mjs
+  s_7b04649645ea0c::t_24fca4d65cafb2 1-33
+scripts/objective.mjs
+  s_7b04649645ea0c::t_7cf87a837353d3 1
+scripts/receipt.mjs
+  s_7b04649645ea0c::t_679d35539caf99 11
+scripts/site-numbers.mjs
+  s_4f65335ba8955f::t_b2e52aad4e7550 1-33
+scripts/try-cli.mjs
+  s_7b04649645ea0c::t_dcf4a6b5591291 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6a08e3de3f185bbb20f23f26773894219ff19858",
+  "prompts": {},
+  "sessions": {
+    "s_4f65335ba8955f": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0428c-86e7-7e26-bc73-8a8b9b5c6d7f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
