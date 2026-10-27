@@ -6,269 +6,199 @@ type H = HtmlBuilder<Message>;
 
 const REPO = "https://github.com/acoyfellow/accrete";
 
-const PLACEMENT: Record<Call["placement"], { readonly label: string; readonly tone: string }> = {
-  isolate: { label: "isolate", tone: "bg-stone-200 text-stone-700" },
-  "built-tool": { label: "registry", tone: "bg-emerald-100 text-held" },
-  container: { label: "container", tone: "bg-orange-100 text-ore" },
-};
+const vars = (h: H, values: Record<string, string>) => h.Style(values);
 
-const eyebrow = (h: H, text: string): Html => h.p([h.Class("font-mono text-[11px] uppercase tracking-[0.18em] text-faint")], [text]);
+const tape = (h: H, text: string, extra: string): Html =>
+  h.div([h.Class(`tape ${extra}`)], [h.span([], [text.repeat(4)])]);
 
-const heading = (h: H, id: string, kicker: string, title: string): Html =>
-  h.div([h.Class("flex flex-col gap-1")], [eyebrow(h, kicker), h.h2([h.Id(id), h.Class("scroll-mt-20 text-[26px] font-semibold tracking-tight")], [title])]);
+const headlineLine = (h: H, text: string, kind: "strike" | "new", delay: string, slash: string): Html =>
+  h.span([h.Class("line")], [h.span([h.Class(kind === "strike" ? "strike" : "new pop"), vars(h, { "--d": delay, "--d2": slash })], [text])]);
 
-const prose = (h: H, text: string): Html => h.p([h.Class("max-w-2xl text-[15px] leading-7 text-dim")], [text]);
-
-const codeBlock = (h: H, lines: ReadonlyArray<string>): Html =>
-  h.pre([h.Class("overflow-auto rounded-xl border border-rule bg-ink p-4 font-mono text-[12.5px] leading-6 text-stone-100")], [lines.join("\n")]);
-
-const nav = (h: H): Html =>
-  h.nav(
-    [h.Class("sticky top-0 z-10 border-b border-rule bg-paper/90 backdrop-blur")],
-    [
-      h.div([h.Class("mx-auto flex max-w-5xl items-center gap-6 px-6 py-3 text-[13px]")], [
-        h.a([h.Href("#top"), h.Class("font-mono font-semibold text-ink")], ["accrete"]),
-        ...[
-          ["#demo", "Demo"],
-          ["#how", "How it works"],
-          ["#ledger", "Ledger"],
-          ["#run", "Run it"],
-          ["#limits", "Limits"],
-        ].map(([href, label]) => h.a([h.Href(href ?? "#"), h.Class("text-dim hover:text-ink")], [label ?? ""])),
-        h.a([h.Href("/llms.txt"), h.Class("ml-auto font-mono text-faint hover:text-ink")], ["llms.txt"]),
-      ]),
-    ],
-  );
-
-const hero = (h: H, status: Status | null): Html =>
-  h.header(
-    [h.Id("top"), h.Class("mx-auto flex max-w-5xl flex-col gap-6 px-6 pb-12 pt-16")],
-    [
-      eyebrow(h, `notebook · iteration ${status?.iteration ?? "…"}`),
-      h.h1([h.Class("max-w-3xl text-[44px] font-semibold leading-[1.05] tracking-tight")], ["Build a tool once. Then run it with no container."]),
-      prose(
-        h,
-        "Coding agents need tools like tsc, json5 and markdown renderers. Running each one in a container on every call costs seconds and money, every time. accrete builds a missing tool once, checks it against the real tool, and stores it. After that it runs in a Worker isolate.",
-      ),
-      h.div([h.Class("flex flex-wrap gap-3 pt-2")], [
-        h.a([h.Href("#demo"), h.Class("rounded-lg bg-ink px-4 py-2 text-[14px] font-medium text-paper")], ["Try the demo"]),
-        h.a([h.Href("#ledger"), h.Class("rounded-lg border border-rule px-4 py-2 text-[14px] text-ink")], ["Read the evidence"]),
-      ]),
-    ],
-  );
-
-const claimCard = (h: H, status: Status): Html =>
-  h.section([h.Class("mx-auto max-w-5xl px-6")], [
-    h.div([h.Class("grid gap-4 rounded-2xl border border-rule bg-card p-6 md:grid-cols-[1fr_1.4fr]")], [
-      h.div([h.Class("flex flex-col gap-2")], [eyebrow(h, "the claim"), h.p([h.Class("text-[18px] font-medium leading-7")], [status.falsifiable])]),
-      h.div([h.Class("flex flex-col gap-2 border-rule md:border-l md:pl-6")], [
-        eyebrow(h, "the rule every built tool obeys"),
-        h.p([h.Class("text-[14px] leading-6 text-dim")], [status.constraint]),
-      ]),
+const hero = (h: H): Html =>
+  h.header([], [
+    h.h1([], [
+      headlineLine(h, "CONTAINERS", "strike", "2.9s", "3.9s"),
+      headlineLine(h, "EVERY TIME", "strike", "3.05s", "4.1s"),
+      headlineLine(h, "ONCE.", "new", "4.5s", "0s"),
+      headlineLine(h, "THEN NEVER.", "new", "4.65s", "0s"),
+    ]),
+    h.div([vars(h, { position: "relative" })], [
+      h.div([h.Class("card in"), vars(h, { "--d": "3.3s" })], []),
+      h.div([h.Class("sticker s1 in"), vars(h, { "--d": "4.9s" })], ["IT EATS SERVERS 🍬"]),
+      h.div([h.Class("sticker s2 in"), vars(h, { "--d": "5.1s" })], ["0.00 SECONDS LOL"]),
     ]),
   ]);
 
-const placementBadge = (h: H, call: Call): Html => {
-  const style = PLACEMENT[call.placement];
-  return h.span([h.Class(`rounded-md px-2 py-0.5 font-mono text-[11px] ${style.tone}`)], [style.label]);
-};
+const RECEIPT_RUNS: ReadonlyArray<{ readonly title: string; readonly body: string; readonly cs: string; readonly kind: "cost" | "zero" }> = [
+  { title: "json5 · FORGED", body: "built once in a container. 28 KB. matches the real one.", cs: "2.69s", kind: "cost" },
+  { title: "json5 · AGAIN", body: "from the registry. 3 ms. no container. lol.", cs: "0.00s", kind: "zero" },
+  { title: "tsc · FORGED", body: "7.2 MB. type-checks accrete's own source.", cs: "5.66s", kind: "cost" },
+  { title: "tsc · AGAIN", body: "105 ms. no errors. no container. ever.", cs: "0.00s", kind: "zero" },
+];
 
-const callRow = (h: H, call: Call): Html =>
-  h.tr([h.Class("border-t border-rule")], [
-    h.td([h.Class("py-2 pr-3 font-mono text-[12px]")], [call.tool?.split("@")[0] ?? call.op]),
-    h.td([h.Class("py-2 pr-3")], [placementBadge(h, call)]),
-    h.td([h.Class("py-2 pr-3 text-right font-mono text-[12px]")], [`${call.ms} ms`]),
-    h.td([h.Class(`py-2 text-right font-mono text-[12px] ${call.containerSeconds > 0 ? "text-ore" : "text-held"}`)], [`${call.containerSeconds.toFixed(2)} s`]),
+const xp = (h: H): Html =>
+  h.div([h.Class("xp in"), vars(h, { "--d": "5.3s" })], [
+    h.b([h.Class("lv")], []),
+    h.div([h.Class("track")], [h.i([], [])]),
+    h.span([h.Class("tag")], ["4 RUNS · 2 TOOLS · 0.00s ON REPEAT"]),
   ]);
 
-const reportOf = (run: Run): string | null => {
+const receiptRuns = (h: H): Html =>
+  h.div(
+    [h.Class("runs")],
+    RECEIPT_RUNS.map((run, index) =>
+      h.div([h.Class(`run ${run.kind}`), vars(h, { "--i": String(index) })], [h.h3([], [run.title]), h.p([], [run.body]), h.div([h.Class("cs")], [run.cs])]),
+    ),
+  );
+
+const containerTotal = (run: Run): number => run.result.logs.reduce((sum, call) => sum + call.containerSeconds, 0);
+
+const callLine = (call: Call): string =>
+  `${call.tool?.split("@")[0] ?? call.op} · ran in ${call.placement === "built-tool" ? "registry" : call.placement} · ${call.ms} ms`;
+
+const outputOf = (run: Run): string | undefined => {
+  if (run.kind === "cold") return run.result.files["app.json"];
   const report = run.result.files["reports/tsc.txt"];
-  if (run.kind !== "self" || report === undefined) return null;
+  if (report === undefined) return undefined;
   return report === "" ? "tsc: no errors" : report;
 };
 
-const runCard = (h: H, run: Run): Html => {
-  const total = run.result.logs.reduce((sum, call) => sum + call.containerSeconds, 0);
+const liveRun = (h: H, run: Run): Html => {
+  const total = containerTotal(run);
   const build = run.result.logs.find((call) => call.build !== undefined)?.build;
-  const report = reportOf(run);
-  const output = run.kind === "cold" ? run.result.files["app.json"] : undefined;
-  return h.article([h.Class("flex flex-col gap-3 rounded-xl border border-rule bg-card p-4")], [
-    h.div([h.Class("flex items-baseline gap-3")], [
-      h.span([h.Class("font-mono text-[11px] text-faint")], [`run ${run.at}`]),
-      h.span([h.Class("text-[14px] font-medium")], [run.label]),
-      h.span([h.Class(`ml-auto font-mono text-[13px] font-semibold ${total > 0 ? "text-ore" : "text-held"}`)], [`${total.toFixed(2)} container-seconds`]),
-    ]),
-    h.table([h.Class("w-full")], [
-      h.thead([], [
-        h.tr([h.Class("text-left font-mono text-[10px] uppercase tracking-wider text-faint")], [
-          h.th([h.Class("pb-1")], ["step"]),
-          h.th([h.Class("pb-1")], ["ran in"]),
-          h.th([h.Class("pb-1 text-right")], ["time"]),
-          h.th([h.Class("pb-1 text-right")], ["container"]),
-        ]),
-      ]),
-      h.tbody([], run.result.logs.map((call) => callRow(h, call))),
-    ]),
-    ...(build
-      ? [
-          h.p([h.Class("rounded-lg bg-orange-50 px-3 py-2 font-mono text-[12px] leading-5 text-ore")], [
-            `built ${build.name} in the container: ${(build.bytes / 1024).toFixed(0)} KB bundle, native output matched = ${build.nativeMatchesBuilt}, hash ${build.hash.slice(0, 12)}`,
-          ]),
-        ]
-      : []),
-    ...(report ? [h.pre([h.Class("max-h-40 overflow-auto rounded-lg bg-stone-100 px-3 py-2 font-mono text-[12px] text-held")], [report])] : []),
-    ...(output ? [h.pre([h.Class("max-h-40 overflow-auto rounded-lg bg-stone-100 px-3 py-2 font-mono text-[12px]")], [output])] : []),
-    ...(run.result.ok ? [] : [h.p([h.Class("font-mono text-[12px] text-broken")], [run.result.logs.at(-1)?.error ?? "failed"])]),
+  const output = outputOf(run);
+  return h.div([h.Class(`liverun ${total > 0 ? "cost" : "zero"}`)], [
+    h.div([h.Class("head")], [h.span([], [`RUN ${run.at} · ${run.label}`]), h.b([], [`${total.toFixed(2)}s`])]),
+    ...run.result.logs.map((call) => h.div([h.Class("meta")], [callLine(call)])),
+    ...(build ? [h.div([h.Class("meta")], [`forged ${build.name}: ${(build.bytes / 1024).toFixed(0)} KB · matches native = ${build.nativeMatchesBuilt} · ${build.hash.slice(0, 12)}`])] : []),
+    ...(output ? [h.pre([], [output])] : []),
+    ...(run.result.ok ? [] : [h.div([h.Class("meta")], [run.result.logs.at(-1)?.error ?? "failed"])]),
   ]);
 };
 
-const toolList = (h: H, tools: ReadonlyArray<Tool>): Html =>
-  h.div([h.Class("flex flex-col gap-2 rounded-xl border border-rule bg-card p-4")], [
-    eyebrow(h, `registry · ${tools.length} tools`),
-    ...(tools.length === 0
-      ? [h.p([h.Class("text-[13px] text-faint")], ["empty"])]
-      : tools.map((tool) =>
-          h.div([h.Class("flex items-baseline gap-2 font-mono text-[12px]")], [
-            h.span([h.Class("font-semibold")], [tool.name]),
-            h.span([h.Class("truncate text-faint")], [tool.version.split("+")[0] ?? tool.version]),
-            h.span([h.Class("ml-auto text-faint")], [tool.hash.slice(0, 8)]),
-          ]),
-        )),
+const registry = (h: H, tools: ReadonlyArray<Tool>): Html =>
+  h.div([h.Class("reg")], [
+    h.b([], [`REGISTRY · ${tools.length}`]),
+    ...(tools.length === 0 ? [h.span([], ["empty"])] : tools.map((tool) => h.div([], [`${tool.name} · ${tool.hash.slice(0, 8)}`]))),
   ]);
 
-const button = (h: H, label: string, message: Message, busy: boolean, primary: boolean): Html =>
-  h.button(
-    [
-      h.Type("button"),
-      h.Disabled(busy),
-      h.OnClick(message),
-      h.Class(`rounded-lg px-4 py-2 text-[14px] font-medium disabled:opacity-40 ${primary ? "bg-ink text-paper" : "border border-rule text-ink"}`),
-    ],
-    [label],
-  );
+const button = (h: H, label: string, message: Message, busy: boolean, extra: string): Html =>
+  h.button([h.Type("button"), h.Disabled(busy), h.OnClick(message), h.Class(`btn ${extra}`)], [label]);
 
 const demo = (h: H, model: Model, local: boolean): Html => {
   const busy = Activity.guards.Busy(model.activity);
-  return h.section([h.Class("mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16")], [
-    heading(h, "demo", "dogfood", "Watch a tool get built, then reused"),
-    prose(
-      h,
-      "Reset removes json5 and tsc from the registry. The first run of each task has to build its tool in the container. Run it again and the same task uses the registry copy: 0 container-seconds. The tsc task type-checks accrete's own source.",
-    ),
-    local
-      ? h.div([h.Class("flex flex-wrap items-center gap-3")], [
-          button(h, "1. Reset registry", Message.ClickedReset(), busy, false),
-          button(h, "2. Run json5 task", Message.ClickedRun({ kind: "cold" }), busy, true),
-          button(h, "3. Check accrete with accrete", Message.ClickedRun({ kind: "self" }), busy, true),
+  return h.section([h.Id("demo"), h.Class("demo")], [
+    h.h2([], ["DO IT YOURSELF"]),
+    h.p([], ["Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: 0.00s. The tsc run checks accrete's own source."]),
+    ...(local
+      ? [
+          button(h, "1 · RESET", Message.ClickedReset(), busy, ""),
+          button(h, "2 · RUN JSON5", Message.ClickedRun({ kind: "cold" }), busy, "go"),
+          button(h, "3 · CHECK ACCRETE WITH ACCRETE", Message.ClickedRun({ kind: "self" }), busy, "go"),
           Activity.match(model.activity, {
             Idle: () => h.span([], []),
-            Busy: ({ label }) => h.span([h.Class("font-mono text-[12px] text-ore")], [`${label}…`]),
-            Failed: ({ reason }) => h.span([h.Class("font-mono text-[12px] text-broken")], [reason]),
+            Busy: ({ label }) => h.span([h.Class("status")], [`${label}…`]),
+            Failed: ({ reason }) => h.span([h.Class("status bad")], [reason]),
           }),
-        ])
-      : h.p([h.Class("rounded-lg border border-rule bg-card px-4 py-3 text-[14px] text-dim")], [
-          "The live demo runs only in local dev, because it starts a container. Clone the repo and run it locally (see Run it).",
-        ]),
-    h.div([h.Class("grid gap-4 md:grid-cols-[1fr_16rem]")], [
-      h.div(
-        [h.Class("flex flex-col gap-3")],
-        model.runs.length === 0 ? [h.p([h.Class("rounded-xl border border-dashed border-rule px-4 py-8 text-center text-[13px] text-faint")], ["No runs yet."])] : model.runs.map((run) => runCard(h, run)),
-      ),
-      toolList(h, model.tools),
+        ]
+      : [h.p([], ["The live demo starts a container, so it runs only in local dev. Clone it and run npm run dev."])]),
+    h.div([h.Class("live")], [
+      h.div([], model.runs.length === 0 ? [h.div([h.Class("empty")], ["no runs yet. press a button."])] : model.runs.map((run) => liveRun(h, run))),
+      registry(h, model.tools),
     ]),
   ]);
 };
 
-const step = (h: H, n: string, title: string, body: string): Html =>
-  h.li([h.Class("flex flex-col gap-1 rounded-xl border border-rule bg-card p-4")], [
-    h.span([h.Class("font-mono text-[11px] text-ore")], [n]),
-    h.span([h.Class("text-[15px] font-medium")], [title]),
-    h.span([h.Class("text-[13px] leading-6 text-dim")], [body]),
-  ]);
+const STEPS: ReadonlyArray<readonly [string, string, string]> = [
+  ["01", "TASK LANDS", "A Durable Object holds the files. read, write, edit run in an isolate."],
+  ["02", "REGISTRY FIRST", "Tool hit? Load the bundle from R2. Run it in a sealed isolate."],
+  ["03", "MISS: FORGE ONCE", "A container installs the npm package, bundles it, and dies."],
+  ["04", "PROVE IT", "Bundle output must equal the real tool's output. Then hash it. Then keep it."],
+];
 
 const how = (h: H): Html =>
-  h.section([h.Class("mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16")], [
-    heading(h, "how", "how it works", "One flow, one rule"),
-    h.ol([h.Class("grid gap-3 md:grid-cols-4")], [
-      step(h, "01", "Task arrives", "A workspace Durable Object holds the files. Read, write and edit steps run in a Worker isolate."),
-      step(h, "02", "Registry first", "A tool step looks up the tool by name. A hit loads the bundle from R2 and runs it in an isolate."),
-      step(h, "03", "Miss: build once", "The builder container installs the npm package and bundles it with esbuild. Then it stops."),
-      step(h, "04", "Check, then store", "The bundle must print the same output as the native tool on a check case. Only then is it stored, by content hash."),
+  h.section(
+    [h.Class("how")],
+    STEPS.map(([n, title, body], index) =>
+      h.div([h.Class("reveal"), vars(h, { "--r": `${index % 2 === 0 ? -1.5 : 1.5}deg` })], [h.i([], [n]), h.h3([], [title]), h.p([], [body])]),
+    ),
+  );
+
+const fire = (h: H): Html =>
+  h.section([h.Class("fire")], [
+    h.div([h.Class("bg")], []),
+    h.h2([h.Class("reveal"), vars(h, { "--r": "-4deg" })], ["WE SET YOUR CONTAINER BILL ON FIRE 🔥"]),
+    h.div([h.Class("meter reveal")], ["CONTAINER-SECONDS, NEXT RUN", h.b([], [])]),
+  ]);
+
+const receiptLink = (h: H, path: string): Html => h.a([h.Href(`${REPO}/blob/main/${path}`)], [path]);
+
+const ledger = (h: H, status: Status): Html =>
+  h.section([h.Id("ledger"), h.Class("ledger")], [
+    h.div([h.Class("reveal"), vars(h, { "--r": "-2deg" })], [
+      h.h3([], [`PROVEN ✓ ${status.proven.length}`]),
+      h.ul([], status.proven.map((item) => h.li([], [item.observed, receiptLink(h, item.receipt)]))),
     ]),
-    prose(
-      h,
-      "The load-bearing primitive is Worker Loader: it runs a stored bundle in a fresh isolate with no network and no bindings. The tool contract is run({ args, files }) → { stdout, files }.",
+    h.div([h.Class("reveal"), vars(h, { "--r": "1.5deg" })], [
+      h.h3([], [`NOT YET ? ${status.unproven.length}`]),
+      h.ul([], status.unproven.map((item) => h.li([], [`${item.claim} ${item.why}`]))),
+    ]),
+    h.div([h.Class("reveal"), vars(h, { "--r": "-1deg" })], [
+      h.h3([], [`WRONG ✗ ${status.disproven.length}`]),
+      h.ul([], status.disproven.map((item) => h.li([], [item.observed, receiptLink(h, item.receipt)]))),
+    ]),
+  ]);
+
+const RANSOM: ReadonlyArray<readonly [string, string, string, string, string]> = [
+  ["your", "#fff", "#000", "-6deg", "Georgia"],
+  ["tools", "#000", "#39ff14", "4deg", "Impact"],
+  ["should", "#ff2fd6", "#fff", "-2deg", "Courier"],
+  ["LEVEL", "#fff200", "#000", "7deg", "Arial Black"],
+  ["up", "#00d4ff", "#000", "-5deg", "Georgia"],
+  ["not", "#fff", "#ff2fd6", "3deg", "Impact"],
+  ["boot", "#000", "#fff", "-8deg", "Courier"],
+  ["UP", "#39ff14", "#000", "5deg", "Arial Black"],
+];
+
+const zine = (h: H): Html =>
+  h.section([h.Class("zine")], [
+    h.div(
+      [h.Class("ransom")],
+      RANSOM.map(([word, background, color, rotate, font]) => h.span([h.Class("reveal"), vars(h, { "--b": background, "--c": color, "--r": rotate, "--f": font })], [word])),
     ),
   ]);
 
-const ledgerRow = (h: H, tone: string, mark: string, claim: string, detail: string, receipt: string | null): Html =>
-  h.li([h.Class("grid grid-cols-[1.5rem_1fr] gap-3 border-t border-rule py-4")], [
-    h.span([h.Class(`font-mono text-[14px] font-bold ${tone}`)], [mark]),
-    h.div([h.Class("flex flex-col gap-1")], [
-      h.span([h.Class("text-[15px] font-medium")], [claim]),
-      h.span([h.Class("text-[13px] leading-6 text-dim")], [detail]),
-      ...(receipt ? [h.a([h.Href(`${REPO}/blob/main/${receipt}`), h.Class("font-mono text-[11px] text-faint hover:text-ink")], [receipt])] : []),
-    ]),
-  ]);
-
-const ledger = (h: H, status: Status): Html =>
-  h.section([h.Class("mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16")], [
-    heading(h, "ledger", "evidence", "Proven, unproven, disproven"),
-    prose(h, "A claim moves to proven only with a receipt from a real run. A projection never counts. Negative results stay on the page."),
-    h.div([h.Class("grid gap-8 md:grid-cols-3")], [
-      h.div([], [
-        eyebrow(h, `proven · ${status.proven.length}`),
-        h.ul([], status.proven.map((item) => ledgerRow(h, "text-held", "✓", item.claim, item.observed, item.receipt))),
-      ]),
-      h.div([], [
-        eyebrow(h, `unproven · ${status.unproven.length}`),
-        h.ul([], status.unproven.map((item) => ledgerRow(h, "text-open", "?", item.claim, item.why, null))),
-      ]),
-      h.div([], [
-        eyebrow(h, `disproven · ${status.disproven.length}`),
-        h.ul([], status.disproven.map((item) => ledgerRow(h, "text-broken", "✗", item.claim, item.observed, item.receipt))),
-      ]),
-    ]),
-  ]);
-
-const runIt = (h: H): Html =>
-  h.section([h.Class("mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16")], [
-    heading(h, "run", "run it", "Local, end to end"),
-    prose(h, "Needs Node 22 and Docker. The builder container runs in local Docker; nothing is deployed."),
-    codeBlock(h, ["git clone https://github.com/acoyfellow/accrete && cd accrete", "npm install", "npm run dev        # Worker on :8799, site on :5281", "npm run gate:local # the slice 2 gate against local dev"]),
-    prose(h, "The gate prints PASS or FAIL for each check and writes JSON receipts to proof/receipts/."),
-  ]);
-
-const limits = (h: H, status: Status): Html =>
-  h.section([h.Class("mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16")], [
-    heading(h, "limits", "non-goals", "What it does not do"),
-    h.ul([h.Class("grid gap-3 md:grid-cols-2")], [
-      ...[
-        "Built tools get no network and no secrets. A tool that needs either stays out of the registry.",
-        "Only npm tools that esbuild can bundle to plain JavaScript. Native binaries, such as TypeScript 7, cannot move off the container.",
-        "The write API (/task, /build, /recipes) needs a bearer token. The demo actions run only on localhost.",
-        "Registry entries are immutable and named by content hash. There is no update in place.",
-      ].map((text) => h.li([h.Class("rounded-xl border border-rule bg-card p-4 text-[14px] leading-6 text-dim")], [text])),
-    ]),
-    h.div([h.Class("flex flex-col gap-2")], [
-      eyebrow(h, "open questions"),
-      h.ul([h.Class("list-disc pl-5 text-[14px] leading-7 text-dim")], status.openQuestions.map((question) => h.li([], [question]))),
-    ]),
-  ]);
-
 const footer = (h: H): Html =>
-  h.footer([h.Class("border-t border-rule")], [
-    h.div([h.Class("mx-auto flex max-w-5xl gap-6 px-6 py-8 font-mono text-[12px] text-faint")], [
-      h.span([], ["accrete · MIT"]),
-      h.a([h.Href("/status.json"), h.Class("hover:text-ink")], ["status.json"]),
-      h.a([h.Href("/llms.txt"), h.Class("hover:text-ink")], ["llms.txt"]),
-    ]),
+  h.footer([], [
+    h.span([], ["accrete · MIT · no containers were harmed. ok one was."]),
+    h.span([], [h.a([h.Href("/status.json")], ["status.json"]), " · ", h.a([h.Href("/llms.txt")], ["llms.txt"])]),
+  ]);
+
+const boot = (h: H): Html => h.div([h.Class("boot")], [h.div([h.Class("gem")], [])]);
+
+const stage = (h: H): Html =>
+  h.section([h.Class("stage")], [
+    tape(h, "⚠ YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 ", "in"),
+    hero(h),
+    xp(h),
+    receiptRuns(h),
   ]);
 
 export const view = (model: Model, h: H): Html =>
   Loaded.match(model.loaded, {
-    Loading: () => h.main([h.Class("min-h-screen")], [nav(h), hero(h, null)]),
-    Failed: ({ reason }) => h.main([h.Class("min-h-screen")], [nav(h), hero(h, null), h.p([h.Class("mx-auto max-w-5xl px-6 font-mono text-broken")], [reason])]),
+    Loading: () => h.main([], [boot(h)]),
+    Failed: ({ reason }) => h.main([], [stage(h), h.p([h.Class("status bad")], [reason])]),
     Ready: ({ status, local }) =>
-      h.main([h.Class("min-h-screen")], [nav(h), hero(h, status), claimCard(h, status), demo(h, model, local), how(h), ledger(h, status), runIt(h), limits(h, status), footer(h)]),
+      h.main([], [
+        boot(h),
+        h.div([h.Class("levelup")], [h.b([], ["LEVEL UP"])]),
+        stage(h),
+        demo(h, model, local),
+        tape(h, "BUILD IT ONCE ★ CHECK IT AGAINST THE REAL ONE ★ HASH IT ★ NEVER BOOT A CONTAINER FOR IT AGAIN ★ ", "rev"),
+        how(h),
+        fire(h),
+        ledger(h, status),
+        zine(h),
+        footer(h),
+      ]),
   });
