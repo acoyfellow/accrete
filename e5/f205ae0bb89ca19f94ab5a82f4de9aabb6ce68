@@ -1,0 +1,71 @@
+.gitignore
+  s_7b04649645ea0c::t_440e28d5ff3b20 6-8
+README.md
+  s_7b04649645ea0c::t_98c79e24c6df61 1-40
+biome.json
+  s_7b04649645ea0c::t_9ad33f5b73c5b2 1-6
+client/index.html
+  s_7b04649645ea0c::t_c2ab4ad779dffa 1-14
+client/public/llms.txt
+  s_7b04649645ea0c::t_78b3cab2f4b7ac 1-23
+client/src/entry.ts
+  s_7b04649645ea0c::t_4b2176546f7616 1-17
+client/src/styles.css
+  s_7b04649645ea0c::t_cb11cc007a572c 1-23
+client/src/update.ts
+  s_7b04649645ea0c::t_dee861e006b854 1-38
+client/src/view.ts
+  s_7b04649645ea0c::t_77e9132bf7836b 1-274
+client/tsconfig.json
+  s_7b04649645ea0c::t_3033baf296d61e 1-13
+client/vite.config.ts
+  s_7b04649645ea0c::t_cee25cb828c357 1-12
+experiments/01-isolate-registry/README.md
+  s_7b04649645ea0c::t_b9533de3cd0a29 1-13
+experiments/02-builder-cold-tool/README.md
+  s_7b04649645ea0c::t_87174c68e0798f 1-27
+package-lock.json
+  s_7b04649645ea0c::t_ba40af99bfddc9 12,14-17,19-21,34-187,349-412,993-1034,1628-1667,1718-1726,1756-1759,1761,1763,1765-1766,1769-1772,1774,1776,1779-1788,1791-1794,1796,1798,1801-2445,2696-2726,2741,3031-3046,3074-3079,3150-3158,3242-3490,3507-3515,3579-3596,3654-3665,3700-3705,3711-3740,3742-3743,3786-3835,3922-3930,3944-3962,4026-4040,4061-4405
+package.json
+  s_7b04649645ea0c::t_feb1b21d5a2fe2 3-4,6-14,16,18,20-23,25-27
+receipts/02-gate.json
+  s_7b04649645ea0c::t_1f7af063e31cae 1-62
+receipts/02-run-1.json
+  s_7b04649645ea0c::t_2eea95f8036216 1-192
+receipts/02-run-3.json
+  s_7b04649645ea0c::t_59b46f40aaa531 1-174
+receipts/02-self-check.json
+  s_7b04649645ea0c::t_723a5eb1170069 1-17
+recipes/tsc.json
+  s_7b04649645ea0c::t_a3605c5719b8ae 17
+scripts/dev.sh
+  s_7b04649645ea0c::t_207735cb02947f 1-8
+scripts/self-check.mjs
+  s_7b04649645ea0c::t_a6cbd687d0b0ca 1-2,7
+scripts/self-source.mjs
+  s_7b04649645ea0c::t_5c170465bb4238 1-18
+src/index.ts
+  s_7b04649645ea0c::t_361d7a9b801fc0 3,79-83,86-93
+src/types.ts
+  s_7b04649645ea0c::t_5ae9282b63e6c0 55
+tsconfig.json
+  s_7b04649645ea0c::t_8186d4ffb24668 10-11
+wrangler.jsonc
+  s_7b04649645ea0c::t_86edc5c3af4b55 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e5f205ae0bb89ca19f94ab5a82f4de9aabb6ce68",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
