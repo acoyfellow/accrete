@@ -1,0 +1,41 @@
+LICENSE
+  s_7b04649645ea0c::t_85cd5e6ccfc945 1-21
+client/index.html
+  s_7b04649645ea0c::t_4c04cfb7bc3082 7-20,25,27
+client/public/llms.txt
+  s_7b04649645ea0c::t_7e1b2a98c4360f 3
+client/public/manifest.webmanifest
+  s_7b04649645ea0c::t_1d686e36074c4b 1-13
+client/public/robots.txt
+  s_7b04649645ea0c::t_f95eba23a377cd 1-3
+client/public/sitemap.xml
+  s_7b04649645ea0c::t_984c51caffe527 1-2
+client/public/sw.js
+  s_7b04649645ea0c::t_046a48c9bc29e4 1-13
+client/src/styles.css
+  s_7b04649645ea0c::t_2df225e334c9c3 214-231
+client/src/view.ts
+  s_7b04649645ea0c::t_cb660827a32fc8 102-103,119-122
+proof/url
+  s_7b04649645ea0c::t_4faf9a16693323 1
+scripts/container-seconds.mjs
+  s_7b04649645ea0c::t_b7175513467eae 4-5
+wrangler.jsonc
+  s_7b04649645ea0c::t_34d81a76b5d27a 5-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "160b4043b959b8636bfb9ed43d57b5991b446c70",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
