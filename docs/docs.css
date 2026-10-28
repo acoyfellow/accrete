@@ -44,3 +44,5 @@ tr:nth-child(even) td { background: #fbf2e6; }
   .top nav a:nth-child(n+3) { display: none; }
   main { padding-top: 20px; }
 }
+th code { background: none; color: var(--sun); padding: 0; }
+td code { color: var(--ink); }
