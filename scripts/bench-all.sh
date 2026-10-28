@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -uo pipefail
-export PATH=/Users/jcoeyman/.nvm/versions/node/v22.22.2/bin:$PATH
 cd "$(dirname "$0")/.."
 export ACCRETE_URL="${ACCRETE_URL:-http://localhost:8799}" ACCRETE_TOKEN="${ACCRETE_TOKEN:-local-dev}"
 label="${1:-bench}"

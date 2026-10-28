@@ -4,11 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>accrete · once. then never.</title>
-    <meta name="description" content="Agents on Durable Objects build the tools they need once. Repeat runs use 0 container-seconds." />
+    <meta name="description" content="Open source. Deploy accrete to your own Cloudflare account: agents build each npm tool once in a container, check it against the real tool, then run it in a Worker isolate with 0 container-seconds." />
+    <link rel="canonical" href="https://accrete.customer0.dev/" />
+    <meta name="theme-color" content="#f38020" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://accrete.customer0.dev/" />
+    <meta property="og:title" content="accrete · once. then never." />
+    <meta property="og:description" content="Self-hosted on your Cloudflare account. Build each agent tool once, then run it with 0 container-seconds." />
+    <meta property="og:image" content="https://accrete.customer0.dev/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://accrete.customer0.dev/og.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"accrete","codeRepository":"https://github.com/acoyfellow/accrete","license":"https://opensource.org/licenses/MIT","programmingLanguage":"TypeScript","runtimePlatform":"Cloudflare Workers"}</script>
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
     <div id="root"></div>
+    <noscript><h1>accrete</h1><p>Open source. Deploy to your own Cloudflare account. Agents build each npm tool once, then run it with 0 container-seconds.</p></noscript>
     <script type="module" src="/src/entry.ts"></script>
+    <script>if ("serviceWorker" in navigator && location.hostname !== "localhost") navigator.serviceWorker.register("/sw.js");</script>
   </body>
 </html>

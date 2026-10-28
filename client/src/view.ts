@@ -99,8 +99,8 @@ const USE_STEPS: ReadonlyArray<readonly [string, string, string]> = [
 
 const use = (h: H): Html =>
   h.section([h.Id("use"), h.Class("use")], [
-    h.h2([], ["USE IT"]),
-    h.p([h.Class("lede")], ["Not a library. A Cloudflare Worker you deploy, plus one HTTP call your agent makes instead of booting a container. The first call to a tool builds and checks it. Every call after runs the saved copy in an isolate."]),
+    h.h2([], ["DEPLOY IT"]),
+    h.p([h.Class("lede")], ["Not a library and not a SaaS. You deploy a Worker to your own Cloudflare account. Then your agent makes one HTTP call instead of booting a container. The first call to a tool builds and checks it. Every call after runs the saved copy in an isolate."]),
     h.div([h.Class("use-steps")], USE_STEPS.map(([n, title, code]) =>
       h.div([], [h.h3([], [h.i([], [n]), title]), h.pre([], [h.code([], [code])])]),
     )),
@@ -116,6 +116,10 @@ const hero = (h: H): Html =>
       headlineLine(h, "THEN NEVER.", "new", ms(4650), ms(0)),
     ]),
     explainer(h),
+    h.div([h.Class("selfhost")], [
+      h.p([], [h.b([], ["Open source. Runs in your own Cloudflare account."]), " Not a hosted service. You deploy one Worker; your agents call it instead of booting a container for every npm tool."]),
+      h.div([h.Class("cta")], [h.a([h.Href("#use"), h.Class("primary")], ["DEPLOY IT"]), h.a([h.Href(REPO)], ["SOURCE ON GITHUB"])]),
+    ]),
   ]);
 
 type ReceiptRun = { readonly title: string; readonly body: string; readonly cs: string; readonly kind: "cost" | "zero" };

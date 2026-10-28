@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://accrete.customer0.dev/sitemap.xml

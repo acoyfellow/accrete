@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 
-const ACCOUNT = 'bfcb6ac5b3ceaf42a09607f6f7925823';
-const APPLICATION = process.env.ACCRETE_BUILDER_APP ?? 'a039b6f7-166f-4755-9c42-86fbd6ebb772';
+const ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID ?? '';
+const APPLICATION = process.env.ACCRETE_BUILDER_APP ?? '';
 
 const token = () => {
   if (process.env.CLOUDFLARE_PERSONAL_API_TOKEN) return process.env.CLOUDFLARE_PERSONAL_API_TOKEN;

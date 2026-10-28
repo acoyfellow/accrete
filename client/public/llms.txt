@@ -1,5 +1,6 @@
 # accrete
 
+> Open source and self-hosted: you deploy it to your own Cloudflare account. It is not a hosted service.
 > Agents on Cloudflare Durable Objects build the tools they need once, in a short-lived container, then run them in Worker isolates. A repeat run uses 0 container-seconds.
 
 ## Claim
