@@ -1,0 +1,185 @@
+{
+  "kind": "workflow-bench",
+  "label": "latest",
+  "gitSha": "c008686b0cd824370721333de6edc30ef0b9d2e7",
+  "placement": "local",
+  "at": "2026-10-28T14:20:19.080Z",
+  "host": {
+    "node": "v22.22.2",
+    "platform": "darwin"
+  },
+  "results": [
+    {
+      "id": "scss-on-save",
+      "title": "Compile SCSS on every save",
+      "tool": "sass",
+      "package": "sass@1.80.6",
+      "args": [
+        "--no-source-map",
+        "a.scss"
+      ],
+      "repeats": 10,
+      "local": {
+        "p50Ms": 582,
+        "totalMs": 6130
+      },
+      "cold": {
+        "ms": 5785,
+        "placement": "container",
+        "containerSeconds": 5.405
+      },
+      "repeat": {
+        "p50Ms": 177,
+        "totalMs": 1782,
+        "containerSeconds": 0,
+        "allNoBoot": true
+      },
+      "sameOutput": true,
+      "ok": true
+    },
+    {
+      "id": "minify-before-commit",
+      "title": "Minify a bundle before each commit",
+      "tool": "terser",
+      "package": "terser@5.36.0",
+      "args": [
+        "a.js",
+        "-c",
+        "-m"
+      ],
+      "repeats": 10,
+      "local": {
+        "p50Ms": 488,
+        "totalMs": 4637
+      },
+      "cold": {
+        "ms": 4493,
+        "placement": "container",
+        "containerSeconds": 4.317
+      },
+      "repeat": {
+        "p50Ms": 87,
+        "totalMs": 873,
+        "containerSeconds": 0,
+        "allNoBoot": true
+      },
+      "sameOutput": true,
+      "ok": true
+    },
+    {
+      "id": "format-sql-migrations",
+      "title": "Format SQL migrations",
+      "tool": "sql-formatter",
+      "package": "sql-formatter@15.4.5",
+      "args": [
+        "a.sql"
+      ],
+      "repeats": 10,
+      "local": {
+        "p50Ms": 515,
+        "totalMs": 5342
+      },
+      "cold": {
+        "ms": 4222,
+        "placement": "container",
+        "containerSeconds": 4.053
+      },
+      "repeat": {
+        "p50Ms": 82,
+        "totalMs": 822,
+        "containerSeconds": 0,
+        "allNoBoot": true
+      },
+      "sameOutput": true,
+      "ok": true
+    },
+    {
+      "id": "yaml-config-to-json",
+      "title": "Convert YAML config to JSON",
+      "tool": "js-yaml",
+      "package": "js-yaml@4.1.0",
+      "args": [
+        "a.yaml"
+      ],
+      "repeats": 10,
+      "local": {
+        "p50Ms": 462,
+        "totalMs": 4517
+      },
+      "cold": {
+        "ms": 3702,
+        "placement": "container",
+        "containerSeconds": 3.563
+      },
+      "repeat": {
+        "p50Ms": 69,
+        "totalMs": 690,
+        "containerSeconds": 0,
+        "allNoBoot": true
+      },
+      "sameOutput": true,
+      "ok": true
+    },
+    {
+      "id": "markdown-to-html",
+      "title": "Render Markdown docs to HTML",
+      "tool": "marked",
+      "package": "marked@14.1.4",
+      "args": [
+        "-i",
+        "a.md"
+      ],
+      "repeats": 10,
+      "local": {
+        "p50Ms": 482,
+        "totalMs": 4602
+      },
+      "cold": {
+        "ms": 2854,
+        "placement": "container",
+        "containerSeconds": 2.809
+      },
+      "repeat": {
+        "p50Ms": 26,
+        "totalMs": 260,
+        "containerSeconds": 0,
+        "allNoBoot": true
+      },
+      "sameOutput": true,
+      "ok": true
+    },
+    {
+      "id": "semver-range-check",
+      "title": "Check versions against a range",
+      "tool": "semver",
+      "package": "semver@7.6.3",
+      "args": [
+        "-r",
+        "^1.2.0",
+        "1.2.3",
+        "1.9.0",
+        "2.0.0",
+        "0.9.0"
+      ],
+      "repeats": 10,
+      "local": {
+        "p50Ms": 476,
+        "totalMs": 4620
+      },
+      "cold": {
+        "ms": 3121,
+        "placement": "container",
+        "containerSeconds": 2.982
+      },
+      "repeat": {
+        "p50Ms": 69,
+        "totalMs": 694,
+        "containerSeconds": 0,
+        "allNoBoot": true
+      },
+      "sameOutput": true,
+      "ok": true
+    }
+  ],
+  "digest": "3a652668518caf8ea9c0e75407a997c61515737adf8b5cfe256f04ae0a4ec701"
+}

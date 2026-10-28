@@ -1,0 +1,31 @@
+{
+  "name": "pi-accrete",
+  "version": "0.1.0",
+  "description": "Pi extension: run repeated npm CLI calls on your own accrete Worker. Built once, then 0 container-seconds.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "cloudflare",
+    "workers",
+    "agents"
+  ],
+  "files": [
+    "index.ts",
+    "client.mjs",
+    "cli.mjs",
+    "README.md"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "bin": {
+    "accrete": "./cli.mjs"
+  }
+}

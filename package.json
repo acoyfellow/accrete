@@ -6,7 +6,7 @@
     "dev": "bash scripts/dev.sh",
     "dev:worker": "node scripts/self-source.mjs && wrangler dev --port 8799 --var ACCRETE_TOKEN:local-dev",
     "dev:site": "vite --config client/vite.config.ts",
-    "build": "cp status.json client/public/status.json && vite build --config client/vite.config.ts",
+    "build": "cp status.json client/public/status.json && node scripts/build-docs.mjs && vite build --config client/vite.config.ts",
     "check": "node scripts/self-source.mjs && tsc -p . && tsc -p client",
     "lint": "biome lint",
     "gate": "bash proof/gate.sh",
@@ -15,7 +15,10 @@
     "bench": "bash scripts/bench-all.sh",
     "falsify": "node scripts/falsify.mjs",
     "site:numbers": "node scripts/site-numbers.mjs",
-    "proof:honesty": "node scripts/honesty.mjs"
+    "proof:honesty": "node scripts/honesty.mjs",
+    "docs": "node scripts/build-docs.mjs",
+    "bench:workflows": "node scripts/workflow-bench.mjs latest",
+    "proof:adopt": "node scripts/adopt.mjs"
   },
   "license": "MIT",
   "dependencies": {
@@ -41,5 +44,16 @@
     "wrangler": "^4.149.0"
   },
   "type": "module",
-  "private": true
+  "private": true,
+  "keywords": [
+    "pi-package",
+    "cloudflare",
+    "workers",
+    "agents"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/pi/index.ts"
+    ]
+  }
 }

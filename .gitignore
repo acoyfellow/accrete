@@ -8,3 +8,4 @@ src/self-source.ts
 client/public/status.json
 bench/runs/*/
 !bench/runs/baseline/
+client/public/docs

@@ -18,6 +18,21 @@ When an agent needs a tool such as `json5`, `sass` or `terser`, accrete builds i
 
 These numbers come from sealed receipts in [`bench/`](bench) and [`receipts/`](receipts). The held-out tools were frozen before tuning. [`status.json`](status.json) lists what is proven, what is not proven yet, and what turned out to be wrong.
 
+## Docs
+
+https://accrete.customer0.dev/docs — tutorial, how-to guides, reference, and explanation ([Diátaxis](https://diataxis.fr)). Source in [`docs/`](docs).
+
+## Pi extension
+
+Your Pi agent can lift repeated CLI work from your laptop to your Worker:
+
+```sh
+pi install git:github.com/acoyfellow/accrete
+export ACCRETE_URL=https://accrete.example.com ACCRETE_TOKEN=...
+```
+
+The agent gets an `accrete_run` tool and you get `/accrete`. Each call writes a receipt to `~/.accrete/receipts.jsonl`. Measured on six real workflows, a repeat call is 3–18× faster than warm `npx` on a laptop, gives identical output, and uses 0 container-seconds: [workflow bench](https://accrete.customer0.dev/docs/explanation/workflows/), receipt [`bench/workflows/latest.json`](bench/workflows/latest.json).
+
 ## Deploy to your account
 
 You need Node 22, Docker, and a Cloudflare account on Workers Paid. The Worker uses Containers, R2, Durable Objects and Worker Loader.

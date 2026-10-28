@@ -112,6 +112,14 @@ const use = (h: H): Html =>
     h.div([h.Class("use-steps")], USE_STEPS.map(([n, title, code]) =>
       h.div([], [h.h3([], [h.i([], [n]), title]), h.pre([], [h.code([], [code])])]),
     )),
+    h.div([h.Class("pi-block")], [
+      h.div([], [
+        h.h3([], ["Dogfood it from Pi"]),
+        h.p([], ["The pi-accrete extension gives your agent an accrete_run tool. Repeated CLI work lifts from your laptop to your Worker, and stays fast."]),
+        h.div([h.Class("cta")], [h.a([h.Href("/docs/how-to/use-with-pi/"), h.Class("primary")], ["INSTALL THE EXTENSION"]), h.a([h.Href("/docs/explanation/workflows/")], ["SEE THE WORKFLOW BENCH"])]),
+      ]),
+      h.pre([], [h.code([], ["pi install git:github.com/acoyfellow/accrete\nexport ACCRETE_URL=https://accrete.example.com\nexport ACCRETE_TOKEN=…"])]),
+    ]),
     h.p([h.Class("fine")], ["All routes need Authorization: Bearer <ACCRETE_TOKEN>. Built tools get no network and no secrets. Works for npm CLIs that run in plain JavaScript; tools that need native binaries or eval stay in the container."]),
   ]);
 
@@ -126,7 +134,7 @@ const hero = (h: H): Html =>
     explainer(h),
     h.div([h.Class("selfhost")], [
       h.p([], [h.b([], ["Open source. Runs in your own Cloudflare account."]), " Not a hosted service. You deploy one Worker; your agents call it instead of booting a container for every npm tool."]),
-      h.div([h.Class("cta")], [h.a([h.Href("#use"), h.Class("primary")], ["DEPLOY IT"]), h.a([h.Href(REPO)], ["SOURCE ON GITHUB"])]),
+      h.div([h.Class("cta")], [h.a([h.Href("/docs/tutorials/first-deploy/"), h.Class("primary")], ["DEPLOY IT"]), h.a([h.Href("/docs/")], ["READ THE DOCS"]), h.a([h.Href(REPO)], ["GITHUB"])]),
     ]),
   ]);
 
@@ -308,7 +316,7 @@ const zine = (h: H): Html =>
 const footer = (h: H): Html =>
   h.footer([], [
     h.span([], ["accrete · MIT · no containers were harmed. ok one was."]),
-    h.span([], [h.a([h.Href("/status.json")], ["status.json"]), " · ", h.a([h.Href("/llms.txt")], ["llms.txt"])]),
+    h.span([], [h.a([h.Href("/docs/")], ["docs"]), " · ", h.a([h.Href(REPO)], ["github"]), " · ", h.a([h.Href("/status.json")], ["status.json"]), " · ", h.a([h.Href("/llms.txt")], ["llms.txt"])]),
   ]);
 
 const boot = (h: H): Html => h.div([h.Class("boot")], [h.div([h.Class("gem")], [])]);
