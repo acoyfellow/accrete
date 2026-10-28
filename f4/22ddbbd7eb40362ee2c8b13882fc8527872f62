@@ -1,0 +1,19 @@
+client/src/view.ts
+  s_7b04649645ea0c::t_28813a2dd9a18d 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f422ddbbd7eb40362ee2c8b13882fc8527872f62",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
