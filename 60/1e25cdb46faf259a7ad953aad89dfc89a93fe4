@@ -1,0 +1,21 @@
+client/src/styles.css
+  s_7b04649645ea0c::t_997323f7ba50bc 72
+client/src/view.ts
+  s_7b04649645ea0c::t_56ad0e1f4a17e7 333
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "601e25cdb46faf259a7ad953aad89dfc89a93fe4",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
