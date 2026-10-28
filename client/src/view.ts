@@ -31,9 +31,9 @@ type Point = readonly [number, number];
 
 type Layout = { readonly view: string; readonly agent: Point; readonly engine: Point; readonly container: Point; readonly registry: Point; readonly feed: string; readonly cold: string; readonly warm: string; readonly coldLabel: Point; readonly warmLabel: Point };
 
-const WIDE: Layout = { view: "0 0 680 300", agent: [0, 112], engine: [255, 80], container: [520, 10], registry: [520, 214], feed: "M150 150 L255 150", cold: "M405 130 C460 130 460 48 520 48 M595 86 L595 214", warm: "M405 170 C460 170 460 252 520 252", coldLabel: [405, 30], warmLabel: [300, 296] };
+const WIDE: Layout = { view: "0 0 680 320", agent: [0, 112], engine: [255, 80], container: [520, 10], registry: [520, 214], feed: "M150 150 L255 150", cold: "M405 130 C460 130 460 48 520 48 M595 86 L595 214", warm: "M405 170 C460 170 460 252 520 252", coldLabel: [300, 2], warmLabel: [300, 286] };
 
-const TALL: Layout = { view: "0 0 320 470", agent: [85, 0], engine: [85, 120], container: [0, 330], registry: [170, 330], feed: "M160 76 L160 120", cold: "M120 260 C120 300 75 300 75 330 M150 368 L170 368", warm: "M200 260 C200 300 245 300 245 330", coldLabel: [0, 440], warmLabel: [170, 440] };
+const TALL: Layout = { view: "-10 0 340 500", agent: [85, 0], engine: [85, 120], container: [0, 330], registry: [170, 330], feed: "M160 76 L160 120", cold: "M120 260 C120 300 75 300 75 330 M150 368 L170 368", warm: "M200 260 C200 300 245 300 245 330", coldLabel: [0, 424], warmLabel: [0, 462] };
 
 const NODE_WIDTH = 150;
 const NODE_HEIGHT = 76;
@@ -57,6 +57,14 @@ const engine = (h: H, [x, y]: Point, clip: string): Html =>
     label(h, x + 18, y + ENGINE_HEIGHT - 16, "ACCRETE", "tag-t"),
   ]);
 
+const BADGE_CHAR = 9.4;
+
+const badge = (h: H, [x, y]: Point, text: string, kind: string): Html =>
+  h.g([h.Class(`badge ${kind}`)], [
+    h.rect([...svgAttr(h, { x: String(x), y: String(y), width: String(Math.round(text.length * BADGE_CHAR + 20)), height: "28", rx: "14" })], []),
+    label(h, x + 10, y + 21, text, "k"),
+  ]);
+
 const diagram = (h: H, layout: Layout, kind: string): Html =>
   h.svg([h.Class(kind), ...svgAttr(h, { viewBox: layout.view, role: "img" })], [
     h.path([h.Class("wire feed"), ...svgAttr(h, { d: layout.feed })], []),
@@ -64,10 +72,10 @@ const diagram = (h: H, layout: Layout, kind: string): Html =>
     h.path([h.Class("wire warm"), ...svgAttr(h, { d: layout.warm })], []),
     node(h, layout.agent, "AGENT", "needs a tool", "agent"),
     engine(h, layout.engine, `clip-${kind}`),
-    node(h, layout.container, "CONTAINER", "1st run: build", "container"),
-    node(h, layout.registry, "REGISTRY", "then: reuse", "registry"),
-    label(h, layout.coldLabel[0], layout.coldLabel[1], `${firstTool?.coldCs ?? ""} once`, "k cold-t"),
-    label(h, layout.warmLabel[0], layout.warmLabel[1], `${firstTool?.repeatCs ?? ""} after`, "k warm-t"),
+    node(h, layout.container, "CONTAINER", "run 1 only", "container"),
+    node(h, layout.registry, "INSTANT", "no boot", "registry"),
+    badge(h, layout.coldLabel, `RUN 1 · ${firstTool?.coldCs ?? ""} BOOT`, "cold-b"),
+    badge(h, layout.warmLabel, `RUN 2+ · ${firstTool?.repeatMs ?? ""} MS · NO BOOT`, "warm-b"),
   ]);
 
 const explainer = (h: H): Html =>
@@ -299,7 +307,6 @@ const zine = (h: H): Html =>
 
 const footer = (h: H): Html =>
   h.footer([], [
-    h.div([h.Class("levelup")], [h.b([], ["LEVEL UP"])]),
     h.span([], ["accrete · MIT · no containers were harmed. ok one was."]),
     h.span([], [h.a([h.Href("/status.json")], ["status.json"]), " · ", h.a([h.Href("/llms.txt")], ["llms.txt"])]),
   ]);

@@ -23,7 +23,7 @@
   h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
   h1 .line > span { display: inline-block; transform: translateY(110%); animation: up .9s var(--ease) forwards; animation-delay: var(--d); position: relative; }
   @keyframes up { to { transform: none } }
-  h1 .strike::after { content: ""; position: absolute; left: -3%; right: -3%; top: 44%; height: .15em; background: var(--pink); transform: rotate(-3deg) scaleX(0); transform-origin: left; animation: slash .55s var(--d2) var(--snap) forwards; box-shadow: 0 0 30px var(--pink); }
+  h1 .strike::after { content: ""; position: absolute; left: -3%; right: -3%; top: 44%; height: .15em; background: var(--pink); transform: rotate(-3deg) scaleX(0); transform-origin: left; animation: slash .55s var(--d2) var(--snap) forwards; }
   @keyframes slash { to { transform: rotate(-3deg) scaleX(1) } }
   h1 .new { color: var(--pink); -webkit-text-stroke: 3px #000; text-shadow: 8px 8px 0 #000; }
   h1 .new.pop { animation: up .9s var(--ease) forwards, float 5s 4.6s ease-in-out infinite; }
@@ -182,12 +182,12 @@
 .explainer .k { font: 900 14px ui-monospace, Menlo, monospace; text-transform: uppercase; }
 .explainer .wire { fill: none; stroke-width: 6; stroke-linecap: round; }
 .explainer .cold { stroke: var(--acid); stroke-dasharray: 700; stroke-dashoffset: 700; animation: ex-cold 9s 5s infinite both; }
-.explainer .warm { stroke: #5aa0ff; stroke-dasharray: 14 10; opacity: 0; animation: ex-warm 9s 5s infinite both, ex-flow .6s linear infinite; }
+.explainer .warm { stroke: var(--pink); stroke-dasharray: 14 10; opacity: 0; animation: ex-warm 9s 5s infinite both, ex-flow .6s linear infinite; }
 .explainer .cold-t { fill: var(--acid); }
 .explainer .warm-t { fill: #5aa0ff; opacity: 0; animation: ex-warm 9s 5s infinite both; }
 @keyframes ex-cold { 0% { stroke-dashoffset: 700; opacity: 1 } 30% { stroke-dashoffset: 0; opacity: 1 } 48% { opacity: 1 } 58%, 100% { stroke-dashoffset: 0; opacity: .2 } }
 @keyframes ex-container { 0%, 6% { fill: var(--sun) } 10%, 24% { fill: var(--acid) } 30%, 100% { fill: var(--sun) } }
-@keyframes ex-registry { 0%, 28% { fill: #fff } 34%, 100% { fill: #5aa0ff } }
+@keyframes ex-registry { 0%, 28% { fill: #fff } 34%, 100% { fill: var(--pink) } }
 @keyframes ex-warm { 0%, 50% { opacity: 0 } 58%, 96% { opacity: 1 } 100% { opacity: 0 } }
 @keyframes ex-flow { to { stroke-dashoffset: -24 } }
 @media (max-width: 760px) { .explainer { padding: 30px 16px 16px; border-radius: 24px; box-shadow: 10px 10px 0 var(--pink); } .explainer .wide { display: none; } .explainer .tall { display: block; max-width: 340px; margin: 0 auto; } }
@@ -229,3 +229,23 @@ header h1 { font-size: clamp(48px, 7vw, 120px); }
 .use-steps pre { margin: 0; overflow-x: auto; font: 600 12.5px/1.55 ui-monospace, Menlo, monospace; color: var(--sun); }
 .use .fine { font: 600 12px/1.5 ui-monospace, Menlo, monospace; color: #555; margin-top: 24px; max-width: 80ch; }
 @media (max-width: 900px) { .use-steps { grid-template-columns: 1fr; } }
+
+.explainer .warm { stroke: #3d8bff; }
+.explainer .badge rect { stroke: #000; stroke-width: 3; }
+.explainer .badge .k { font: 900 13px ui-monospace, Menlo, monospace; }
+.explainer .cold-b rect { fill: var(--acid); }
+.explainer .cold-b .k { fill: #000; }
+.explainer .warm-b rect { fill: var(--pink); stroke: #fff; }
+.explainer .warm-b .k { fill: #fff; }
+.explainer .cold-b { animation: ex-coldb 9s 5s infinite both; }
+.explainer .warm-b { opacity: 0; animation: ex-warm 9s 5s infinite both; }
+@keyframes ex-coldb { 0%, 48% { opacity: 1 } 58%, 100% { opacity: .3 } }
+@keyframes ex-registry { 0%, 50% { fill: #fff } 58%, 100% { fill: var(--pink) } }
+.explainer .registry .t, .explainer .registry .s { animation: ex-regtext 9s 5s infinite both; }
+@keyframes ex-regtext { 0%, 50% { fill: #000 } 58%, 100% { fill: #fff } }
+h1 .new, h1 .strike { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); background-size: 220px; -webkit-background-clip: text; background-clip: text; }
+h1 .new { background-color: var(--pink); -webkit-text-fill-color: transparent; }
+h1 .strike { background-color: #111; -webkit-text-fill-color: transparent; }
+h1 .new { text-shadow: none; filter: drop-shadow(8px 8px 0 #000); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.explainer .badge .k { font-size: 15px; }
+.explainer .badge rect { height: 32px; }
