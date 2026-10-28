@@ -319,7 +319,6 @@ const footer = (h: H): Html =>
     h.span([], [h.a([h.Href("/docs/")], ["docs"]), " · ", h.a([h.Href(REPO)], ["github"]), " · ", h.a([h.Href("/status.json")], ["status.json"]), " · ", h.a([h.Href("/llms.txt")], ["llms.txt"])]),
   ]);
 
-const boot = (h: H): Html => h.div([h.Class("boot")], [h.div([h.Class("gem")], [])]);
 
 const stage = (h: H): Html =>
   h.section([h.Class("stage")], [
@@ -331,11 +330,10 @@ const stage = (h: H): Html =>
 
 export const view = (model: Model, h: H): Html =>
   Loaded.match(model.loaded, {
-    Loading: () => h.main([], [boot(h)]),
+    Loading: () => h.main([], []),
     Failed: ({ reason }) => h.main([], [stage(h), h.p([h.Class("status bad")], [reason])]),
     Ready: ({ status, local }) =>
       h.main([], [
-        boot(h),
         stage(h),
         demo(h, model, local),
         tape(h, "BUILD IT ONCE / CHECK IT AGAINST THE REAL ONE / HASH IT / NEVER BOOT A CONTAINER FOR IT AGAIN / ", "rev"),

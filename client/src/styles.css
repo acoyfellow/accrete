@@ -2,12 +2,6 @@
   :root { --acid: #f38020; --pink: #0051c3; --sun: #faae40; --ink: #1d1d1d; --ease: cubic-bezier(.2,.9,.1,1); --snap: cubic-bezier(.7,0,.2,1); }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: #000; color: #000; font-family: "Arial Black", Impact, sans-serif; overflow-x: hidden; }
-  .boot { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: #000; animation: bootout .9s 2.4s var(--snap) forwards; pointer-events: none; }
-  .boot .gem { width: 90px; height: 90px; border: 3px solid var(--acid); transform: rotate(45deg) scale(0); box-shadow: 0 0 50px var(--acid), inset 0 0 30px var(--pink); animation: gem 2.4s var(--snap) forwards; }
-  .boot::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--pink), var(--acid), transparent); transform: scaleX(0); animation: sweep 2.4s ease-in-out forwards; }
-  @keyframes gem { 35% { transform: rotate(225deg) scale(1) } 75% { transform: rotate(225deg) scale(1); background: transparent } 100% { transform: rotate(225deg) scale(.35); background: var(--acid) } }
-  @keyframes sweep { 60% { transform: scaleX(1); opacity: 1 } 100% { transform: scaleX(1); opacity: 0 } }
-  @keyframes bootout { to { clip-path: inset(50% 0 50% 0); visibility: hidden } }
   @keyframes rise { from { opacity: 0; transform: translateY(40px) rotate(var(--r, 0deg)); filter: blur(12px) } to { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); filter: none } }
   .in { opacity: 0; animation: rise 1s var(--ease) forwards; animation-delay: var(--d, 0s); }
   .stage { position: relative; min-height: 100vh; background: var(--acid); overflow: hidden; }
@@ -75,7 +69,7 @@
   .ransom span:hover { transform: scale(1.25) rotate(0) !important; }
   footer { background: var(--pink); padding: 30px 4vw; font-size: 18px; display: flex; justify-content: space-between; border-top: 10px solid #000; }
   @media (max-width: 900px) { header, .ledger { grid-template-columns: 1fr } .runs { grid-template-columns: 1fr 1fr } .xp { grid-template-columns: 1fr } }
-  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .in, .reveal, .run, h1 .line > span { opacity: 1 !important; transform: none !important; filter: none !important; } .boot { display: none } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .in, .reveal, .run, h1 .line > span { opacity: 1 !important; transform: none !important; filter: none !important; } }
 
   .demo { position: relative; z-index: 2; margin: 0 4vw 60px; padding: 30px; background: #000; color: #fff; border-radius: 26px; border: 4px solid var(--acid); }
   .demo h2 { margin: 0 0 6px; font-size: 40px; letter-spacing: -.04em; color: var(--acid); }
