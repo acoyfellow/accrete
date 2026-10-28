@@ -27,23 +27,84 @@ const label = (h: H, x: number, y: number, text: string, extra: string): Html =>
 
 const firstTool = numbers.toolRows.find((row) => row.ok);
 
+type Point = readonly [number, number];
+
+type Layout = { readonly view: string; readonly agent: Point; readonly engine: Point; readonly container: Point; readonly registry: Point; readonly feed: string; readonly cold: string; readonly warm: string; readonly coldLabel: Point; readonly warmLabel: Point };
+
+const WIDE: Layout = { view: "0 0 680 300", agent: [0, 112], engine: [255, 80], container: [520, 10], registry: [520, 214], feed: "M150 150 L255 150", cold: "M405 130 C460 130 460 48 520 48 M595 86 L595 214", warm: "M405 170 C460 170 460 252 520 252", coldLabel: [405, 30], warmLabel: [300, 296] };
+
+const TALL: Layout = { view: "0 0 320 470", agent: [85, 0], engine: [85, 120], container: [0, 330], registry: [170, 330], feed: "M160 76 L160 120", cold: "M120 260 C120 300 75 300 75 330 M150 368 L170 368", warm: "M200 260 C200 300 245 300 245 330", coldLabel: [0, 440], warmLabel: [170, 440] };
+
+const NODE_WIDTH = 150;
+const NODE_HEIGHT = 76;
+const ENGINE_HEIGHT = 140;
+
+const node = (h: H, [x, y]: Point, name: string, sub: string, kind: string): Html =>
+  h.g([h.Class(`node ${kind}`)], [
+    h.rect([...svgAttr(h, { x: String(x + 6), y: String(y + 6), width: String(NODE_WIDTH), height: String(NODE_HEIGHT), class: "shadow" })], []),
+    box(h, x, y, NODE_WIDTH, NODE_HEIGHT, "face"),
+    label(h, x + 14, y + 32, name, "t"),
+    label(h, x + 14, y + 56, sub, "s"),
+  ]);
+
+const engine = (h: H, [x, y]: Point, clip: string): Html =>
+  h.g([h.Class("node engine")], [
+    h.defs([], [h.clipPath([h.Id(clip)], [h.rect([...svgAttr(h, { x: String(x), y: String(y), width: String(NODE_WIDTH), height: String(ENGINE_HEIGHT), rx: "14" })], [])])]),
+    h.rect([...svgAttr(h, { x: String(x + 6), y: String(y + 6), width: String(NODE_WIDTH), height: String(ENGINE_HEIGHT), class: "shadow" })], []),
+    h.image([...svgAttr(h, { href: "/art/monster.jpg", x: String(x), y: String(y - 10), width: String(NODE_WIDTH), height: String(NODE_WIDTH + 10), preserveAspectRatio: "xMidYMid slice", "clip-path": `url(#${clip})` })], []),
+    box(h, x, y, NODE_WIDTH, ENGINE_HEIGHT, "frame"),
+    h.rect([...svgAttr(h, { x: String(x + 10), y: String(y + ENGINE_HEIGHT - 34), width: "92", height: "24", class: "tag" })], []),
+    label(h, x + 18, y + ENGINE_HEIGHT - 16, "ACCRETE", "tag-t"),
+  ]);
+
+const diagram = (h: H, layout: Layout, kind: string): Html =>
+  h.svg([h.Class(kind), ...svgAttr(h, { viewBox: layout.view, role: "img" })], [
+    h.path([h.Class("wire feed"), ...svgAttr(h, { d: layout.feed })], []),
+    h.path([h.Class("wire cold"), ...svgAttr(h, { d: layout.cold })], []),
+    h.path([h.Class("wire warm"), ...svgAttr(h, { d: layout.warm })], []),
+    node(h, layout.agent, "AGENT", "needs a tool", "agent"),
+    engine(h, layout.engine, `clip-${kind}`),
+    node(h, layout.container, "CONTAINER", "1st run: build", "container"),
+    node(h, layout.registry, "REGISTRY", "then: reuse", "registry"),
+    label(h, layout.coldLabel[0], layout.coldLabel[1], `${firstTool?.coldCs ?? ""} once`, "k cold-t"),
+    label(h, layout.warmLabel[0], layout.warmLabel[1], `${firstTool?.repeatCs ?? ""} after`, "k warm-t"),
+  ]);
+
 const explainer = (h: H): Html =>
   h.figure([h.Class("explainer"), h.AriaLabel("An agent asks for a tool. The first time, accrete builds it in a container and checks it. After that, the agent runs the saved copy with no container.")], [
-    h.svg([...svgAttr(h, { viewBox: "0 0 640 300", role: "img" })], [
-      box(h, 0, 115, 150, 70, "agent"),
-      label(h, 16, 145, "agent", "t"),
-      label(h, 16, 166, "needs yaml→json", "s"),
-      box(h, 250, 14, 140, 76, "container"),
-      label(h, 266, 44, "container", "t cold-t"),
-      label(h, 266, 66, "build + check", "s"),
-      box(h, 490, 115, 150, 70, "registry"),
-      label(h, 506, 145, "registry", "t"),
-      label(h, 506, 166, "sha256 · sealed", "s"),
-      h.path([h.Class("wire cold"), ...svgAttr(h, { d: "M150 140 C190 140 190 52 250 52 M390 52 C450 52 440 140 490 140" })], []),
-      h.path([h.Class("wire warm"), ...svgAttr(h, { d: "M150 172 C260 270 380 270 490 172" })], []),
-      label(h, 196, 118, `run 1 · ${firstTool?.coldCs ?? ""} of container`, "s cold-t"),
-      label(h, 238, 266, `run 2+ · ${firstTool?.repeatMs ?? ""} ms · ${firstTool?.repeatCs ?? ""} container`, "s warm-t"),
-    ]),
+    h.figcaption([], ["HOW IT EATS THEM"]),
+    diagram(h, WIDE, "wide"),
+    diagram(h, TALL, "tall"),
+  ]);
+
+const USE_STEPS: ReadonlyArray<readonly [string, string, string]> = [
+  ["1", "Deploy the Worker", `git clone ${REPO}\ncd accrete && npm install\nnpx wrangler secret put ACCRETE_TOKEN\nnpx wrangler deploy`],
+  ["2", "Add a recipe", `PUT /recipes
+{
+  "name": "json5",
+  "packages": { "json5": "2.2.3" },
+  "entry": "export const run = ...",
+  "native": { "bin": "json5", "args": ["-s","2","c.json5"] },
+  "check":  { "args": ["-s","2","c.json5"], "files": { ... } }
+}`],
+  ["3", "Your agent calls a tool", `POST /task
+{
+  "workspace": "agent-42",
+  "seed": { "app.json5": "{ name: 'x', }" },
+  "steps": [{ "op": "tool", "name": "json5",
+              "args": ["-s","2","app.json5"],
+              "inputs": ["app.json5"] }]
+}`],
+];
+
+const use = (h: H): Html =>
+  h.section([h.Id("use"), h.Class("use")], [
+    h.h2([], ["USE IT"]),
+    h.p([h.Class("lede")], ["Not a library. A Cloudflare Worker you deploy, plus one HTTP call your agent makes instead of booting a container. The first call to a tool builds and checks it. Every call after runs the saved copy in an isolate."]),
+    h.div([h.Class("use-steps")], USE_STEPS.map(([n, title, code]) =>
+      h.div([], [h.h3([], [h.i([], [n]), title]), h.pre([], [h.code([], [code])])]),
+    )),
+    h.p([h.Class("fine")], ["All routes need Authorization: Bearer <ACCRETE_TOKEN>. Built tools get no network and no secrets. Works for npm CLIs that run in plain JavaScript; tools that need native binaries or eval stay in the container."]),
   ]);
 
 const hero = (h: H): Html =>
@@ -55,11 +116,6 @@ const hero = (h: H): Html =>
       headlineLine(h, "THEN NEVER.", "new", ms(4650), ms(0)),
     ]),
     explainer(h),
-    h.div([vars(h, { position: "relative" })], [
-      h.div([h.Class("card in"), vars(h, { "--d": ms(3300) })], []),
-      h.div([h.Class("sticker s1 in"), vars(h, { "--d": ms(4900) })], ["IT EATS SERVERS"]),
-      h.div([h.Class("sticker s2 in"), vars(h, { "--d": ms(5100) })], [`${numbers.current.repeatCs} LOL`]),
-    ]),
   ]);
 
 type ReceiptRun = { readonly title: string; readonly body: string; readonly cs: string; readonly kind: "cost" | "zero" };
@@ -239,6 +295,7 @@ const zine = (h: H): Html =>
 
 const footer = (h: H): Html =>
   h.footer([], [
+    h.div([h.Class("levelup")], [h.b([], ["LEVEL UP"])]),
     h.span([], ["accrete · MIT · no containers were harmed. ok one was."]),
     h.span([], [h.a([h.Href("/status.json")], ["status.json"]), " · ", h.a([h.Href("/llms.txt")], ["llms.txt"])]),
   ]);
@@ -260,11 +317,11 @@ export const view = (model: Model, h: H): Html =>
     Ready: ({ status, local }) =>
       h.main([], [
         boot(h),
-        h.div([h.Class("levelup")], [h.b([], ["LEVEL UP"])]),
         stage(h),
         demo(h, model, local),
         tape(h, "BUILD IT ONCE / CHECK IT AGAINST THE REAL ONE / HASH IT / NEVER BOOT A CONTAINER FOR IT AGAIN / ", "rev"),
         how(h),
+        use(h),
         fire(h),
         numbersSection(h),
         zine(h),

@@ -168,21 +168,46 @@
   .tool-row .x { text-align: right; }
 }
 
-.explainer { grid-column: 1 / -1; margin: 32px 0 0; background: #fff8ef; border: 2px solid #000; border-radius: 4px; padding: 18px 20px 8px; }
-.explainer svg { display: block; width: 100%; height: auto; max-height: 300px; overflow: visible; }
-.explainer .box { fill: #fff; stroke: #1d1d1d; stroke-width: 1.5; }
-.explainer .container { stroke-dasharray: 5 4; animation: ex-container 9s 5s infinite both; }
-.explainer .registry { animation: ex-registry 9s 5s infinite both; }
-.explainer .t { font: 700 15px ui-monospace, Menlo, monospace; fill: #1d1d1d; }
-.explainer .s { font: 500 12px ui-monospace, Menlo, monospace; fill: #6b6b6b; }
-.explainer .wire { fill: none; stroke-width: 2; stroke-linecap: round; pathLength: 1; }
-.explainer .cold { stroke: var(--acid); stroke-dasharray: 600; stroke-dashoffset: 600; animation: ex-cold 9s 5s infinite both; }
-.explainer .warm { stroke: var(--pink); stroke-dasharray: 8 7; opacity: 0; animation: ex-warm 9s 5s infinite both, ex-flow 1s linear infinite; }
-.explainer .cold-t { fill: #b85c00; }
-.explainer .warm-t { fill: var(--pink); opacity: 0; animation: ex-warm 9s 5s infinite both; }
-@keyframes ex-cold { 0% { stroke-dashoffset: 600; opacity: 1 } 30% { stroke-dashoffset: 0; opacity: 1 } 48% { opacity: 1 } 58%, 100% { stroke-dashoffset: 0; opacity: .18 } }
-@keyframes ex-container { 0%, 6% { fill: #fff } 10%, 24% { fill: #ffe3c4 } 30%, 100% { fill: #fff } }
-@keyframes ex-registry { 0%, 28% { fill: #fff; stroke-width: 1.5 } 34%, 100% { fill: #e6efff; stroke-width: 2.5 } }
+.explainer { grid-column: 1 / -1; position: relative; margin: 8px 0 0; background: #000; border: 6px solid #000; border-radius: 34px; padding: 28px 32px 22px; box-shadow: 18px 18px 0 var(--pink); transform: rotate(-1deg); }
+.explainer figcaption { position: absolute; top: -22px; left: 32px; background: var(--sun); border: 5px solid #000; padding: 6px 14px; font: 900 18px "Arial Black", sans-serif; box-shadow: 6px 6px 0 #000; transform: rotate(-3deg); }
+.explainer svg { display: block; width: 100%; height: auto; overflow: visible; }
+.explainer .tall { display: none; }
+.explainer .shadow { fill: #000; stroke: #fff; stroke-width: 2; }
+.explainer .face { fill: #fff; stroke: #000; stroke-width: 4; rx: 14px; }
+.explainer .shadow { rx: 14px; }
+.explainer .container .face { fill: var(--sun); stroke-dasharray: 10 6; animation: ex-container 9s 5s infinite both; }
+.explainer .registry .face { animation: ex-registry 9s 5s infinite both; }
+.explainer .t { font: 900 19px "Arial Black", sans-serif; fill: #000; letter-spacing: -.02em; }
+.explainer .s { font: 700 12px ui-monospace, Menlo, monospace; fill: #333; }
+.explainer .k { font: 900 14px ui-monospace, Menlo, monospace; text-transform: uppercase; }
+.explainer .wire { fill: none; stroke-width: 6; stroke-linecap: round; }
+.explainer .cold { stroke: var(--acid); stroke-dasharray: 700; stroke-dashoffset: 700; animation: ex-cold 9s 5s infinite both; }
+.explainer .warm { stroke: #5aa0ff; stroke-dasharray: 14 10; opacity: 0; animation: ex-warm 9s 5s infinite both, ex-flow .6s linear infinite; }
+.explainer .cold-t { fill: var(--acid); }
+.explainer .warm-t { fill: #5aa0ff; opacity: 0; animation: ex-warm 9s 5s infinite both; }
+@keyframes ex-cold { 0% { stroke-dashoffset: 700; opacity: 1 } 30% { stroke-dashoffset: 0; opacity: 1 } 48% { opacity: 1 } 58%, 100% { stroke-dashoffset: 0; opacity: .2 } }
+@keyframes ex-container { 0%, 6% { fill: var(--sun) } 10%, 24% { fill: var(--acid) } 30%, 100% { fill: var(--sun) } }
+@keyframes ex-registry { 0%, 28% { fill: #fff } 34%, 100% { fill: #5aa0ff } }
 @keyframes ex-warm { 0%, 50% { opacity: 0 } 58%, 96% { opacity: 1 } 100% { opacity: 0 } }
-@keyframes ex-flow { to { stroke-dashoffset: -15 } }
+@keyframes ex-flow { to { stroke-dashoffset: -24 } }
+@media (max-width: 760px) { .explainer { padding: 30px 16px 16px; border-radius: 24px; box-shadow: 10px 10px 0 var(--pink); } .explainer .wide { display: none; } .explainer .tall { display: block; max-width: 340px; margin: 0 auto; } }
 @media (prefers-reduced-motion: reduce) { .explainer * { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; } }
+
+footer { position: relative; overflow: visible; }
+footer .levelup { position: absolute; inset: auto 0 100% 0; height: 60vh; z-index: 30; pointer-events: none; display: grid; place-items: end center; }
+footer .levelup b { opacity: 0; animation: footpop linear both !important; animation-timeline: view() !important; animation-range: entry 0% cover 30% !important; }
+@keyframes footpop { 0% { opacity: 0; transform: translateY(60px) scale(.4) rotate(-12deg) } 100% { opacity: 1; transform: rotate(-4deg) } }
+@supports not (animation-timeline: view()) { footer .levelup { display: none; } }
+
+header { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); min-height: 86vh; align-items: center; }
+header h1 { font-size: clamp(48px, 7vw, 120px); }
+.explainer { grid-column: auto; margin: 0; }
+@media (max-width: 900px) { header { grid-template-columns: 1fr; min-height: 0; } }
+.explainer .feed { stroke: #fff; }
+.explainer .frame { fill: none; stroke: #000; stroke-width: 4; rx: 14px; }
+.explainer .engine { animation: chomp 9s 5s infinite both; transform-box: fill-box; transform-origin: center; }
+.explainer .tag { fill: var(--sun); stroke: #000; stroke-width: 3; }
+.explainer .tag-t { font: 900 13px "Arial Black", sans-serif; fill: #000; }
+@keyframes chomp { 0%, 4% { transform: none } 7% { transform: scale(1.06) rotate(-2deg) } 10% { transform: none } 52% { transform: none } 55% { transform: scale(1.06) rotate(2deg) } 58%, 100% { transform: none } }
+
+@media (max-width: 900px) { .explainer { margin-top: 30px; } }
