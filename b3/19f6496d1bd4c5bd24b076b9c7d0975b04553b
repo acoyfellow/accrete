@@ -1,0 +1,49 @@
+.gitignore
+  s_7b04649645ea0c::t_a5161dd9ba51a5 11
+README.md
+  s_7b04649645ea0c::t_4e65ec1ba13d7f 21-35
+client/public/sitemap.xml
+  s_7b04649645ea0c::t_e7b4dde2a9307c 2
+client/src/styles.css
+  s_7b04649645ea0c::t_4827cb6028b970 252-260
+client/src/view.ts
+  s_7b04649645ea0c::t_78c5f30230c917 115-122,137,319
+docs/docs.css
+  s_7b04649645ea0c::t_d8a5313dd116f0 1-46
+docs/how-to/call-from-any-agent.md
+  s_7b04649645ea0c::t_39a84fa9608ce1 1-61
+extensions/pi/README.md
+  s_7b04649645ea0c::t_6385b3aee70336 1-51
+extensions/pi/cli.mjs
+  s_7b04649645ea0c::t_a353f1dc81c692 1-41
+extensions/pi/client.mjs
+  s_7b04649645ea0c::t_306ba702708311 1-110
+extensions/pi/index.ts
+  s_7b04649645ea0c::t_16cc55a023b062 1-72
+extensions/pi/package.json
+  s_7b04649645ea0c::t_5a418c47d70feb 1-31
+package.json
+  s_7b04649645ea0c::t_f166f465eb7691 9,18-21,47-58
+scripts/adopt.mjs
+  s_7b04649645ea0c::t_b1a60f88015b7e 1-80
+scripts/build-docs.mjs
+  s_7b04649645ea0c::t_64ebd69362dafe 1-114
+scripts/workflow-bench.mjs
+  s_7b04649645ea0c::t_b120dcf9bbee6c 1-86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b319f6496d1bd4c5bd24b076b9c7d0975b04553b",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
