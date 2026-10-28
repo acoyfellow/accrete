@@ -1,4 +1,116 @@
 {
+  "toolRows": [
+    {
+      "tool": "js-yaml",
+      "set": "train",
+      "ok": true,
+      "coldCs": "3.05s",
+      "coldMs": 3188,
+      "repeatCs": "0.00s",
+      "repeatMs": 70,
+      "speedup": "46×"
+    },
+    {
+      "tool": "json5",
+      "set": "train",
+      "ok": true,
+      "coldCs": "2.52s",
+      "coldMs": 2646,
+      "repeatCs": "0.00s",
+      "repeatMs": 70,
+      "speedup": "38×"
+    },
+    {
+      "tool": "lessc",
+      "set": "heldout",
+      "ok": true,
+      "coldCs": "4.69s",
+      "coldMs": 4858,
+      "repeatCs": "0.00s",
+      "repeatMs": 92,
+      "speedup": "53×"
+    },
+    {
+      "tool": "markdown-it",
+      "set": "heldout",
+      "ok": true,
+      "coldCs": "3.46s",
+      "coldMs": 3614,
+      "repeatCs": "0.00s",
+      "repeatMs": 73,
+      "speedup": "50×"
+    },
+    {
+      "tool": "marked",
+      "set": "train",
+      "ok": true,
+      "coldCs": "2.76s",
+      "coldMs": 2801,
+      "repeatCs": "0.00s",
+      "repeatMs": 21,
+      "speedup": "133×"
+    },
+    {
+      "tool": "mustache",
+      "set": "heldout",
+      "ok": true,
+      "coldCs": "2.83s",
+      "coldMs": 2956,
+      "repeatCs": "0.00s",
+      "repeatMs": 68,
+      "speedup": "43×"
+    },
+    {
+      "tool": "sass",
+      "set": "heldout",
+      "ok": true,
+      "coldCs": "4.79s",
+      "coldMs": 5155,
+      "repeatCs": "0.00s",
+      "repeatMs": 169,
+      "speedup": "31×"
+    },
+    {
+      "tool": "semver",
+      "set": "train",
+      "ok": true,
+      "coldCs": "2.86s",
+      "coldMs": 2992,
+      "repeatCs": "0.00s",
+      "repeatMs": 68,
+      "speedup": "44×"
+    },
+    {
+      "tool": "sql-formatter",
+      "set": "heldout",
+      "ok": true,
+      "coldCs": "4.06s",
+      "coldMs": 4238,
+      "repeatCs": "0.00s",
+      "repeatMs": 87,
+      "speedup": "49×"
+    },
+    {
+      "tool": "terser",
+      "set": "heldout",
+      "ok": true,
+      "coldCs": "4.78s",
+      "coldMs": 4952,
+      "repeatCs": "0.00s",
+      "repeatMs": 87,
+      "speedup": "57×"
+    },
+    {
+      "tool": "prettier",
+      "set": "heldout",
+      "ok": false,
+      "coldCs": "0.00s",
+      "coldMs": 2939,
+      "repeatCs": "0.00s",
+      "repeatMs": 8058,
+      "speedup": "—"
+    }
+  ],
   "kind": "site-numbers",
   "baseline": {
     "coverage": "1/7",
@@ -90,7 +202,51 @@
     {
       "path": "bench/ledger.json",
       "sha256": "cad602c067ce39dc8a5ffc735fa3f4dd3f1cd8ee8d50df3b2aa92b0cb39aeed3"
+    },
+    {
+      "path": "bench/runs/hc3b/js-yaml.json",
+      "sha256": "28231032e78112fd8d4a6ce3e878959e44701736a31e3ab59c816884fcbff699"
+    },
+    {
+      "path": "bench/runs/hc3b/json5.json",
+      "sha256": "1c18c15bce8c8285411910b183465f4baeea6c186e0ade85a704711f3d51a932"
+    },
+    {
+      "path": "bench/runs/hc3b/lessc.json",
+      "sha256": "8190701b6e079e162bff231148db355a1b0f7534ac5b697614bebbc583751730"
+    },
+    {
+      "path": "bench/runs/hc3b/markdown-it.json",
+      "sha256": "6576299de5e2e4fae24133736b32a4eeb26e711048bf48bc7b3a2cf8c295e462"
+    },
+    {
+      "path": "bench/runs/hc3b/marked.json",
+      "sha256": "2bcae7ec6e372c5e22e3f54b40dae16f95bebf772b04877ffce332c4f846251e"
+    },
+    {
+      "path": "bench/runs/hc3b/mustache.json",
+      "sha256": "c7a676c93ce74726bc0e8a7b614a4b7cd0c5760ee88c92466f97f20791e0b19b"
+    },
+    {
+      "path": "bench/runs/hc3b/prettier.json",
+      "sha256": "3725591b6542dc3d5aaaca5c2f0a66bfaca20f8277acf71ca2836b949adbb513"
+    },
+    {
+      "path": "bench/runs/hc3b/sass.json",
+      "sha256": "590b132337bbc203243ccb8e9dd0b00a4bb3032647d35431954c68169abd6034"
+    },
+    {
+      "path": "bench/runs/hc3b/semver.json",
+      "sha256": "4adb3bcd993b311e13a00d2ba6eb0cc5b24594bf9402c92be69fcd058cd9b9e8"
+    },
+    {
+      "path": "bench/runs/hc3b/sql-formatter.json",
+      "sha256": "a26abf433a8b42489a64d49ac06006688aa3f8844d4587a7a2a2b7c2374a585d"
+    },
+    {
+      "path": "bench/runs/hc3b/terser.json",
+      "sha256": "de5c0019b3fc4e9edc19dd9fb8647c2c94e0bc1f27cdd067351a4ed0580ef36f"
     }
   ],
-  "digest": "caffe6fd9917fee078d190a89534f958fbb0b7de3d145beaaaa4b0dcc5dc8947"
+  "digest": "152fc2c05a3a322d7571a8e319a2b51a837f6515548679f6d628c511c64a5308"
 }

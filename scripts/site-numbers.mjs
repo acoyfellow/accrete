@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { heldoutScore } from './objective.mjs';
 import { readJson, seal, sha256 } from './receipt.mjs';
 
@@ -20,7 +20,24 @@ const part = (score) => ({
   tools: [...score.train.covered, ...score.heldout.covered],
 });
 
+const runDir = `bench/runs/${latest}`;
+const toolRows = readdirSync(runDir)
+  .filter((name) => name.endsWith('.json') && name !== 'score.json')
+  .map((name) => readJson(`${runDir}/${name}`))
+  .map((receipt) => {
+    const cold = receipt.cases.filter((entry) => entry.pass === 'cold');
+    const repeat = receipt.cases.filter((entry) => entry.pass === 'repeat');
+    const ok = receipt.cases.length > 0 && receipt.cases.every((entry) => entry.ok);
+    const coldCs = cold.reduce((sum, entry) => sum + entry.containerSeconds, 0);
+    const repeatMs = repeat.length === 0 ? null : Math.max(...repeat.map((entry) => entry.ms));
+    const coldMs = cold.length === 0 ? null : Math.max(...cold.map((entry) => entry.ms));
+    return { tool: receipt.tool, set: receipt.set, ok, coldCs: seconds(coldCs), coldMs, repeatCs: seconds(repeat.reduce((sum, entry) => sum + entry.containerSeconds, 0)), repeatMs, speedup: ok && repeatMs ? `${Math.round(coldMs / repeatMs)}×` : '—' };
+  })
+  .sort((first, second) => Number(second.ok) - Number(first.ok) || first.tool.localeCompare(second.tool));
+paths.push(...readdirSync(runDir).filter((name) => name.endsWith('.json') && name !== 'score.json').map((name) => `${runDir}/${name}`));
+
 const numbers = seal({
+  toolRows,
   kind: 'site-numbers',
   baseline: part(baseline),
   current: part(current),
