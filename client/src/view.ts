@@ -42,7 +42,7 @@ const explainer = (h: H): Html =>
       h.path([h.Class("wire cold"), ...svgAttr(h, { d: "M150 140 C190 140 190 52 250 52 M390 52 C450 52 440 140 490 140" })], []),
       h.path([h.Class("wire warm"), ...svgAttr(h, { d: "M150 172 C260 270 380 270 490 172" })], []),
       label(h, 196, 118, `run 1 · ${firstTool?.coldCs ?? ""} of container`, "s cold-t"),
-      label(h, 238, 266, `run 2+ · ${firstTool?.repeatMs ?? ""} ms · 0.00s container`, "s warm-t"),
+      label(h, 238, 266, `run 2+ · ${firstTool?.repeatMs ?? ""} ms · ${firstTool?.repeatCs ?? ""} container`, "s warm-t"),
     ]),
   ]);
 
