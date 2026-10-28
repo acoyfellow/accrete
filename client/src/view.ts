@@ -17,17 +17,34 @@ const tape = (h: H, text: string, extra: string): Html =>
 const headlineLine = (h: H, text: string, kind: "strike" | "new", delay: string, slash: string): Html =>
   h.span([h.Class("line")], [h.span([h.Class(kind === "strike" ? "strike" : "new pop"), vars(h, { "--d": delay, "--d2": slash })], [text])]);
 
-const ELI5: ReadonlyArray<readonly [string, string, string]> = [
-  ["🤖", "agent needs a tool", "\"format this YAML\""],
-  ["📦🔥", "first time: build it", "in a container, once"],
-  ["🔒", "check + save it", "same output as the real one"],
-  ["⚡", "every time after", "instant · no container"],
-];
+const svgAttr = (h: H, attributes: Record<string, string>) => Object.entries(attributes).map(([key, value]) => h.Attribute(key, value));
 
-const eli5 = (h: H): Html =>
-  h.ol([h.Class("eli5"), h.AriaLabel("How accrete works")], ELI5.map(([icon, title, sub], index) =>
-    h.li([vars(h, { "--i": String(index) })], [h.span([h.Class("ico")], [icon]), h.b([], [title]), h.small([], [sub])]),
-  ));
+const box = (h: H, x: number, y: number, width: number, height: number, extra: string): Html =>
+  h.rect([h.Class(`box ${extra}`), ...svgAttr(h, { x: String(x), y: String(y), width: String(width), height: String(height) })], []);
+
+const label = (h: H, x: number, y: number, text: string, extra: string): Html =>
+  h.text([h.Class(extra), ...svgAttr(h, { x: String(x), y: String(y) })], [text]);
+
+const firstTool = numbers.toolRows.find((row) => row.ok);
+
+const explainer = (h: H): Html =>
+  h.figure([h.Class("explainer"), h.AriaLabel("An agent asks for a tool. The first time, accrete builds it in a container and checks it. After that, the agent runs the saved copy with no container.")], [
+    h.svg([...svgAttr(h, { viewBox: "0 0 640 300", role: "img" })], [
+      box(h, 0, 115, 150, 70, "agent"),
+      label(h, 16, 145, "agent", "t"),
+      label(h, 16, 166, "needs yaml→json", "s"),
+      box(h, 250, 14, 140, 76, "container"),
+      label(h, 266, 44, "container", "t cold-t"),
+      label(h, 266, 66, "build + check", "s"),
+      box(h, 490, 115, 150, 70, "registry"),
+      label(h, 506, 145, "registry", "t"),
+      label(h, 506, 166, "sha256 · sealed", "s"),
+      h.path([h.Class("wire cold"), ...svgAttr(h, { d: "M150 140 C190 140 190 52 250 52 M390 52 C450 52 440 140 490 140" })], []),
+      h.path([h.Class("wire warm"), ...svgAttr(h, { d: "M150 172 C260 270 380 270 490 172" })], []),
+      label(h, 196, 118, `run 1 · ${firstTool?.coldCs ?? ""} of container`, "s cold-t"),
+      label(h, 238, 266, `run 2+ · ${firstTool?.repeatMs ?? ""} ms · 0.00s container`, "s warm-t"),
+    ]),
+  ]);
 
 const hero = (h: H): Html =>
   h.header([], [
@@ -37,10 +54,10 @@ const hero = (h: H): Html =>
       headlineLine(h, "ONCE.", "new", ms(4500), ms(0)),
       headlineLine(h, "THEN NEVER.", "new", ms(4650), ms(0)),
     ]),
-    eli5(h),
+    explainer(h),
     h.div([vars(h, { position: "relative" })], [
       h.div([h.Class("card in"), vars(h, { "--d": ms(3300) })], []),
-      h.div([h.Class("sticker s1 in"), vars(h, { "--d": ms(4900) })], ["IT EATS SERVERS 🍬"]),
+      h.div([h.Class("sticker s1 in"), vars(h, { "--d": ms(4900) })], ["IT EATS SERVERS"]),
       h.div([h.Class("sticker s2 in"), vars(h, { "--d": ms(5100) })], [`${numbers.current.repeatCs} LOL`]),
     ]),
   ]);
@@ -145,7 +162,7 @@ const how = (h: H): Html =>
 const fire = (h: H): Html =>
   h.section([h.Class("fire")], [
     h.div([h.Class("bg")], []),
-    h.h2([h.Class("reveal"), vars(h, { "--r": "-4deg" })], ["WE SET YOUR CONTAINER BILL ON FIRE 🔥"]),
+    h.h2([h.Class("reveal"), vars(h, { "--r": "-4deg" })], ["WE SET YOUR CONTAINER BILL ON FIRE"]),
     h.div([h.Class("meter reveal")], ["CONTAINER-SECONDS, NEXT RUN", h.b([vars(h, { "--cold": String(Math.round(parseFloat(numbers.current.coldCs) * 100)) })], [])]),
   ]);
 
@@ -230,7 +247,7 @@ const boot = (h: H): Html => h.div([h.Class("boot")], [h.div([h.Class("gem")], [
 
 const stage = (h: H): Html =>
   h.section([h.Class("stage")], [
-    tape(h, "⚠ YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 ", "in"),
+    tape(h, "YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 / ", "in"),
     hero(h),
     xp(h),
     receiptRuns(h),
@@ -246,7 +263,7 @@ export const view = (model: Model, h: H): Html =>
         h.div([h.Class("levelup")], [h.b([], ["LEVEL UP"])]),
         stage(h),
         demo(h, model, local),
-        tape(h, "BUILD IT ONCE ★ CHECK IT AGAINST THE REAL ONE ★ HASH IT ★ NEVER BOOT A CONTAINER FOR IT AGAIN ★ ", "rev"),
+        tape(h, "BUILD IT ONCE / CHECK IT AGAINST THE REAL ONE / HASH IT / NEVER BOOT A CONTAINER FOR IT AGAIN / ", "rev"),
         how(h),
         fire(h),
         numbersSection(h),
