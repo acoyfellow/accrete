@@ -129,3 +129,12 @@
   .meter b { counter-reset: w calc(round(down, var(--cs) / 100)) f calc(mod(var(--cs), 100)); animation: countdown 5.4s cubic-bezier(.1,.8,.2,1) infinite; }
   .meter b::after { content: counter(w) "." counter(f, decimal-leading-zero); }
   @keyframes countdown { 0% { --cs: var(--cold, 0) } 40%, 100% { --cs: 0 } }
+
+@media (max-width: 640px) {
+  .ledger { padding: 8vh 16px; gap: 18px; }
+  .ledger div { border-width: 4px; border-radius: 16px; padding: 18px; transform: none !important; }
+  .ledger div:hover { transform: none !important; box-shadow: none; }
+  .ledger h3 { font-size: 30px; margin-bottom: 8px; }
+  .ledger li { font-size: 13px; padding: 8px 0; overflow-wrap: anywhere; }
+  .ledger li a { font-size: 10px; }
+}

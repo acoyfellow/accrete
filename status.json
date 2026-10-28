@@ -1,7 +1,7 @@
 {
   "name": "accrete",
   "state": "notebook",
-  "iteration": 2,
+  "iteration": 3,
   "northStar": "Agents on Durable Objects build the tools they need once, so container-seconds per task fall toward zero as the registry grows.",
   "constraint": "A built tool must run in a Worker isolate with no network and no secrets, and must match the native tool's output before it is registered.",
   "falsifiable": "After a tool is in the registry, a repeat of the same task uses 0 container-seconds. Disproved if any repeat run uses the container.",
@@ -29,20 +29,28 @@
       "experiment": "02-builder-cold-tool",
       "receipt": "receipts/02-self-check.json",
       "observed": "8 files, clean, placement built-tool, 0 container-seconds, 811 ms."
+    },
+    {
+      "claim": "Repeat runs use 0 container-seconds across the whole bench, not just the demo.",
+      "experiment": "bench hillclimb",
+      "receipt": "bench/score.json",
+      "observed": "10 tools, train 4/4, held-out 6/7. Repeat container-seconds per task: 0.00."
+    },
+    {
+      "claim": "The 4 falsification tests pass.",
+      "experiment": "bench hillclimb",
+      "receipt": "receipts/falsify.json",
+      "observed": "Repeat uses no container. Tampered bundle refused. Network tool fails. Bad recipe rejected."
     }
   ],
   "unproven": [
     {
-      "claim": "Total container cost over many tasks falls toward zero.",
-      "why": "Only 6 tasks and 4 tools have been measured."
+      "claim": "Total container cost falls toward zero over a long run.",
+      "why": "Bench is 11 tools. No long mixed-task run yet."
     },
     {
       "claim": "The Worker log measures builder cost correctly.",
       "why": "GraphQL billed about 62 s of uptime where the Worker logged 6.4 s. Cold start is the likely cause, not confirmed."
-    },
-    {
-      "claim": "A linter runs from the registry on accrete's own src/.",
-      "why": "eslint builds and passes, but the slice 2 gate no longer checks it."
     }
   ],
   "disproven": [
@@ -55,6 +63,11 @@
       "claim": "Any npm tool can be bundled for an isolate.",
       "receipt": "experiments/02-builder-cold-tool/README.md",
       "observed": "TypeScript 7 ships a native binary. The tsc tool uses TypeScript 5.9.3."
+    },
+    {
+      "claim": "Every held-out tool builds without code generation.",
+      "receipt": "bench/score.json",
+      "observed": "prettier loads its CLI through new Function. It fails in the isolate."
     }
   ],
   "openQuestions": [
