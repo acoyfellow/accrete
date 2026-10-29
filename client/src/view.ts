@@ -168,6 +168,8 @@ const receiptRuns = (h: H): Html =>
     ),
   );
 
+const wallMs = (run: Run): number => run.result.logs.reduce((sum, call) => sum + call.ms, 0);
+
 const containerTotal = (run: Run): number => run.result.logs.reduce((sum, call) => sum + call.containerSeconds, 0);
 
 const callLine = (call: Call): string =>
@@ -185,7 +187,13 @@ const liveRun = (h: H, run: Run): Html => {
   const build = run.result.logs.find((call) => call.build !== undefined)?.build;
   const output = outputOf(run);
   return h.div([h.Class(`liverun ${total > 0 ? "cost" : "zero"}`)], [
-    h.div([h.Class("head")], [h.span([], [`RUN ${run.at} · ${run.label}`]), h.b([], [`${total.toFixed(2)}s`])]),
+    h.div([h.Class("head")], [
+      h.span([], [`RUN ${run.at} · ${run.label}`]),
+      h.div([h.Class("figures")], [
+        h.b([], [`${wallMs(run)} ms`]),
+        h.span([h.Class(`chip ${total > 0 ? "chip-cost" : "chip-zero"}`)], [total > 0 ? `container ${total.toFixed(1)} s · built the tool` : "no container · 0 s"]),
+      ]),
+    ]),
     ...run.result.logs.map((call) => h.div([h.Class("meta")], [callLine(call)])),
     ...(build ? [h.div([h.Class("meta")], [`forged ${build.name}: ${(build.bytes / 1024).toFixed(0)} KB · matches native = ${build.nativeMatchesBuilt} · ${build.hash.slice(0, 12)}`])] : []),
     ...(output ? [h.pre([], [output])] : []),
