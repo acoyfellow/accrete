@@ -1,0 +1,21 @@
+src/builder.ts
+  s_7b04649645ea0c::t_5c06fb57ce2169 1,4-41,44
+wrangler.jsonc
+  s_7b04649645ea0c::t_272323a933b69e 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9c8ef4b9e3d567cab73b83381ad5876f2d660f0c",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
