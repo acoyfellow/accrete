@@ -13,7 +13,7 @@
   "worker_loaders": [{ "binding": "LOADER" }],
   "r2_buckets": [{ "binding": "TOOLS", "bucket_name": "accrete-tools" }],
   "containers": [
-    { "class_name": "Builder", "image": "./builder/Dockerfile", "max_instances": 1, "instance_type": "standard-1" }
+    { "class_name": "Builder", "scheduling_policy": "durable_object", "images": { "builder": { "dockerfile": "./builder/Dockerfile" } } }
   ],
   "durable_objects": {
     "bindings": [
