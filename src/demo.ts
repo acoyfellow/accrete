@@ -35,18 +35,18 @@ export const routeDemo = async (request: Request, env: Env, local: boolean): Pro
   const { pathname } = new URL(request.url);
   if (request.method === 'GET' && pathname === '/api/status') return Response.json({ status, local });
   if (request.method === 'GET' && pathname === '/api/tools') return Response.json(await listTools(env));
+  if (request.method === 'POST' && pathname === '/api/run/cold') {
+    await ensureRecipes(env);
+    return Response.json(await workspace(env, `demo-cold-${crypto.randomUUID()}`).runTask(COLD_TASK.seed, COLD_TASK.steps));
+  }
+  if (request.method === 'POST' && pathname === '/api/run/self') {
+    await ensureRecipes(env);
+    return Response.json(await workspace(env, `demo-self-${crypto.randomUUID()}`).runTask(selfSource, SELF_STEPS));
+  }
   if (!local) return forbidden();
   if (request.method === 'POST' && pathname === '/api/reset') {
     await ensureRecipes(env);
     return Response.json({ removed: await forgetTools(env, DEMO_TOOLS) });
-  }
-  if (request.method === 'POST' && pathname === '/api/run/cold') {
-    await ensureRecipes(env);
-    return Response.json(await workspace(env, `demo-cold-${Date.now()}`).runTask(COLD_TASK.seed, COLD_TASK.steps));
-  }
-  if (request.method === 'POST' && pathname === '/api/run/self') {
-    await ensureRecipes(env);
-    return Response.json(await workspace(env, `demo-self-${Date.now()}`).runTask(selfSource, SELF_STEPS));
   }
   if (request.method === 'POST' && pathname === '/api/test/tamper') {
     const body: unknown = await request.json();

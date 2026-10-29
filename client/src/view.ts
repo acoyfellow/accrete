@@ -51,7 +51,7 @@ const engine = (h: H, [x, y]: Point, clip: string): Html =>
   h.g([h.Class("node engine")], [
     h.defs([], [h.clipPath([h.Id(clip)], [h.rect([...svgAttr(h, { x: String(x), y: String(y), width: String(NODE_WIDTH), height: String(ENGINE_HEIGHT), rx: "14" })], [])])]),
     h.rect([...svgAttr(h, { x: String(x + 6), y: String(y + 6), width: String(NODE_WIDTH), height: String(ENGINE_HEIGHT), class: "shadow" })], []),
-    h.image([...svgAttr(h, { href: "/art/monster.jpg", x: String(x), y: String(y - 10), width: String(NODE_WIDTH), height: String(NODE_WIDTH + 10), preserveAspectRatio: "xMidYMid slice", "clip-path": `url(#${clip})` })], []),
+    h.image([...svgAttr(h, { href: "/art/monster.webp", x: String(x), y: String(y - 10), width: String(NODE_WIDTH), height: String(NODE_WIDTH + 10), preserveAspectRatio: "xMidYMid slice", "clip-path": `url(#${clip})` })], []),
     box(h, x, y, NODE_WIDTH, ENGINE_HEIGHT, "frame"),
     h.rect([...svgAttr(h, { x: String(x + 10), y: String(y + ENGINE_HEIGHT - 34), width: "92", height: "24", class: "tag" })], []),
     label(h, x + 18, y + ENGINE_HEIGHT - 16, "ACCRETE", "tag-t"),
@@ -120,16 +120,22 @@ const use = (h: H): Html =>
       ]),
       h.pre([], [h.code([], ["pi install git:github.com/acoyfellow/accrete\nexport ACCRETE_URL=https://accrete.example.com\nexport ACCRETE_TOKEN=…"])]),
     ]),
+    h.div([h.Class("use-cta")], [
+      h.a([h.Href("/docs/tutorials/first-deploy/"), h.Class("primary")], ["START THE 15-MINUTE TUTORIAL"]),
+      h.a([h.Href(REPO)], ["CLONE ON GITHUB"]),
+      h.a([h.Href("/docs/reference/http-api/")], ["HTTP API REFERENCE"]),
+      h.a([h.Href("/docs/how-to/add-a-tool/")], ["ADD A TOOL"]),
+    ]),
     h.p([h.Class("fine")], ["All routes need Authorization: Bearer <ACCRETE_TOKEN>. Built tools get no network and no secrets. Works for npm CLIs that run in plain JavaScript; tools that need native binaries or eval stay in the container."]),
   ]);
 
 const hero = (h: H): Html =>
   h.header([], [
     h.h1([], [
-      headlineLine(h, "CONTAINERS", "strike", ms(2900), ms(3900)),
-      headlineLine(h, "EVERY TIME", "strike", ms(3050), ms(4100)),
-      headlineLine(h, "ONCE.", "new", ms(4500), ms(0)),
-      headlineLine(h, "THEN NEVER.", "new", ms(4650), ms(0)),
+      headlineLine(h, "CONTAINERS", "strike", ms(0), ms(250)),
+      headlineLine(h, "EVERY TIME", "strike", ms(60), ms(320)),
+      headlineLine(h, "ONCE.", "new", ms(380), ms(0)),
+      headlineLine(h, "THEN NEVER.", "new", ms(440), ms(0)),
     ]),
     explainer(h),
     h.div([h.Class("selfhost")], [
@@ -148,7 +154,7 @@ const RECEIPT_RUNS: ReadonlyArray<ReceiptRun> = [
 ];
 
 const xp = (h: H): Html =>
-  h.div([h.Class("xp in"), vars(h, { "--d": ms(5300) })], [
+  h.div([h.Class("xp in"), vars(h, { "--d": ms(900) })], [
     h.b([h.Class("lv")], []),
     h.div([h.Class("track")], [h.i([], [])]),
     h.span([h.Class("tag")], [`${numbers.kept.length} KEPT · ${numbers.current.tools.length} TOOLS · ${numbers.current.repeatCs} ON REPEAT`]),
@@ -200,19 +206,19 @@ const demo = (h: H, model: Model, local: boolean): Html => {
   const busy = Activity.guards.Busy(model.activity);
   return h.section([h.Id("demo"), h.Class("demo")], [
     h.h2([], ["DO IT YOURSELF"]),
-    h.p([], ["Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: no container. The tsc run checks accrete's own source."]),
-    ...(local
-      ? [
-          button(h, "1 · RESET", Message.ClickedReset(), busy, ""),
-          button(h, "2 · RUN JSON5", Message.ClickedRun({ kind: "cold" }), busy, "go"),
-          button(h, "3 · CHECK ACCRETE WITH ACCRETE", Message.ClickedRun({ kind: "self" }), busy, "go"),
+    h.p([], [local
+      ? "Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: no container. The tsc run checks accrete's own source."
+      : "These buttons call this live Worker. If the tool is already in the registry, the run takes milliseconds and 0 container-seconds. The tsc run type-checks accrete's own source inside an isolate."]),
+    ...[
+          ...(local ? [button(h, "1 · RESET", Message.ClickedReset(), busy, "")] : []),
+          button(h, local ? "2 · RUN JSON5" : "RUN JSON5", Message.ClickedRun({ kind: "cold" }), busy, "go"),
+          button(h, local ? "3 · CHECK ACCRETE WITH ACCRETE" : "CHECK ACCRETE WITH ACCRETE", Message.ClickedRun({ kind: "self" }), busy, "go"),
           Activity.match(model.activity, {
             Idle: () => h.span([], []),
             Busy: ({ label }) => h.span([h.Class("status")], [`${label}…`]),
             Failed: ({ reason }) => h.span([h.Class("status bad")], [reason]),
           }),
-        ]
-      : [h.p([], ["The live demo starts a container, so it runs only in local dev. Clone it and run npm run dev."])]),
+        ],
     h.div([h.Class("live")], [
       h.div([], model.runs.length === 0 ? [h.div([h.Class("empty")], ["no runs yet. press a button."])] : model.runs.map((run) => liveRun(h, run))),
       registry(h, model.tools),
