@@ -1,0 +1,47 @@
+bench/scripts/latest.json
+  s_7b04649645ea0c::t_73789c10f7054b 1-133
+builder/server.mjs
+  s_7b04649645ea0c::t_a75ec6b935941f 8,115-156,178-184
+client/src/command.ts
+  s_7b04649645ea0c::t_c07c6255cf2881 62
+client/src/model.ts
+  s_7b04649645ea0c::t_699b1aae7b4569 68
+client/src/numbers.ts
+  s_7b04649645ea0c::t_e1e861da7aacdd 1-18
+client/src/styles.css
+  s_7b04649645ea0c::t_efd1c08100fdf2 270-290
+client/src/update.ts
+  s_7b04649645ea0c::t_ca23719b4f8c2c 12
+client/src/view.ts
+  s_7b04649645ea0c::t_bbe9b397225cd8 4,136,138-139,143,180,218,339-373,376,389
+package.json
+  s_7b04649645ea0c::t_11adf95e38ba2a 21-23
+scripts/script-numbers.mjs
+  s_7b04649645ea0c::t_97ac403348e455 1-25
+scripts/scripts-gate.mjs
+  s_7b04649645ea0c::t_4655a6e559dc67 1-46
+scripts/scripts-proof.mjs
+  s_7b04649645ea0c::t_a4230b8c21594c 1-158
+src/demo.ts
+  s_7b04649645ea0c::t_61cf20ab811a0e 8-9,24-53,70-76
+src/index.ts
+  s_7b04649645ea0c::t_076f9c5501197e 4,71-80
+src/scripts.ts
+  s_7b04649645ea0c::t_f7b2d5ba2cdbb2 1-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "7adf1fe2e4c17da4dd8f78bcb89bdf1a01ab7ca7",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
