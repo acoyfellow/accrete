@@ -1,0 +1,31 @@
+bench/fork/latest.json
+  s_7b04649645ea0c::t_23d1603d04d1bb 1-176
+client/public/sitemap.xml
+  s_7b04649645ea0c::t_99bce54e4ebebe 2
+docs/explanation/freeze-once-fork-many.md
+  s_7b04649645ea0c::t_d46492db5beb4c 1-69
+package.json
+  s_7b04649645ea0c::t_fabeb20fac428b 23-24
+scripts/fork-gate.mjs
+  s_7b04649645ea0c::t_de5eededee5162 1-44
+src/index.ts
+  s_7b04649645ea0c::t_d4c34648fbf26b 5,82-92
+src/snapshots.ts
+  s_7b04649645ea0c::t_7963b8b31a2c6c 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4315ad4ba9f1400908f3ade940c033e6edf05161",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
