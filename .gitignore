@@ -10,3 +10,5 @@ bench/runs/*/
 !bench/runs/baseline/
 client/public/docs
 .DS_Store
+.guardrail/
+.pi/
