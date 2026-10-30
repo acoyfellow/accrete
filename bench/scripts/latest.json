@@ -1,0 +1,133 @@
+{
+  "kind": "accrete-scripts-proof",
+  "at": "2026-10-30T13:35:17.767Z",
+  "accrete": "https://accrete.customer0.dev",
+  "model": "@cf/moonshotai/kimi-k2.6",
+  "task": "Write an ES module in plain JavaScript with no imports.\nIt must export: export const run = async ({ args, files }) => ({ stdout, files: {} })\nTask: files[\"diff.patch\"] is a unified git diff. Produce a markdown review checklist.\nFor each changed file, in the order it appears, print one line: \"- [ ] <path> (+<added> -<removed>)\".\nCount added lines that start with \"+\" and removed lines that start with \"-\", excluding the \"+++\" and \"---\" header lines.\nThen print a final line: \"<N> files, +<total added> -<total removed>\".\nEvery line ends with a newline. Reply with only the code, no fences, no prose.",
+  "script": {
+    "name": "diff-checklist-mvv0kxa7",
+    "source": "export const run = async ({ args, files }) => {\n  const patch = files[\"diff.patch\"] || \"\";\n  const lines = patch.split(\"\\n\");\n  \n  const fileStats = [];\n  let currentFile = null;\n  let currentAdded = 0;\n  let currentRemoved = 0;\n  let totalAdded = 0;\n  let totalRemoved = 0;\n  \n  for (const line of lines) {\n    if (line.startsWith(\"diff --git \")) {\n      if (currentFile !== null) {\n        fileStats.push({ path: currentFile, added: currentAdded, removed: currentRemoved });\n        totalAdded += currentAdded;\n        totalRemoved += currentRemoved;\n      }\n      currentFile = null;\n      currentAdded = 0;\n      currentRemoved = 0;\n    } else if (line.startsWith(\"+++ b/\")) {\n      currentFile = line.slice(6);\n    } else if (line.startsWith(\"--- a/\") || line.startsWith(\"--- /dev/null\")) {\n      // ignore\n    } else if (line.startsWith(\"+++\")) {\n      // ignore other +++ lines\n    } else if (line.startsWith(\"+\")) {\n      currentAdded++;\n    } else if (line.startsWith(\"-\")) {\n      currentRemoved++;\n    }\n  }\n  \n  if (currentFile !== null) {\n    fileStats.push({ path: currentFile, added: currentAdded, removed: currentRemoved });\n    totalAdded += currentAdded;\n    totalRemoved += currentRemoved;\n  }\n  \n  let stdout = \"\";\n  for (const stat of fileStats) {\n    stdout += `- [ ] ${stat.path} (+${stat.added} -${stat.removed})\\n`;\n  }\n  stdout += `${fileStats.length} files, +${totalAdded} -${totalRemoved}\\n`;\n  \n  return { stdout, files: {} };\n};\n",
+    "sourceSha256": "05d52f9ee412108f53c1cb0396f7abd4b4f5512c776ff41320eeb77ae14acc23",
+    "modelMs": 16331,
+    "usage": {
+      "prompt_tokens": 160,
+      "completion_tokens": 393,
+      "total_tokens": 553,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "neurons": 156.72726440429688
+    }
+  },
+  "keep": {
+    "name": "diff-checklist-mvv0kxa7",
+    "sourceHash": "05d52f9ee412108f53c1cb0396f7abd4b4f5512c776ff41320eeb77ae14acc23",
+    "hash": "2e8cc1e983114d1e55e57e620fe9cd2597621bdde623e90dba78acbc36c03634",
+    "bytes": 752,
+    "kept": "new",
+    "checks": {
+      "sourceMatchesExpected": true,
+      "bundleMatchesExpected": true,
+      "isolateMatchesExpected": true
+    },
+    "containerSeconds": 6.569,
+    "ms": 7256
+  },
+  "keepAgain": {
+    "name": "diff-checklist-mvv0kxa7",
+    "sourceHash": "05d52f9ee412108f53c1cb0396f7abd4b4f5512c776ff41320eeb77ae14acc23",
+    "hash": "2e8cc1e983114d1e55e57e620fe9cd2597621bdde623e90dba78acbc36c03634",
+    "bytes": 0,
+    "kept": "already-kept",
+    "checks": {
+      "sourceMatchesExpected": true,
+      "bundleMatchesExpected": true,
+      "isolateMatchesExpected": true
+    },
+    "containerSeconds": 0,
+    "ms": 234
+  },
+  "repeats": [
+    {
+      "placement": "built-tool",
+      "containerSeconds": 0,
+      "serverMs": 149,
+      "clientMs": 231,
+      "stdout": "- [ ] x.js (+1 -3)\n1 files, +1 -3\n"
+    },
+    {
+      "placement": "built-tool",
+      "containerSeconds": 0,
+      "serverMs": 127,
+      "clientMs": 321,
+      "stdout": "- [ ] x.js (+1 -3)\n1 files, +1 -3\n"
+    },
+    {
+      "placement": "built-tool",
+      "containerSeconds": 0,
+      "serverMs": 222,
+      "clientMs": 292,
+      "stdout": "- [ ] x.js (+1 -3)\n1 files, +1 -3\n"
+    },
+    {
+      "placement": "built-tool",
+      "containerSeconds": 0,
+      "serverMs": 127,
+      "clientMs": 231,
+      "stdout": "- [ ] x.js (+1 -3)\n1 files, +1 -3\n"
+    },
+    {
+      "placement": "built-tool",
+      "containerSeconds": 0,
+      "serverMs": 126,
+      "clientMs": 204,
+      "stdout": "- [ ] x.js (+1 -3)\n1 files, +1 -3\n"
+    }
+  ],
+  "summary": {
+    "firstKeepContainerSeconds": 6.569,
+    "firstKeepMs": 7256,
+    "repeatMedianMs": 127,
+    "repeatContainerSeconds": 0,
+    "repeatModelTokens": 0
+  },
+  "checks": [
+    {
+      "name": "model wrote a script",
+      "pass": true,
+      "detail": "16331 ms, 1459 chars"
+    },
+    {
+      "name": "first keep ran in the container",
+      "pass": true,
+      "detail": "6.569 container-seconds"
+    },
+    {
+      "name": "source, bundle and isolate all match the expected output",
+      "pass": true
+    },
+    {
+      "name": "sending the same source again keeps it without a container",
+      "pass": true
+    },
+    {
+      "name": "every repeat ran from the registry",
+      "pass": true,
+      "detail": "149 ms, 127 ms, 222 ms, 127 ms, 126 ms"
+    },
+    {
+      "name": "repeat output is correct on new input",
+      "pass": true
+    },
+    {
+      "name": "a script that does not match its expected output is refused",
+      "pass": true
+    },
+    {
+      "name": "a kept script cannot reach the network from the isolate",
+      "pass": true,
+      "detail": "This worker is not permitted to access the internet via global functions like fetch(). It must use capabilities (such as"
+    }
+  ],
+  "sha256": "7b229efef29d93ece46a0c546018a9f120c921fc4d9ee4d36f9c021ac90a8f56"
+}

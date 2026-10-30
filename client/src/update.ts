@@ -9,6 +9,7 @@ type Return = Update.Return<Model, Message, never>;
 const only = (model: Model): Return => ({ model, commands: [] });
 
 const LABEL: Record<RunKind, string> = {
+  script: "kept diff-checklist script",
   cold: "json5 task",
   self: "tsc on accrete's own src/",
 };

@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from '/app/node_modules/esbuild/lib/main.js';
-import { bundleOptions, writeEntry } from './bundle.mjs';
+import { BANNER, NODE_BUILTINS, bundleOptions, writeEntry } from './bundle.mjs';
 
 const WORK = '/work';
 
@@ -112,6 +112,48 @@ const runBuild = async (recipe) => {
   };
 };
 
+const runScript = async (script) => {
+  const started = Date.now();
+  const id = createHash('sha256').update(JSON.stringify(script)).digest('hex').slice(0, 16);
+  const projectDir = `/build/script-${id}`;
+  await rm(projectDir, { recursive: true, force: true });
+  await mkdir(projectDir, { recursive: true });
+  await writeFile(join(projectDir, 'package.json'), JSON.stringify({ name: 'accrete-script', private: true, type: 'module' }));
+  const specs = Object.entries(script.packages ?? {}).map(([name, version]) => `${name}@${version}`);
+  if (specs.length > 0) {
+    const install = await exec('npm', ['install', '--registry=https://registry.npmjs.org/', '--no-audit', '--no-fund', '--ignore-scripts', ...specs], { cwd: projectDir });
+    if (install.code !== 0) throw new Error(`npm install failed: ${install.stderr.slice(-2000)}`);
+  }
+  await writeFile(join(projectDir, 'entry.js'), script.source);
+  const outfile = join(projectDir, 'tool.js');
+  await build({
+    entryPoints: [join(projectDir, 'entry.js')],
+    absWorkingDir: projectDir,
+    bundle: true,
+    format: 'esm',
+    platform: 'neutral',
+    mainFields: ['module', 'main'],
+    external: NODE_BUILTINS.flatMap((name) => [name, `node:${name}`]),
+    banner: { js: BANNER },
+    minify: true,
+    outfile,
+    logLevel: 'error',
+  });
+  const source = await import(pathToFileURL(join(projectDir, 'entry.js')).href + `?t=${Date.now()}`);
+  const bundled = await import(pathToFileURL(outfile).href + `?t=${Date.now()}`);
+  const input = { args: script.check.args, files: script.check.files };
+  const sourceOutput = await source.run(input);
+  const bundledOutput = await bundled.run(input);
+  return {
+    code: await readFile(outfile, 'utf8'),
+    sourceStdout: sourceOutput.stdout,
+    bundledStdout: bundledOutput.stdout,
+    expectedStdout: script.check.stdout,
+    match: sourceOutput.stdout === script.check.stdout && bundledOutput.stdout === script.check.stdout,
+    buildSeconds: (Date.now() - started) / 1000,
+  };
+};
+
 const readBody = (request) =>
   new Promise((resolve, reject) => {
     let body = '';
@@ -129,6 +171,13 @@ createServer(async (request, response) => {
   if (request.method === 'POST' && request.url === '/build') {
     try {
       return reply(200, { ok: true, result: await runBuild(JSON.parse(await readBody(request))) });
+    } catch (error) {
+      return reply(200, { ok: false, error: String(error && error.message ? error.message : error) });
+    }
+  }
+  if (request.method === 'POST' && request.url === '/script') {
+    try {
+      return reply(200, { ok: true, result: await runScript(JSON.parse(await readBody(request))) });
     } catch (error) {
       return reply(200, { ok: false, error: String(error && error.message ? error.message : error) });
     }

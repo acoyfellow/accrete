@@ -65,7 +65,7 @@ export const Loaded = defineTaggedUnion({
 
 export type Loaded = typeof Loaded.Type;
 
-export const RunKind = Schema.Literals(["cold", "self"]);
+export const RunKind = Schema.Literals(["script", "cold", "self"]);
 
 export type RunKind = typeof RunKind.Type;
 

@@ -1,6 +1,7 @@
 import type { Html, HtmlBuilder } from "foldkit/html";
 import { Message } from "./message";
 import numbers from "./numbers.json";
+import { scriptNumbers } from "./numbers";
 import { Activity, type Call, Loaded, type Model, type Run, type Tool } from "./model";
 
 type H = HtmlBuilder<Message>;
@@ -132,14 +133,14 @@ const use = (h: H): Html =>
 const hero = (h: H): Html =>
   h.header([], [
     h.h1([], [
-      headlineLine(h, "CONTAINERS", "strike", ms(0), ms(250)),
+      headlineLine(h, "PROMPT IT", "strike", ms(0), ms(250)),
       headlineLine(h, "EVERY TIME", "strike", ms(60), ms(320)),
-      headlineLine(h, "ONCE.", "new", ms(380), ms(0)),
-      headlineLine(h, "THEN NEVER.", "new", ms(440), ms(0)),
+      headlineLine(h, "YOUR AGENT WRITES IT.", "new", ms(380), ms(0)),
+      headlineLine(h, "ACCRETE KEEPS IT.", "new", ms(440), ms(0)),
     ]),
     explainer(h),
     h.div([h.Class("selfhost")], [
-      h.p([], [h.b([], ["Open source. Runs in your own Cloudflare account."]), " Not a hosted service. You deploy one Worker; your agents call it instead of booting a container for every npm tool."]),
+      h.p([], [h.b([], ["Agent-written code, kept and checked."]), ` Your agent writes a helper once. accrete checks it against the output the agent expected, hashes it, and keeps it. Every later call runs the kept copy in an isolate: ${scriptNumbers.repeatMedianMs} ms, 0 container-seconds, 0 model tokens.`]),
       h.div([h.Class("cta")], [h.a([h.Href("/docs/tutorials/first-deploy/"), h.Class("primary")], ["DEPLOY IT"]), h.a([h.Href("/docs/")], ["READ THE DOCS"]), h.a([h.Href(REPO)], ["GITHUB"])]),
     ]),
   ]);
@@ -176,6 +177,7 @@ const callLine = (call: Call): string =>
   `${call.tool?.split("@")[0] ?? call.op} · ran in ${call.placement === "built-tool" ? "registry" : call.placement} · ${call.ms} ms`;
 
 const outputOf = (run: Run): string | undefined => {
+  if (run.kind === "script") return run.result.files["checklist.md"];
   if (run.kind === "cold") return run.result.files["app.json"];
   const report = run.result.files["reports/tsc.txt"];
   if (report === undefined) return undefined;
@@ -213,7 +215,7 @@ const button = (h: H, label: string, message: Message, busy: boolean, extra: str
 const demo = (h: H, model: Model, local: boolean): Html => {
   const busy = Activity.guards.Busy(model.activity);
   return h.section([h.Id("demo"), h.Class("demo")], [
-    h.h2([], ["DO IT YOURSELF"]),
+    h.h2([], ["IT ALSO KEEPS NPM TOOLS"]),
     h.p([], [local
       ? "Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: no container. The tsc run checks accrete's own source."
       : "These buttons call this live Worker. If the tool is already in the registry, the run takes milliseconds and 0 container-seconds. The tsc run type-checks accrete's own source inside an isolate."]),
@@ -334,9 +336,44 @@ const footer = (h: H): Html =>
   ]);
 
 
+const scriptStep = (h: H, n: string, title: string, body: string, figure: string, kind: "cost" | "zero"): Html =>
+  h.div([h.Class(`kstep ${kind}`)], [h.i([], [n]), h.h3([], [title]), h.p([], [body]), h.b([], [figure])]);
+
+const scriptDemo = (h: H, model: Model): Html => {
+  const busy = Activity.guards.Busy(model.activity);
+  const scriptRuns = model.runs.filter((run) => run.kind === "script");
+  return h.section([h.Id("keep"), h.Class("keep")], [
+    h.h2([], ["WATCH IT KEEP ONE"]),
+    h.p([h.Class("lede")], [`A model (${scriptNumbers.model.replace("@cf/", "")}) was asked for a helper: turn a git diff into a review checklist. It wrote ${scriptNumbers.sourceLines} lines of JavaScript. Nobody edited them.`]),
+    h.div([h.Class("ksteps")], [
+      scriptStep(h, "1", "THE AGENT WRITES IT", "One model call writes the helper and says what output it expects on a sample diff.", `${(scriptNumbers.modelMs / 1000).toFixed(1)} s of model time`, "cost"),
+      scriptStep(h, "2", "ACCRETE CHECKS IT ONCE", "In a container: run the source, bundle it, run the bundle, run it in an isolate. All four must match the expected output, or it is refused.", `${scriptNumbers.firstKeepContainerSeconds.toFixed(1)} container-seconds, once`, "cost"),
+      scriptStep(h, "3", "EVERY CALL AFTER", `The kept copy runs by name in an isolate with no network and no secrets. ${scriptNumbers.repeatCount} repeats in the receipt.`, `${scriptNumbers.repeatMedianMs} ms · 0 container-s · 0 tokens`, "zero"),
+    ]),
+    h.div([h.Class("kgrid")], [
+      h.div([h.Class("ksource")], [
+        h.div([h.Class("kbar")], [h.span([], [`${scriptNumbers.name}.js`]), h.span([], [`sha256 ${scriptNumbers.sourceSha256.slice(0, 12)}`])]),
+        h.pre([], [h.code([], [scriptNumbers.source])]),
+      ]),
+      h.div([h.Class("kruns")], [
+        button(h, "RUN THE KEPT SCRIPT ON A NEW DIFF", Message.ClickedRun({ kind: "script" }), busy, "go"),
+        Activity.match(model.activity, {
+          Idle: () => h.span([], []),
+          Busy: ({ label }) => h.span([h.Class("status")], [`${label}…`]),
+          Failed: ({ reason }) => h.span([h.Class("status bad")], [reason]),
+        }),
+        ...(scriptRuns.length === 0
+          ? [h.div([h.Class("empty")], ["Press the button. The script runs from the registry on this live Worker. No model call, no container."])]
+          : scriptRuns.map((run) => liveRun(h, run))),
+      ]),
+    ]),
+    h.p([h.Class("fine")], [`Numbers from the sealed receipt ${scriptNumbers.receipt} (sha256 ${scriptNumbers.receiptSha256.slice(0, 12)}), ${scriptNumbers.checks} checks, including: a script whose output does not match is refused, and a kept script cannot reach the network.`]),
+  ]);
+};
+
 const stage = (h: H): Html =>
   h.section([h.Class("stage")], [
-    tape(h, "YOUR AGENT IS RENTING A WHOLE COMPUTER TO RUN JSON5 / ", "in"),
+    tape(h, "YOUR AGENT WRITES THE SAME HELPER EVERY SESSION AND PAYS FOR IT EVERY TIME / ", "in"),
     hero(h),
     xp(h),
     receiptRuns(h),
@@ -349,6 +386,7 @@ export const view = (model: Model, h: H): Html =>
     Ready: ({ status, local }) =>
       h.main([], [
         stage(h),
+        scriptDemo(h, model),
         demo(h, model, local),
         tape(h, "BUILD IT ONCE / CHECK IT AGAINST THE REAL ONE / HASH IT / NEVER BOOT A CONTAINER FOR IT AGAIN / ", "rev"),
         how(h),

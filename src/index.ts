@@ -1,6 +1,7 @@
 import { isRecipe } from './recipe';
 import { buildTool, forgetTools, listTools, putRecipe, registerTool } from './tools';
 import { routeDemo } from './demo';
+import { isScript, isToolInput, keepScript, runScript } from './scripts';
 import type { Env, Step } from './types';
 export { Workspace } from './workspace';
 export { Registry } from './registry';
@@ -66,6 +67,16 @@ const route = async (request: Request, env: Env): Promise<Response> => {
       return Response.json({ error: 'bad names' }, { status: 400 });
     }
     return Response.json({ removed: await forgetTools(env, body.names) });
+  }
+  if (request.method === 'POST' && pathname === '/scripts') {
+    const body: unknown = await request.json();
+    if (!isScript(body)) return Response.json({ error: 'bad script' }, { status: 400 });
+    return Response.json(await keepScript(env, body));
+  }
+  if (request.method === 'POST' && pathname === '/scripts/run') {
+    const body: unknown = await request.json();
+    if (!isObject(body) || typeof body.name !== 'string' || !isToolInput(body.input)) return Response.json({ error: 'bad run' }, { status: 400 });
+    return Response.json(await runScript(env, body.name, body.input));
   }
   if (request.method === 'POST' && pathname === '/task') {
     const body: unknown = await request.json();

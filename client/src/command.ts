@@ -59,7 +59,7 @@ export const RunDemo = Command.define("RunDemo", {
   messages: [Message.Finished, Message.FailedAction],
   execute: ({ kind }) =>
     Effect.gen(function* () {
-      const { ok, body } = yield* call(`/api/run/${kind}`, "POST");
+      const { ok, body } = yield* call(kind === "script" ? "/api/script/run" : `/api/run/${kind}`, "POST");
       if (!ok) return Message.FailedAction({ reason: yield* reasonOf(body, "Run failed.") });
       const result = yield* Schema.decodeUnknownEffect(TaskResult)(body);
       return Message.Finished({ kind, result });
