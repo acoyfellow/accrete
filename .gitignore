@@ -9,3 +9,4 @@ client/public/status.json
 bench/runs/*/
 !bench/runs/baseline/
 client/public/docs
+.DS_Store

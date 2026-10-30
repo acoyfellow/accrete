@@ -1,0 +1,75 @@
+{
+  "schema": "guardrail.deploy-receipt.v0",
+  "timestamp": "2026-10-28T14:05:18.771Z",
+  "command": [
+    "guardrail",
+    "receipt",
+    "./.guardrail-staged.45499.wrangler.jsonc"
+  ],
+  "configPath": "./.guardrail-staged.45499.wrangler.jsonc",
+  "git": {
+    "sha": "5f537087269fbd9dcf55abb113678edf2ff085ac",
+    "dirty": true
+  },
+  "decision": {
+    "allowed": true,
+    "findings": [
+      {
+        "severity": "WARNING",
+        "message": "custom route accrete.customer0.dev with sensitive bindings, but code enforces auth (bearer-token). Verify auth is active in production."
+      },
+      {
+        "severity": "WARNING",
+        "message": "r2_bucket binding \"TOOLS\" on custom route accrete.customer0.dev — protected by code auth"
+      },
+      {
+        "severity": "WARNING",
+        "message": "durable_object_namespace binding \"WORKSPACE\" on custom route accrete.customer0.dev — protected by code auth"
+      },
+      {
+        "severity": "WARNING",
+        "message": "durable_object_namespace binding \"REGISTRY\" on custom route accrete.customer0.dev — protected by code auth"
+      },
+      {
+        "severity": "WARNING",
+        "message": "durable_object_namespace binding \"BUILDER\" on custom route accrete.customer0.dev — protected by code auth"
+      }
+    ]
+  },
+  "exposure": {
+    "isPublic": true,
+    "surface": "custom route accrete.customer0.dev",
+    "reason": "custom route accrete.customer0.dev",
+    "criticalMessage": "Worker is attached to custom route accrete.customer0.dev with sensitive bindings",
+    "routes": [
+      "accrete.customer0.dev"
+    ],
+    "workersDev": false
+  },
+  "bindings": [
+    {
+      "type": "r2_bucket",
+      "name": "TOOLS"
+    },
+    {
+      "type": "durable_object_namespace",
+      "name": "WORKSPACE"
+    },
+    {
+      "type": "durable_object_namespace",
+      "name": "REGISTRY"
+    },
+    {
+      "type": "durable_object_namespace",
+      "name": "BUILDER"
+    }
+  ],
+  "auth": {
+    "detected": true,
+    "partial": false,
+    "patterns": [
+      "bearer-token"
+    ],
+    "source": "/Users/jcoeyman/cloudflare/accrete/src/index.ts"
+  }
+}
