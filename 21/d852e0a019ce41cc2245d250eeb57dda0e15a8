@@ -1,0 +1,45 @@
+.gitignore
+  s_5ddfc8f4108175::t_c218d354eb5c17 12
+.guardrail/deploys/2026-10-26T12-17-52-530Z.json
+  s_7b04649645ea0c::t_a95b89e8c91f90 1-65
+.guardrail/deploys/2026-10-26T12-19-00-406Z.json
+  s_7b04649645ea0c::t_16b2c85d447daa 1-65
+.guardrail/deploys/2026-10-26T12-19-39-706Z.json
+  s_7b04649645ea0c::t_6eee600515bed2 1-61
+.guardrail/deploys/2026-10-27T10-20-32-424Z.json
+  s_7b04649645ea0c::t_200f0d426d5a47 1-73
+.guardrail/deploys/2026-10-27T10-20-40-715Z.json
+  s_7b04649645ea0c::t_96309053af6ba0 1-73
+.guardrail/deploys/2026-10-27T10-32-55-401Z.json
+  s_7b04649645ea0c::t_4630671b1b7008 1-73
+.guardrail/deploys/2026-10-28T14-05-18-771Z.json
+  s_7b04649645ea0c::t_a8a012261927ee 1-75
+.guardrail/deploys/2026-10-28T14-05-30-431Z.json
+  s_7b04649645ea0c::t_a7bbf0f0351823 1-75
+.guardrail/deploys/2026-10-29T13-54-20-297Z.json
+  s_7b04649645ea0c::t_0b0f6768aa9424 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "21d852e0a019ce41cc2245d250eeb57dda0e15a8",
+  "prompts": {},
+  "sessions": {
+    "s_5ddfc8f4108175": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0fc06-d951-77a8-8358-cd5dae6891bd",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
