@@ -2,6 +2,7 @@ import { isRecipe } from './recipe';
 import { buildTool, forgetTools, listTools, putRecipe, registerTool } from './tools';
 import { routeDemo } from './demo';
 import { isScript, isToolInput, keepScript, runScript } from './scripts';
+import { getSnapshot, isSnapshotUpload, putSnapshot } from './snapshots';
 import type { Env, Step } from './types';
 export { Workspace } from './workspace';
 export { Registry } from './registry';
@@ -77,6 +78,17 @@ const route = async (request: Request, env: Env): Promise<Response> => {
     const body: unknown = await request.json();
     if (!isObject(body) || typeof body.name !== 'string' || !isToolInput(body.input)) return Response.json({ error: 'bad run' }, { status: 400 });
     return Response.json(await runScript(env, body.name, body.input));
+  }
+  if (request.method === 'POST' && pathname === '/snapshots') {
+    const body: unknown = await request.json();
+    if (!isSnapshotUpload(body)) return Response.json({ error: 'bad snapshot' }, { status: 400 });
+    const stored = await putSnapshot(env, body);
+    return Response.json({ key: stored.key, snapshotSha: stored.snapshotSha, bytes: stored.bytes });
+  }
+  if (request.method === 'GET' && pathname.startsWith('/snapshots/')) {
+    const stored = await getSnapshot(env, pathname.slice('/snapshots/'.length));
+    if (stored === null) return Response.json({ error: 'no such snapshot' }, { status: 404 });
+    return Response.json(stored);
   }
   if (request.method === 'POST' && pathname === '/task') {
     const body: unknown = await request.json();
