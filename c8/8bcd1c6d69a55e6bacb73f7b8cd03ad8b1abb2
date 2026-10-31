@@ -1,0 +1,23 @@
+bench/fork/real.json
+  s_7b04649645ea0c::t_2ee35cf9eb19d2 1-190
+docs/explanation/freeze-once-fork-many.md
+  s_7b04649645ea0c::t_1130fbac8f778f 19-37
+scripts/fork-gate.mjs
+  s_7b04649645ea0c::t_03edcc3bdf9d90 39-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c88bcd1c6d69a55e6bacb73f7b8cd03ad8b1abb2",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
