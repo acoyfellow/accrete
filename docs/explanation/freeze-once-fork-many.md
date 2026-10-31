@@ -1,6 +1,6 @@
 # Freeze once, fork many
 
-Status: first experiment passed, with simulated setup. Receipt: `bench/fork/latest.json`.
+Status: this work moved to a separate package, `amber-accrete`, so that amber and accrete stay independent and each keeps its own evals. accrete keeps only the snapshot store (`POST /snapshots`, `GET /snapshots/:key`). The receipts below now live in `amber-accrete/bench/` as `fork-simulated.json` and `fork-real.json`.
 
 ## Result
 
@@ -20,7 +20,7 @@ The first run used simulated setup: two 1.5 s waits with fixed data.
 
 ## Result with real setup
 
-Receipt: `bench/fork/real.json`. Setup is real work. The model reads the package contributor rules (`AGENTS.md`, 9 KB) and returns review rules. Then tsc runs through accrete on the cloudflare-agent `packages/analytics` slice.
+Receipt: `amber-accrete/bench/fork-real.json`. Setup is real work. The model reads the package contributor rules (`AGENTS.md`, 9 KB) and returns review rules. Then tsc runs through accrete on the cloudflare-agent `packages/analytics` slice.
 
 | Measure | Value |
 |---|---|
