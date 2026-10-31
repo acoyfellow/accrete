@@ -16,7 +16,25 @@ Status: first experiment passed, with simulated setup. Receipt: `bench/fork/late
 
 Refused: a fork with a different engine hash, a fork whose tool hash changed after the freeze, and a fork with a write tool that is not allowed.
 
-What is not proven: setup in this run is simulated. `load_rules` and `index_repo` each wait 1.5 s and return fixed data. The result shows that a fork skips setup completely. It does not yet show how much real setup costs, in model tokens or in time, on a real repository.
+The first run used simulated setup: two 1.5 s waits with fixed data.
+
+## Result with real setup
+
+Receipt: `bench/fork/real.json`. Setup is real work. The model reads the package contributor rules (`AGENTS.md`, 9 KB) and returns review rules. Then tsc runs through accrete on the cloudflare-agent `packages/analytics` slice.
+
+| Measure | Value |
+|---|---|
+| Fresh run, setup included | 18340 ms, 2276 model tokens |
+| Fork from the kept snapshot, median of 10 | 642 ms, 0 model tokens |
+| Snapshot | 3353 bytes |
+
+Each fork skips the 2276 setup tokens and about 18 s of setup.
+
+What is not proven:
+
+- tsc used 0 container-seconds in setup because accrete already kept the tsc tool. A first-time tool build would add container time to the fresh run, not to the forks.
+- A frozen plan can hold facts that go stale, for example a file count. There is no rule yet for how old a snapshot can be.
+- The engine and tool checks run in the example harness, not in a shared library.
 
 ## Idea
 

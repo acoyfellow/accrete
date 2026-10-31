@@ -36,6 +36,12 @@ const ok = (command, args) => {
     return false;
   }
 };
+const REAL = 'bench/fork/real.json';
+const real = existsSync(REAL) ? JSON.parse(readFileSync(REAL, 'utf8')) : {};
+const { sha256: realSha, ...realBody } = real;
+check('real-setup receipt is sealed', realSha === createHash('sha256').update(JSON.stringify(realBody, null, 2)).digest('hex'));
+check('real setup cost model tokens; forks cost none', real.fresh?.setupTokens > 0 && real.summary?.forkSetupModelTokens === 0 && real.checks?.every((entry) => entry.pass));
+check('docs cite the real-setup numbers', page.includes(REAL) && page.includes(String(real.fresh?.setupTokens)) && page.includes(String(real.summary?.forkMedianMs)));
 check('typecheck passes', ok('npx', ['tsc', '--noEmit', '-p', '.']));
 check('honesty gate passes', ok('node', ['scripts/honesty.mjs']));
 
