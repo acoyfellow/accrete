@@ -1,0 +1,21 @@
+docs/explanation/freeze-once-fork-many.md
+  s_7b04649645ea0c::t_19800c3e99e44e 3,23
+package.json
+  s_7b04649645ea0c::t_c37d9e7a9921b6 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f9f9aaa881ec948bbbfe980e126af24a598a4283",
+  "prompts": {},
+  "sessions": {
+    "s_7b04649645ea0c": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a177da-1062-7274-8d7d-6a71aca9e2ba",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
