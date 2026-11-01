@@ -71,3 +71,26 @@ Returns `[{ name, version, hash, kind, registeredAt, check }]`.
 ## POST /forget
 
 Body: `{ "names": ["lift-sass-1-80-6"] }`. Removes those tools. The next call rebuilds.
+
+## POST /scripts
+
+Keeps a script a model wrote. Body:
+
+```json
+{ "name": "restart-check", "source": "export const run = async ({ args, files }) => ({ stdout: '...', files: {} });", "packages": {}, "check": { "args": [], "files": { "plan.js": "..." }, "stdout": "expected output" } }
+```
+
+- `name`: lowercase letters, digits and `-`, 2 to 48 characters.
+- `source`: an ES module that exports `run({ args, files })` and returns `{ stdout, files }`. Up to 200 KB.
+- `packages`: optional npm packages to bundle, as `{ "name": "version" }`.
+- `check`: one sample input and the exact `stdout` it must produce.
+
+The builder runs the source, bundles it, runs the bundle, then runs it again in an isolate. It keeps the script only if all three print `check.stdout`. Returns `{ record, receipt }`. `receipt.kept` is `new` or `already-kept`; posting the same source again re-checks it in an isolate and costs no container time. Returns `500` with the three outputs if they differ.
+
+## POST /scripts/run
+
+Body: `{ "name": "restart-check", "input": { "args": [], "files": { "plan.js": "..." } } }`. Runs the latest kept version of that script in an isolate. Returns `{ output: { stdout, files }, record, ms }`. Returns `500` if no script has that name.
+
+## POST /snapshots and GET /snapshots/:key
+
+Stores and returns paused-program snapshots by hash, with the engine and tool hashes they depend on. Used by `amber-accrete`; accrete only stores the bytes and does not read them.
