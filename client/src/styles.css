@@ -288,3 +288,14 @@ h1 .line:has(.strike) { line-height: .9; }
 .kruns .empty { color: #888; font: 14px/1.5 ui-monospace, Menlo, monospace; border: 2px dashed #333; border-radius: 16px; padding: 18px; }
 @media (max-width: 860px) { .ksteps, .kgrid { grid-template-columns: 1fr; } }
 .keep .fine { color: #888; font: 13px/1.5 ui-monospace, Menlo, monospace; margin-top: 22px; }
+
+*, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+.in, .reveal, .run, h1 .line > span, h1 .new.pop { opacity: 1 !important; transform: rotate(var(--r, 0deg)) !important; filter: none !important; }
+h1 .line > span { transform: none !important; }
+h1 .strike::after { transform: rotate(-3deg) scaleX(1) !important; }
+.run.zero { background: var(--acid); }
+.run.cost { background: var(--sun); }
+.xp .track i { width: 100% !important; }
+.xp b.lv { --lv: 4; }
+.levelup { display: none !important; }
+.card::after { display: none; }
