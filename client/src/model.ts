@@ -73,17 +73,29 @@ export const Run = Schema.Struct({ kind: RunKind, label: Schema.String, result: 
 
 export type Run = typeof Run.Type;
 
+export const Action = Schema.Literals(["reset", "script", "cold", "self"]);
+
+export type Action = typeof Action.Type;
+
 export const Activity = defineTaggedUnion({
   Idle: {},
-  Busy: { label: Schema.String },
-  Failed: { reason: Schema.String },
+  Busy: { action: Action, label: Schema.String },
+  Failed: { action: Action, reason: Schema.String },
 });
 
 export type Activity = typeof Activity.Type;
 
+export const Registry = defineTaggedUnion({
+  Unknown: {},
+  Known: { tools: Schema.Array(Tool) },
+  Unreachable: { reason: Schema.String },
+});
+
+export type Registry = typeof Registry.Type;
+
 export const Model = Schema.Struct({
   loaded: Loaded,
-  tools: Schema.Array(Tool),
+  registry: Registry,
   runs: Schema.Array(Run),
   activity: Activity,
 });

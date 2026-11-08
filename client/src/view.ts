@@ -2,7 +2,7 @@ import type { Html, HtmlBuilder } from "foldkit/html";
 import { Message } from "./message";
 import numbers from "./numbers.json";
 import { scriptNumbers } from "./numbers";
-import { Activity, type Call, Loaded, type Model, type Run, type Tool } from "./model";
+import { type Action, Activity, type Call, Loaded, type Model, Registry, type Run, type Tool } from "./model";
 
 type H = HtmlBuilder<Message>;
 
@@ -203,11 +203,24 @@ const liveRun = (h: H, run: Run): Html => {
   ]);
 };
 
-const registry = (h: H, tools: ReadonlyArray<Tool>): Html =>
-  h.div([h.Class("reg")], [
-    h.b([], [`REGISTRY · ${tools.length}`]),
-    ...(tools.length === 0 ? [h.span([], ["empty"])] : tools.map((tool) => h.div([], [`${tool.name} · ${tool.hash.slice(0, 8)}`]))),
-  ]);
+const registryTools = (h: H, tools: ReadonlyArray<Tool>): ReadonlyArray<Html> => [
+  h.b([], [`REGISTRY · ${tools.length}`]),
+  ...(tools.length === 0 ? [h.span([], ["empty"])] : tools.map((tool) => h.div([], [`${tool.name} · ${tool.hash.slice(0, 8)}`]))),
+];
+
+const registry = (h: H, state: Registry): Html =>
+  h.div([h.Class("reg"), h.DataAttribute("state", state._tag)], Registry.match(state, {
+    Unknown: () => [h.b([], ["REGISTRY"]), h.span([], ["loading"])],
+    Known: ({ tools }) => registryTools(h, tools),
+    Unreachable: ({ reason }) => [h.b([], ["REGISTRY"]), h.span([h.Class("bad")], [reason])],
+  }));
+
+const activityFor = (h: H, activity: Activity, actions: ReadonlyArray<Action>): Html =>
+  Activity.match(activity, {
+    Idle: () => h.span([h.DataAttribute("state", "Idle")], []),
+    Busy: ({ action, label }) => actions.includes(action) ? h.span([h.Class("status"), h.DataAttribute("state", "Busy"), h.DataAttribute("action", action)], [`${label}…`]) : h.span([h.DataAttribute("state", "Idle")], []),
+    Failed: ({ action, reason }) => actions.includes(action) ? h.span([h.Class("status bad"), h.DataAttribute("state", "Failed"), h.DataAttribute("action", action)], [reason]) : h.span([h.DataAttribute("state", "Idle")], []),
+  });
 
 const button = (h: H, label: string, message: Message, busy: boolean, extra: string): Html =>
   h.button([h.Type("button"), h.Disabled(busy), h.OnClick(message), h.Class(`btn ${extra}`)], [label]);
@@ -223,15 +236,11 @@ const demo = (h: H, model: Model, local: boolean): Html => {
           ...(local ? [button(h, "1 · RESET", Message.ClickedReset(), busy, "")] : []),
           button(h, local ? "2 · RUN JSON5" : "RUN JSON5", Message.ClickedRun({ kind: "cold" }), busy, "go"),
           button(h, local ? "3 · CHECK ACCRETE WITH ACCRETE" : "CHECK ACCRETE WITH ACCRETE", Message.ClickedRun({ kind: "self" }), busy, "go"),
-          Activity.match(model.activity, {
-            Idle: () => h.span([], []),
-            Busy: ({ label }) => h.span([h.Class("status")], [`${label}…`]),
-            Failed: ({ reason }) => h.span([h.Class("status bad")], [reason]),
-          }),
+          activityFor(h, model.activity, ["reset", "cold", "self"]),
         ],
     h.div([h.Class("live")], [
       h.div([], model.runs.length === 0 ? [h.div([h.Class("empty")], ["no runs yet. press a button."])] : model.runs.map((run) => liveRun(h, run))),
-      registry(h, model.tools),
+      registry(h, model.registry),
     ]),
   ]);
 };
@@ -357,11 +366,7 @@ const scriptDemo = (h: H, model: Model): Html => {
       ]),
       h.div([h.Class("kruns")], [
         button(h, "RUN THE KEPT SCRIPT ON A NEW DIFF", Message.ClickedRun({ kind: "script" }), busy, "go"),
-        Activity.match(model.activity, {
-          Idle: () => h.span([], []),
-          Busy: ({ label }) => h.span([h.Class("status")], [`${label}…`]),
-          Failed: ({ reason }) => h.span([h.Class("status bad")], [reason]),
-        }),
+        activityFor(h, model.activity, ["script"]),
         ...(scriptRuns.length === 0
           ? [h.div([h.Class("empty")], ["Press the button. The script runs from the registry on this live Worker. No model call, no container."])]
           : scriptRuns.map((run) => liveRun(h, run))),
@@ -381,10 +386,14 @@ const stage = (h: H): Html =>
 
 export const view = (model: Model, h: H): Html =>
   Loaded.match(model.loaded, {
-    Loading: () => h.main([], []),
-    Failed: ({ reason }) => h.main([], [stage(h), h.p([h.Class("status bad")], [reason])]),
+    Loading: () => h.main([h.DataAttribute("state", "Loading")], []),
+    Failed: ({ reason }) => h.main([h.DataAttribute("state", "Failed")], [
+      stage(h),
+      h.p([h.Class("status bad")], [reason]),
+      h.button([h.Type("button"), h.OnClick(Message.ClickedRetry()), h.Class("btn go")], ["TRY AGAIN"]),
+    ]),
     Ready: ({ status, local }) =>
-      h.main([], [
+      h.main([h.DataAttribute("state", "Ready")], [
         stage(h),
         scriptDemo(h, model),
         demo(h, model, local),

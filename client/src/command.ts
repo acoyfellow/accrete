@@ -29,18 +29,18 @@ export const LoadStatus = Command.define("LoadStatus", {
       const { body } = yield* call("/api/status", "GET");
       const reply = yield* Schema.decodeUnknownEffect(StatusReply)(body);
       return Message.LoadedStatus({ status: reply.status, local: reply.local });
-    }).pipe(Effect.orElseSucceed(() => Message.FailedStatus({ reason: "Could not load /api/status." }))),
+    }).pipe(Effect.orElseSucceed(() => Message.FailedStatus({ reason: "Could not reach the Worker behind /api/status." }))),
 });
 
 export const LoadTools = Command.define("LoadTools", {
   args: {},
-  messages: [Message.LoadedTools, Message.FailedAction],
+  messages: [Message.LoadedTools, Message.FailedTools],
   execute: () =>
     Effect.gen(function* () {
       const { body } = yield* call("/api/tools", "GET");
       const tools = yield* Schema.decodeUnknownEffect(Schema.Array(Tool))(body);
       return Message.LoadedTools({ tools });
-    }).pipe(Effect.orElseSucceed(() => Message.FailedAction({ reason: "Could not load the registry." }))),
+    }).pipe(Effect.orElseSucceed(() => Message.FailedTools({ reason: "Could not load the registry." }))),
 });
 
 export const ResetDemo = Command.define("ResetDemo", {
@@ -49,9 +49,9 @@ export const ResetDemo = Command.define("ResetDemo", {
   execute: () =>
     Effect.gen(function* () {
       const { ok, body } = yield* call("/api/reset", "POST");
-      if (!ok) return Message.FailedAction({ reason: yield* reasonOf(body, "Reset failed.") });
+      if (!ok) return Message.FailedAction({ action: "reset", reason: yield* reasonOf(body, "Reset failed.") });
       return Message.DidReset();
-    }).pipe(Effect.orElseSucceed(() => Message.FailedAction({ reason: "Could not reach the Worker." }))),
+    }).pipe(Effect.orElseSucceed(() => Message.FailedAction({ action: "reset", reason: "Could not reach the Worker." }))),
 });
 
 export const RunDemo = Command.define("RunDemo", {
@@ -60,8 +60,8 @@ export const RunDemo = Command.define("RunDemo", {
   execute: ({ kind }) =>
     Effect.gen(function* () {
       const { ok, body } = yield* call(kind === "script" ? "/api/script/run" : `/api/run/${kind}`, "POST");
-      if (!ok) return Message.FailedAction({ reason: yield* reasonOf(body, "Run failed.") });
+      if (!ok) return Message.FailedAction({ action: kind, reason: yield* reasonOf(body, "Run failed.") });
       const result = yield* Schema.decodeUnknownEffect(TaskResult)(body);
       return Message.Finished({ kind, result });
-    }).pipe(Effect.orElseSucceed(() => Message.FailedAction({ reason: "Could not reach the Worker." }))),
+    }).pipe(Effect.orElseSucceed(() => Message.FailedAction({ action: kind, reason: "Could not reach the Worker." }))),
 });

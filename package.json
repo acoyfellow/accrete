@@ -20,7 +20,8 @@
     "bench:workflows": "node scripts/workflow-bench.mjs latest",
     "proof:adopt": "node scripts/adopt.mjs",
     "proof:scripts:live": "node scripts/scripts-proof.mjs",
-    "proof:scripts": "node scripts/scripts-gate.mjs"
+    "proof:scripts": "node scripts/scripts-gate.mjs",
+    "proof:ui": "node scripts/ui-states.mjs"
   },
   "license": "MIT",
   "dependencies": {
