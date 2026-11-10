@@ -70,7 +70,7 @@ The first call to a tool builds it and checks it. Every call after that runs the
 
 ```sh
 npm install
-npm run dev          # Worker on :8799, site on :5281
+npm run dev          # Worker on :8797 (ACCRETE_WORKER_PORT), site on :5281
 ```
 
 ## Layout

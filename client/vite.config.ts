@@ -28,5 +28,5 @@ export default defineConfig({
   plugins: [docsIndex(), foldkit(), tailwindcss()],
   base: "/",
   build: { outDir: "../public", emptyOutDir: true },
-  server: { port: 5281, strictPort: true, proxy: { "/api": "http://localhost:8799" } },
+  server: { port: 5281, strictPort: true, proxy: { "/api": `http://localhost:${process.env.ACCRETE_WORKER_PORT ?? "8797"}` } },
 });

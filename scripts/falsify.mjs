@@ -2,7 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { gitSha, placementOf, readJson, seal } from './receipt.mjs';
 import { sourceHash } from './source-hash.mjs';
 
-const base = process.env.ACCRETE_URL ?? 'http://localhost:8799';
+const base = process.env.ACCRETE_URL ?? 'http://localhost:8797';
 const token = process.env.ACCRETE_TOKEN ?? 'local-dev';
 
 const call = async (method, path, body, ms = 90_000) => {

@@ -4,7 +4,7 @@
   "description": "Agents on Durable Objects build the tools they need once, then run them with no container.",
   "scripts": {
     "dev": "bash scripts/dev.sh",
-    "dev:worker": "node scripts/self-source.mjs && wrangler dev --port 8799 --var ACCRETE_TOKEN:local-dev",
+    "dev:worker": "node scripts/self-source.mjs && wrangler dev --port ${ACCRETE_WORKER_PORT:-8797} --var ACCRETE_TOKEN:local-dev",
     "dev:site": "vite --config client/vite.config.ts",
     "build": "cp status.json client/public/status.json && node scripts/build-docs.mjs && vite build --config client/vite.config.ts",
     "check": "node scripts/self-source.mjs && tsc -p . && tsc -p client",
