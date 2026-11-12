@@ -12,3 +12,4 @@ client/public/docs
 .DS_Store
 .guardrail/
 .pi/
+.alchemy

@@ -21,20 +21,24 @@
     "proof:adopt": "node scripts/adopt.mjs",
     "proof:scripts:live": "node scripts/scripts-proof.mjs",
     "proof:scripts": "node scripts/scripts-gate.mjs",
-    "proof:ui": "node scripts/ui-states.mjs"
+    "proof:ui": "node scripts/ui-states.mjs",
+    "test:domain": "vitest run test/domain",
+    "test:hosts": "vitest run examples/hosts/test"
   },
   "license": "MIT",
   "dependencies": {
     "@biomejs/biome": "^2.5.15",
     "@cloudflare/containers": "^0.3.7",
-    "@foldkit/vite-plugin": "^0.26.1",
+    "@foldkit/vite-plugin": "0.29.0",
     "@tailwindcss/vite": "^4.3.3",
-    "effect": "^4.0.0",
-    "foldkit": "^0.168.0",
+    "effect": "4.1.4",
+    "foldkit": "0.170.0",
     "js-yaml": "^4.3.2",
     "marked": "^14.1.4",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.3.3"
+    "vite": "^8.3.3",
+    "@alchemy.run/domain": "2.0.0-beta.86",
+    "alchemy": "2.0.0-beta.86"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261026.1",
@@ -44,7 +48,21 @@
     "eslint": "^10.13.0",
     "json5": "^2.2.3",
     "typescript": "5.9",
-    "wrangler": "^4.149.0"
+    "wrangler": "^4.149.0",
+    "@effect/vitest": "4.1.4",
+    "vitest": "5.1.0",
+    "@alchemy.run/cloudflare": "2.0.0-beta.86",
+    "@alchemy.run/effect-cluster": "2.0.0-beta.86",
+    "@alchemy.run/docker": "2.0.0-beta.86",
+    "@alchemy.run/aws": "2.0.0-beta.86",
+    "@alchemy.run/fly": "2.0.0-beta.86",
+    "@alchemy.run/gcp": "2.0.0-beta.86",
+    "@alchemy.run/hetzner": "2.0.0-beta.86",
+    "@alchemy.run/kubernetes": "2.0.0-beta.86",
+    "@effect/sql-pg": "4.1.4",
+    "@effect/platform-bun": "4.1.4",
+    "@effect/platform-node": "4.1.4",
+    "@effect/platform-browser": "4.1.4"
   },
   "type": "module",
   "private": true,

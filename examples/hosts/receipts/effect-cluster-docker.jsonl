@@ -1,0 +1,3 @@
+{"tool":"sass-1794506569172","callers":20,"ms":142,"started":1,"waiting":19,"other":[],"wrongAgentFinishes":"NotYourBuild","rightAgentFinishes":"Built","laterAsk":"AlreadyBuilt","sampleRejection":{"status":422,"body":{"_tag":"AlreadyBuilding","by":"agent-5"}}}
+{"tool":"sass-1794506569345","callers":20,"ms":99,"started":1,"waiting":19,"other":[],"wrongAgentFinishes":"NotYourBuild","rightAgentFinishes":"Built","laterAsk":"AlreadyBuilt","sampleRejection":{"status":422,"body":{"_tag":"AlreadyBuilding","by":"agent-3"}}}
+{"tool":"sass-1794506569478","callers":20,"ms":94,"started":1,"waiting":19,"other":[],"wrongAgentFinishes":"NotYourBuild","rightAgentFinishes":"Built","laterAsk":"AlreadyBuilt","sampleRejection":{"status":422,"body":{"_tag":"AlreadyBuilding","by":"agent-0"}}}

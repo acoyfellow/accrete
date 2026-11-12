@@ -1,0 +1,21 @@
+{
+ "compilerOptions": {
+  "strict": true,
+  "noEmit": true,
+  "module": "Preserve",
+  "moduleResolution": "Bundler",
+  "target": "ESNext",
+  "skipLibCheck": true,
+  "lib": [
+   "ESNext",
+   "DOM"
+  ],
+  "types": []
+ },
+ "include": [
+  "src",
+  "test",
+  "alchemy.cluster.ts",
+  "alchemy.cloudflare.ts"
+ ]
+}
