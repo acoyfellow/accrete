@@ -232,6 +232,7 @@ const demo = (h: H, model: Model, local: boolean): Html => {
     h.p([], [local
       ? "Reset clears json5 and tsc. The first run forges the tool in a container. Run it again: no container. The tsc run checks accrete's own source."
       : "These buttons call this live Worker. If the tool is already in the registry, the run takes milliseconds and 0 container-seconds. The tsc run type-checks accrete's own source inside an isolate."]),
+    h.p([h.Class("note")], ["The tsc run checks the Worker's files against the domain model's types. The model itself, src/domain/, is checked by npm run check and its 16 stories."]),
     ...[
           ...(local ? [button(h, "1 · RESET", Message.ClickedReset(), busy, "")] : []),
           button(h, local ? "2 · RUN JSON5" : "RUN JSON5", Message.ClickedRun({ kind: "cold" }), busy, "go"),
