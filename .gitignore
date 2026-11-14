@@ -13,3 +13,4 @@ client/public/docs
 .guardrail/
 .pi/
 .alchemy
+examples/browser/dist

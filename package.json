@@ -23,7 +23,8 @@
     "proof:scripts": "node scripts/scripts-gate.mjs",
     "proof:ui": "node scripts/ui-states.mjs",
     "test:domain": "vitest run test/domain",
-    "test:hosts": "vitest run examples/hosts/test"
+    "test:hosts": "vitest run examples/hosts/test",
+    "build:browser": "esbuild examples/browser/engine.ts --bundle --platform=browser --format=esm --minify --outfile=examples/browser/dist/domain-engine.js"
   },
   "license": "MIT",
   "dependencies": {
