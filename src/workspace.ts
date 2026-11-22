@@ -7,11 +7,14 @@ export type TaskResult = {
   readonly logs: readonly CallLog[];
   readonly files: Readonly<Record<string, string>>;
   readonly reads: readonly string[];
+  readonly queuedMs: number;
 };
 
 const failure = (cause: unknown): string => (cause instanceof Error ? cause.message : String(cause));
 
 export class Workspace extends DurableObject<Env> {
+  private previousTask: Promise<unknown> = Promise.resolve();
+
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS files (path TEXT PRIMARY KEY, content TEXT NOT NULL)');
@@ -32,7 +35,14 @@ export class Workspace extends DurableObject<Env> {
     return Object.fromEntries(rows.map((row) => [row.path, row.content]));
   }
 
-  async runTask(seed: Readonly<Record<string, string>>, steps: readonly Step[]): Promise<TaskResult> {
+  runTask(seed: Readonly<Record<string, string>>, steps: readonly Step[]): Promise<TaskResult> {
+    const queuedAt = Date.now();
+    const task = this.previousTask.then(() => this.runAlone(seed, steps, Date.now() - queuedAt));
+    this.previousTask = task.catch(() => undefined);
+    return task;
+  }
+
+  private async runAlone(seed: Readonly<Record<string, string>>, steps: readonly Step[], queuedMs: number): Promise<TaskResult> {
     this.ctx.storage.sql.exec('DELETE FROM files');
     for (const [path, content] of Object.entries(seed)) this.writeFile(path, content);
     const logs: CallLog[] = [];
@@ -44,10 +54,10 @@ export class Workspace extends DurableObject<Env> {
         logs.push({ ...log, ms: Date.now() - started, ok: true });
       } catch (cause) {
         logs.push({ op: step.op, placement: 'isolate', ms: Date.now() - started, containerSeconds: 0, ok: false, error: failure(cause) });
-        return { ok: false, logs, files: this.listFiles(), reads };
+        return { ok: false, logs, files: this.listFiles(), reads, queuedMs };
       }
     }
-    return { ok: true, logs, files: this.listFiles(), reads };
+    return { ok: true, logs, files: this.listFiles(), reads, queuedMs };
   }
 
   private async runStep(step: Step, reads: string[]): Promise<Omit<CallLog, 'ms' | 'ok'>> {

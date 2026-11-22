@@ -10,6 +10,8 @@ const IDLE_STOP_MS = 60_000;
 const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export class Builder extends DurableObject<Env> {
+  private buildsInFlight = 0;
+
   private get container(): Container {
     const container = this.ctx.container;
     if (container === undefined) throw new Error('Builder has no container binding');
@@ -35,12 +37,19 @@ export class Builder extends DurableObject<Env> {
   }
 
   override async fetch(request: Request): Promise<Response> {
-    this.boot();
-    await this.container.setInactivityTimeout(IDLE_STOP_MS);
-    return this.ready(request);
+    this.buildsInFlight += 1;
+    try {
+      this.boot();
+      await this.container.setInactivityTimeout(IDLE_STOP_MS);
+      const response = await this.ready(request);
+      return new Response(await response.arrayBuffer(), response);
+    } finally {
+      this.buildsInFlight -= 1;
+    }
   }
 
   async shutdown(): Promise<void> {
+    if (this.buildsInFlight > 0) return;
     if (this.container.running) await this.container.destroy();
   }
 }

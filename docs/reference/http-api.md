@@ -32,7 +32,7 @@ Public, read-only: `GET /api/status`, `GET /api/tools`, `/llms.txt`, `/status.js
 }
 ```
 
-`workspace` names a Durable Object. `seed` replaces its files. Steps run in order and stop at the first failure.
+`workspace` names a Durable Object. `seed` replaces its files. Steps run in order and stop at the first failure. Tasks sent to the same workspace run one at a time, in the order they arrive, so one task never sees another task's files. Use a new workspace name per task to run them in parallel.
 
 | Step | Fields | Effect |
 |---|---|---|
@@ -48,13 +48,14 @@ Response:
   "ok": true,
   "files": { "a.yaml": "...", "out.json": "..." },
   "reads": [],
+  "queuedMs": 0,
   "logs": [
     { "op": "tool", "placement": "built-tool", "tool": "lift-js-yaml-4-1-0@4.1.0", "hash": "81424f…", "ms": 41, "containerSeconds": 0, "ok": true }
   ]
 }
 ```
 
-`placement` is `built-tool` for a registry hit, `container` when the call built the tool, and `isolate` for file steps.
+`queuedMs` is how long the task waited for an earlier task on the same workspace. `placement` is `built-tool` for a registry hit, `container` when the call built the tool, and `isolate` for file steps.
 
 ## PUT /recipes
 
