@@ -2,7 +2,6 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { foldkit } from "@foldkit/vite-plugin";
-import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, type Plugin } from "vite";
 
 const PUBLIC_DIR = fileURLToPath(new URL("./public", import.meta.url));
@@ -25,7 +24,7 @@ const docsIndex = (): Plugin => ({
 
 export default defineConfig({
   root: fileURLToPath(new URL(".", import.meta.url)),
-  plugins: [docsIndex(), foldkit(), tailwindcss()],
+  plugins: [docsIndex(), foldkit()],
   base: "/",
   build: { outDir: "../public", emptyOutDir: true },
   server: { port: 5281, strictPort: true, proxy: { "/api": `http://localhost:${process.env.ACCRETE_WORKER_PORT ?? "8797"}` } },

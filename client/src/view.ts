@@ -268,8 +268,6 @@ const fire = (h: H): Html =>
     h.div([h.Class("meter reveal")], ["CONTAINER-SECONDS, NEXT RUN", h.b([vars(h, { "--cold": String(Math.round(parseFloat(numbers.current.coldCs) * 100)) })], [])]),
   ]);
 
-const receiptLink = (h: H, path: string): Html => h.a([h.Href(`${REPO}/blob/main/${path}`)], [path]);
-
 const builtRows = numbers.toolRows.filter((row) => row.ok);
 
 const medianSpeedup = (): string => {
@@ -393,7 +391,7 @@ export const view = (model: Model, h: H): Html =>
       h.p([h.Class("status bad")], [reason]),
       h.button([h.Type("button"), h.OnClick(Message.ClickedRetry()), h.Class("btn go")], ["TRY AGAIN"]),
     ]),
-    Ready: ({ status, local }) =>
+    Ready: ({ local }) =>
       h.main([h.DataAttribute("state", "Ready")], [
         stage(h),
         scriptDemo(h, model),

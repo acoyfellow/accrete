@@ -11,9 +11,9 @@ accrete is one Worker with three Durable Objects, an R2 bucket, and a container 
 
 ## The parts
 
-- **Workspace** (Durable Object). Holds one task's files in SQLite. Runs `read`, `write`, and `edit` steps in the isolate. Sends `tool` steps to the registry.
-- **Registry** (Durable Object + R2). Maps a tool name to a record: version, content hash, and check case. The bundle lives in R2 under its hash.
-- **Builder** (container). Starts only on a registry miss. Installs the npm package, bundles it with esbuild into one ES module, runs the real CLI and the bundle on the check case, and stops.
+- **Workspace** (Durable Object). Holds one task's files in SQLite and runs tasks one at a time per workspace. Runs `read`, `write`, and `edit` steps in the isolate. Sends `tool` steps to the registry.
+- **Registry** (Durable Object + R2). Maps a tool name to a record: version, content hash, and check case. Build claims are governed by the Domain model (`src/domain/tool.ts`), so concurrent agents build a cold tool once. The bundle lives in R2 under its hash.
+- **Builder** (container). Starts only on a registry miss. Installs the npm package, bundles it with esbuild into one ES module, runs the real CLI and the bundle on the check case, and stops once no builds remain in flight.
 - **Runner** (Worker Loader). Loads a bundle into a fresh isolate with no network and no bindings, and calls `run({ args, files })`.
 
 ## A tool call

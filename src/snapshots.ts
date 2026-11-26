@@ -10,7 +10,7 @@ export type SnapshotUpload = {
 
 export type StoredSnapshot = SnapshotUpload & { readonly snapshotSha: string; readonly key: string; readonly bytes: number; readonly storedAt: string };
 
-const HEX = new RegExp('^[0-9a-f]{64}$');
+const HEX = /^[0-9a-f]{64}$/;
 
 const MAX_SNAPSHOT_BASE64 = 12 * 1024 * 1024;
 

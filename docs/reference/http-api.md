@@ -17,8 +17,13 @@ All routes below need `Authorization: Bearer <ACCRETE_TOKEN>`. Bodies are JSON.
 | `GET` | `/tools` | List registered tools |
 | `POST` | `/tools` | Register a prebuilt bundle |
 | `POST` | `/forget` | Remove tools from the registry |
+| `POST` | `/scripts` | Keep a checked model-written script |
+| `POST` | `/scripts/run` | Run a kept script in an isolate |
+| `POST` | `/snapshots` | Store a paused-program snapshot by hash |
+| `GET` | `/snapshots/:key` | Fetch a stored snapshot and verify its hash |
 
-Public, read-only: `GET /api/status`, `GET /api/tools`, `/llms.txt`, `/status.json`.
+Public, read-only: `/`, `/docs/`, `GET /api/status`, `GET /api/tools`, `/llms.txt`, `/status.json`.
+Public live demo: `POST /api/script/run`, `POST /api/run/cold`, `POST /api/run/self`.
 
 ## POST /task
 

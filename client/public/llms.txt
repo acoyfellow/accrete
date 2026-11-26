@@ -7,18 +7,21 @@
 After a tool is in the registry, a repeat of the same task uses 0 container-seconds. Disproved if any repeat run uses the container.
 
 ## How it works
-1. A task runs in a workspace Durable Object. File steps run in an isolate.
+1. A task runs in a workspace Durable Object, one task at a time per workspace. File steps run in an isolate.
 2. A tool step looks up the tool in the registry (Durable Object + R2). A hit runs the stored bundle in a Worker Loader isolate with no network and no bindings.
-3. A miss starts the builder container. It installs the npm package, bundles it with esbuild, and stops.
+3. A miss claims the build through the Domain model (`src/domain/tool.ts`), so concurrent agents build a cold tool once. The builder container installs the npm package, bundles it with esbuild, and stops when no builds remain in flight.
 4. The bundle must print the same output as the native tool on a check case before it is stored by content hash.
+5. Agents can also store checked scripts (`POST /scripts`, `POST /scripts/run`) and paused-program snapshots (`POST /snapshots`, `GET /snapshots/:key`).
 
 Tool contract: run({ args, files }) -> { stdout, files }
 
-## Evidence
+## Docs & Evidence
+- /docs/: tutorial, how-to guides, HTTP API reference, and explanation
+- /docs/reference/http-api/: every route, request body, and response
 - /status.json: proven, unproven and disproven claims with receipts
-- receipts/02-*.json: slice 2 gate receipts
+- receipts/02-*.json and bench/score.json: sealed gate and benchmark receipts
 
 ## Limits
 - npm tools that esbuild can bundle to plain JavaScript only
 - no network, no secrets in built tools
-- write API needs a bearer token; demo actions run only on localhost
+- write API needs a bearer token; live demo runs (`POST /api/script/run`, `POST /api/run/cold`, `POST /api/run/self`) are public, while reset/keep/tamper run only on localhost

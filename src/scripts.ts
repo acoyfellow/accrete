@@ -29,7 +29,7 @@ export type KeepReceipt = {
   readonly ms: number;
 };
 
-const NAME = new RegExp('^[a-z][a-z0-9-]{1,47}$');
+const NAME = /^[a-z][a-z0-9-]{1,47}$/;
 
 const MAX_SOURCE_BYTES = 200_000;
 

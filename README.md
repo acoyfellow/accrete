@@ -5,7 +5,7 @@ Your coding agents build each npm tool once, then run it with no container.
 Open source. **You deploy it to your own Cloudflare account.** It is not a hosted service.
 Site: https://accrete.customer0.dev
 
-When an agent needs a tool such as `json5`, `sass` or `terser`, accrete builds it once in a short-lived container. It then checks the bundle against the real tool's output and stores it by content hash. Every later call runs that bundle in a Worker isolate with no network and no secrets.
+When an agent needs a tool such as `json5`, `sass` or `terser`, or writes a reusable helper script, accrete builds it once in a short-lived container. It then checks the bundle against the real output and stores it by content hash. Every later call runs that bundle in a Worker isolate with no network and no secrets.
 
 ## Numbers
 
@@ -73,13 +73,29 @@ npm install
 npm run dev          # Worker on :8797 (ACCRETE_WORKER_PORT), site on :5281
 ```
 
+## Check and test
+
+```sh
+npm test             # domain model stories + workspace/builder/HTTP tests
+npm run check        # generate self-source and typecheck Worker + client
+npm run lint         # Biome lint
+npm run proof:honesty
+npm run proof:scripts
+npm run proof:ui
+```
+
 ## Layout
 
 | Path | What |
 |---|---|
-| `src/` | Worker: workspace, registry and builder Durable Objects, isolate runner |
+| `src/` | Worker: workspace, registry and builder Durable Objects, isolate runner, HTTP API |
+| `src/domain/` | Alchemy Domain model for tool build claims and registry rules |
 | `builder/` | builder container: install, bundle, compare with native |
 | `recipes/` | one recipe per tool |
+| `test/` | domain stories and Worker concurrency / HTTP tests |
+| `examples/` | the same Domain model hosted in memory, on Durable Objects, on Effect Cluster, and in the browser |
+| `extensions/pi/` | Pi extension (`accrete_run`, `/accrete`) and standalone CLI |
+| `docs/` | documentation source (Diátaxis) |
 | `bench/` | frozen train and held-out tool sets, ledger, score |
 | `client/` | the site |
 | `experiments/` | one folder per experiment, with negative results |
@@ -89,10 +105,11 @@ npm run dev          # Worker on :8797 (ACCRETE_WORKER_PORT), site on :5281
 
 | Route | Access |
 |---|---|
-| `/`, `/llms.txt`, `/status.json` | public |
+| `/`, `/docs/`, `/llms.txt`, `/status.json` | public |
 | `GET /api/status`, `GET /api/tools` | public, read only |
-| `POST /api/reset`, `/api/run/*` | localhost only |
-| `/tools`, `/task`, `/build`, `/recipes`, `/forget` | bearer token |
+| `POST /api/script/run`, `POST /api/run/cold`, `POST /api/run/self` | public live demo |
+| `POST /api/reset`, `POST /api/script/keep`, `POST /api/test/tamper` | localhost only |
+| `/tools`, `/task`, `/build`, `/recipes`, `/forget`, `/scripts`, `/scripts/run`, `/snapshots`, `/snapshots/:key` | bearer token |
 
 ## License
 

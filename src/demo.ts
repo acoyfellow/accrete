@@ -59,8 +59,19 @@ const workspace = (env: Env, name: string) => env.WORKSPACE.get(env.WORKSPACE.id
 
 const forbidden = (): Response => Response.json({ error: 'this action runs only in local dev' }, { status: 403 });
 
-const ensureRecipes = async (env: Env): Promise<void> => {
-  for (const recipe of recipes()) await putRecipe(env, recipe);
+let recipesReady: Promise<void> | null = null;
+
+const putAllRecipes = (env: Env): Promise<void> =>
+  Promise.all(recipes().map((recipe) => putRecipe(env, recipe))).then(() => undefined);
+
+const ensureRecipes = (env: Env): Promise<void> => {
+  if (recipesReady === null) {
+    recipesReady = putAllRecipes(env).catch((cause) => {
+      recipesReady = null;
+      throw cause;
+    });
+  }
+  return recipesReady;
 };
 
 export const routeDemo = async (request: Request, env: Env, local: boolean): Promise<Response> => {
@@ -84,11 +95,17 @@ export const routeDemo = async (request: Request, env: Env, local: boolean): Pro
   }
   if (!local) return forbidden();
   if (request.method === 'POST' && pathname === '/api/reset') {
+    recipesReady = null;
     await ensureRecipes(env);
     return Response.json({ removed: await forgetTools(env, DEMO_TOOLS) });
   }
   if (request.method === 'POST' && pathname === '/api/test/tamper') {
-    const body: unknown = await request.json();
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return Response.json({ error: 'bad json' }, { status: 400 });
+    }
     if (typeof body !== 'object' || body === null || !('name' in body) || typeof body.name !== 'string') return Response.json({ error: 'bad name' }, { status: 400 });
     return Response.json({ hash: await tamperBundle(env, body.name) });
   }
